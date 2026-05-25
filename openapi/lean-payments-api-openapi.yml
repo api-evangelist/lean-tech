@@ -1,0 +1,237 @@
+openapi: 3.1.0
+info:
+  title: Lean Payments API
+  description: >
+    Pay by Bank single instant payment initiation, Account-on-File (AOF)
+    payment initiation, and consent management. Supports creating payment
+    intents, retrieving payments by intent or payment id, listing intents,
+    and managing long-lived AOF consents with balance and history endpoints.
+  version: '1.0'
+  contact:
+    name: Lean Support
+    url: https://help.leantech.me
+servers:
+  - url: https://api2.leantech.me
+    description: Production
+security:
+  - BearerAuth: []
+tags:
+  - name: Payment Intents
+  - name: Account on File
+  - name: Consents
+paths:
+  /payments/v1/intents:
+    post:
+      summary: Lean Create Payment Intent
+      operationId: createPaymentIntent
+      tags: [Payment Intents]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PaymentIntentRequest'
+      responses:
+        '201':
+          description: Payment intent created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaymentIntent'
+    get:
+      summary: Lean List Payment Intents
+      operationId: listPaymentIntents
+      tags: [Payment Intents]
+      responses:
+        '200':
+          description: Payment intents
+  /payments/v1/intents/{intent_id}:
+    get:
+      summary: Lean Get Payment By Intent Id
+      operationId: getPaymentByIntentId
+      tags: [Payment Intents]
+      parameters:
+        - name: intent_id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: Payment intent
+  /payments/v1/{payment_id}:
+    get:
+      summary: Lean Get Payment By Payment Id
+      operationId: getPaymentByPaymentId
+      tags: [Payment Intents]
+      parameters:
+        - name: payment_id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: Payment
+  /payments/account-on-file:
+    post:
+      summary: Lean Initiate Aof Payment
+      operationId: initiateAofPayment
+      tags: [Account on File]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                consent_id:
+                  type: string
+                  format: uuid
+                amount:
+                  type: number
+                currency:
+                  type: string
+                description:
+                  type: string
+                reference:
+                  type: string
+      responses:
+        '201':
+          description: AOF payment initiated
+  /consents/account-on-file:
+    post:
+      summary: Lean Create Aof Consent
+      operationId: createAofConsent
+      tags: [Consents]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                customer_id:
+                  type: string
+                  format: uuid
+                bank_identifier:
+                  type: string
+                max_amount:
+                  type: number
+                currency:
+                  type: string
+                expires_at:
+                  type: string
+                  format: date-time
+      responses:
+        '201':
+          description: Consent created
+  /consents/v1:
+    get:
+      summary: Lean List Customer Consents
+      operationId: listCustomerConsents
+      tags: [Consents]
+      parameters:
+        - name: customer_id
+          in: query
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: Consents
+  /consents/{consent_id}:
+    get:
+      summary: Lean Get Consent Details
+      operationId: getConsentDetails
+      tags: [Consents]
+      parameters:
+        - $ref: '#/components/parameters/ConsentId'
+      responses:
+        '200':
+          description: Consent
+  /consents/{consent_id}/balance:
+    get:
+      summary: Lean Fetch Consent Balance
+      operationId: fetchConsentBalance
+      tags: [Consents]
+      parameters:
+        - $ref: '#/components/parameters/ConsentId'
+      responses:
+        '200':
+          description: Consent balance
+  /consents/{consent_id}/history:
+    get:
+      summary: Lean Get Consent History
+      operationId: getConsentHistory
+      tags: [Consents]
+      parameters:
+        - $ref: '#/components/parameters/ConsentId'
+      responses:
+        '200':
+          description: Consent history
+components:
+  parameters:
+    ConsentId:
+      name: consent_id
+      in: path
+      required: true
+      schema:
+        type: string
+        format: uuid
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+  schemas:
+    PaymentIntentRequest:
+      type: object
+      required: [amount, currency, beneficiary]
+      properties:
+        amount:
+          type: number
+        currency:
+          type: string
+          enum: [AED, SAR]
+        description:
+          type: string
+        reference:
+          type: string
+        customer_id:
+          type: string
+          format: uuid
+        beneficiary:
+          type: object
+          properties:
+            name:
+              type: string
+            iban:
+              type: string
+            account_number:
+              type: string
+        creditor_reference:
+          type: string
+        idempotency_key:
+          type: string
+    PaymentIntent:
+      type: object
+      properties:
+        intent_id:
+          type: string
+          format: uuid
+        status:
+          type: string
+          enum: [PENDING, AWAITING_AUTHORIZATION, COMPLETED, FAILED, CANCELLED]
+        amount:
+          type: number
+        currency:
+          type: string
+        created_at:
+          type: string
+          format: date-time
+        link_url:
+          type: string
+          format: uri

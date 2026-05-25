@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/lean-tech/main/json-schema/lean-payment-intent-schema.json",
+  "title": "Lean Payment Intent",
+  "description": "A Pay by Bank single instant payment intent created via the Lean Payments API.",
+  "type": "object",
+  "required": ["intent_id", "amount", "currency", "status"],
+  "properties": {
+    "intent_id": {"type": "string", "format": "uuid"},
+    "status": {
+      "type": "string",
+      "enum": ["PENDING", "AWAITING_AUTHORIZATION", "COMPLETED", "FAILED", "CANCELLED"]
+    },
+    "amount": {"type": "number"},
+    "currency": {"type": "string", "enum": ["AED", "SAR"]},
+    "description": {"type": "string"},
+    "reference": {"type": "string"},
+    "customer_id": {"type": "string", "format": "uuid"},
+    "creditor_reference": {"type": "string"},
+    "idempotency_key": {"type": "string"},
+    "beneficiary": {
+      "type": "object",
+      "properties": {
+        "name": {"type": "string"},
+        "iban": {"type": "string"},
+        "account_number": {"type": "string"}
+      }
+    },
+    "link_url": {"type": "string", "format": "uri"},
+    "created_at": {"type": "string", "format": "date-time"}
+  }
+}

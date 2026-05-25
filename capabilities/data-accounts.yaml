@@ -1,0 +1,236 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Lean Data API — Accounts
+  description: 'Lean Data — retrieve accounts, balances, beneficiaries, direct debits, scheduled payments, and standing orders for a linked entity.'
+  tags:
+  - Lean
+  - Data
+  - Accounts
+  created: '2026-05-25'
+  modified: '2026-05-25'
+binds:
+- namespace: env
+  keys:
+    LEAN_API_TOKEN: LEAN_API_TOKEN
+capability:
+  consumes:
+  - type: http
+    namespace: data-accounts
+    baseUri: https://api2.leantech.me
+    description: Lean Data API — Accounts business capability backed by Lean Technologies APIs.
+    resources:
+    - name: accounts
+      path: /data/v2/accounts
+      operations:
+      - name: getAccounts
+        method: GET
+        description: Lean Get Accounts
+        outputRawFormat: json
+        inputParameters: []
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: account-balances
+      path: /data/v2/accounts/{account_id}/balances
+      operations:
+      - name: getBalances
+        method: GET
+        description: Lean Get Balances
+        outputRawFormat: json
+        inputParameters:
+        - name: account_id
+          in: path
+          type: string
+          required: true
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: account-beneficiaries
+      path: /data/v2/accounts/{account_id}/beneficiaries
+      operations:
+      - name: getBeneficiaries
+        method: GET
+        description: Lean Get Beneficiaries
+        outputRawFormat: json
+        inputParameters:
+        - name: account_id
+          in: path
+          type: string
+          required: true
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: account-direct-debits
+      path: /data/v2/accounts/{account_id}/direct-debits
+      operations:
+      - name: getDirectDebits
+        method: GET
+        description: Lean Get Direct Debits
+        outputRawFormat: json
+        inputParameters:
+        - name: account_id
+          in: path
+          type: string
+          required: true
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: account-scheduled-payments
+      path: /data/v2/accounts/{account_id}/scheduled-payments
+      operations:
+      - name: getScheduledPayments
+        method: GET
+        description: Lean Get Scheduled Payments
+        outputRawFormat: json
+        inputParameters:
+        - name: account_id
+          in: path
+          type: string
+          required: true
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: account-standing-orders
+      path: /data/v2/accounts/{account_id}/standing-orders
+      operations:
+      - name: getStandingOrders
+        method: GET
+        description: Lean Get Standing Orders
+        outputRawFormat: json
+        inputParameters:
+        - name: account_id
+          in: path
+          type: string
+          required: true
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    authentication:
+      type: apikey
+      key: Authorization
+      value: 'Bearer {{env.LEAN_API_TOKEN}}'
+      placement: header
+  exposes:
+  - type: rest
+    namespace: data-accounts-rest
+    port: 8080
+    description: REST adapter for Lean Data API — Accounts.
+    resources:
+    - path: /v1/data/v2/accounts
+      name: accounts
+      operations:
+      - method: GET
+        name: getAccounts
+        description: Lean Get Accounts
+        call: data-accounts.getAccounts
+        with: {}
+    - path: /v1/data/v2/accounts/{account_id}/balances
+      name: account-balances
+      operations:
+      - method: GET
+        name: getBalances
+        description: Lean Get Balances
+        call: data-accounts.getBalances
+        with:
+          account_id: rest.path.account_id
+    - path: /v1/data/v2/accounts/{account_id}/beneficiaries
+      name: account-beneficiaries
+      operations:
+      - method: GET
+        name: getBeneficiaries
+        description: Lean Get Beneficiaries
+        call: data-accounts.getBeneficiaries
+        with:
+          account_id: rest.path.account_id
+    - path: /v1/data/v2/accounts/{account_id}/direct-debits
+      name: account-direct-debits
+      operations:
+      - method: GET
+        name: getDirectDebits
+        description: Lean Get Direct Debits
+        call: data-accounts.getDirectDebits
+        with:
+          account_id: rest.path.account_id
+    - path: /v1/data/v2/accounts/{account_id}/scheduled-payments
+      name: account-scheduled-payments
+      operations:
+      - method: GET
+        name: getScheduledPayments
+        description: Lean Get Scheduled Payments
+        call: data-accounts.getScheduledPayments
+        with:
+          account_id: rest.path.account_id
+    - path: /v1/data/v2/accounts/{account_id}/standing-orders
+      name: account-standing-orders
+      operations:
+      - method: GET
+        name: getStandingOrders
+        description: Lean Get Standing Orders
+        call: data-accounts.getStandingOrders
+        with:
+          account_id: rest.path.account_id
+  - type: mcp
+    namespace: data-accounts-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Lean Data API — Accounts.
+    tools:
+    - name: lean-getaccounts
+      description: Lean Get Accounts
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: data-accounts.getAccounts
+      with: {}
+    - name: lean-getbalances
+      description: Lean Get Balances
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: data-accounts.getBalances
+      with:
+        account_id: tools.account_id
+    - name: lean-getbeneficiaries
+      description: Lean Get Beneficiaries
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: data-accounts.getBeneficiaries
+      with:
+        account_id: tools.account_id
+    - name: lean-getdirectdebits
+      description: Lean Get Direct Debits
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: data-accounts.getDirectDebits
+      with:
+        account_id: tools.account_id
+    - name: lean-getscheduledpayments
+      description: Lean Get Scheduled Payments
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: data-accounts.getScheduledPayments
+      with:
+        account_id: tools.account_id
+    - name: lean-getstandingorders
+      description: Lean Get Standing Orders
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: data-accounts.getStandingOrders
+      with:
+        account_id: tools.account_id

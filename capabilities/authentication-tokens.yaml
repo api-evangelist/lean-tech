@@ -1,0 +1,69 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Lean Authentication API — Tokens
+  description: 'Lean Authentication API — OAuth 2.0 client-credentials token issuance. Issues api-scope tokens
+    for backend and customer-scope tokens for the LinkSDK.'
+  tags:
+  - Lean
+  - Authentication
+  - OAuth
+  created: '2026-05-25'
+  modified: '2026-05-25'
+binds:
+- namespace: env
+  keys:
+    LEAN_CLIENT_ID: LEAN_CLIENT_ID
+    LEAN_CLIENT_SECRET: LEAN_CLIENT_SECRET
+capability:
+  consumes:
+  - type: http
+    namespace: authentication-tokens
+    baseUri: https://auth.leantech.me
+    description: Lean OAuth 2.0 token endpoint.
+    resources:
+    - name: oauth2-token
+      path: /oauth2/token
+      operations:
+      - name: generateAccessToken
+        method: POST
+        description: Lean Generate Access Token
+        outputRawFormat: json
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          required: true
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+  exposes:
+  - type: rest
+    namespace: authentication-tokens-rest
+    port: 8080
+    description: REST adapter for Lean Authentication.
+    resources:
+    - path: /v1/oauth2/token
+      name: oauth2-token
+      operations:
+      - method: POST
+        name: generateAccessToken
+        description: Lean Generate Access Token
+        call: authentication-tokens.generateAccessToken
+        with:
+          body: rest.body
+  - type: mcp
+    namespace: authentication-tokens-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Lean Authentication.
+    tools:
+    - name: lean-generate-access-token
+      description: Lean Generate Access Token
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: authentication-tokens.generateAccessToken
+      with:
+        body: tools.body

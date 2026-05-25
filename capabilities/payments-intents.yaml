@@ -1,0 +1,162 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Lean Payments API — Payment Intents
+  description: 'Lean Payments — create, list, and retrieve single-instant Pay by Bank payment intents.'
+  tags:
+  - Lean
+  - Payments
+  - Pay by Bank
+  created: '2026-05-25'
+  modified: '2026-05-25'
+binds:
+- namespace: env
+  keys:
+    LEAN_API_TOKEN: LEAN_API_TOKEN
+capability:
+  consumes:
+  - type: http
+    namespace: payments-intents
+    baseUri: https://api2.leantech.me
+    description: Lean Payments API — Payment Intents business capability backed by Lean Technologies APIs.
+    resources:
+    - name: payment-intents
+      path: /payments/v1/intents
+      operations:
+      - name: createPaymentIntent
+        method: POST
+        description: Lean Create Payment Intent
+        outputRawFormat: json
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          required: true
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: listPaymentIntents
+        method: GET
+        description: Lean List Payment Intents
+        outputRawFormat: json
+        inputParameters: []
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: payment-intent
+      path: /payments/v1/intents/{intent_id}
+      operations:
+      - name: getPaymentByIntentId
+        method: GET
+        description: Lean Get Payment By Intent Id
+        outputRawFormat: json
+        inputParameters:
+        - name: intent_id
+          in: path
+          type: string
+          required: true
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: payment-by-id
+      path: /payments/v1/{payment_id}
+      operations:
+      - name: getPaymentByPaymentId
+        method: GET
+        description: Lean Get Payment By Payment Id
+        outputRawFormat: json
+        inputParameters:
+        - name: payment_id
+          in: path
+          type: string
+          required: true
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    authentication:
+      type: apikey
+      key: Authorization
+      value: 'Bearer {{env.LEAN_API_TOKEN}}'
+      placement: header
+  exposes:
+  - type: rest
+    namespace: payments-intents-rest
+    port: 8080
+    description: REST adapter for Lean Payments API — Payment Intents.
+    resources:
+    - path: /v1/payments/v1/intents
+      name: payment-intents
+      operations:
+      - method: POST
+        name: createPaymentIntent
+        description: Lean Create Payment Intent
+        call: payments-intents.createPaymentIntent
+        with:
+          body: rest.body
+      - method: GET
+        name: listPaymentIntents
+        description: Lean List Payment Intents
+        call: payments-intents.listPaymentIntents
+        with: {}
+    - path: /v1/payments/v1/intents/{intent_id}
+      name: payment-intent
+      operations:
+      - method: GET
+        name: getPaymentByIntentId
+        description: Lean Get Payment By Intent Id
+        call: payments-intents.getPaymentByIntentId
+        with:
+          intent_id: rest.path.intent_id
+    - path: /v1/payments/v1/{payment_id}
+      name: payment-by-id
+      operations:
+      - method: GET
+        name: getPaymentByPaymentId
+        description: Lean Get Payment By Payment Id
+        call: payments-intents.getPaymentByPaymentId
+        with:
+          payment_id: rest.path.payment_id
+  - type: mcp
+    namespace: payments-intents-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Lean Payments API — Payment Intents.
+    tools:
+    - name: lean-createpaymentintent
+      description: Lean Create Payment Intent
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: payments-intents.createPaymentIntent
+      with:
+        body: tools.body
+    - name: lean-listpaymentintents
+      description: Lean List Payment Intents
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: payments-intents.listPaymentIntents
+      with: {}
+    - name: lean-getpaymentbyintentid
+      description: Lean Get Payment By Intent Id
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: payments-intents.getPaymentByIntentId
+      with:
+        intent_id: tools.intent_id
+    - name: lean-getpaymentbypaymentid
+      description: Lean Get Payment By Payment Id
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: payments-intents.getPaymentByPaymentId
+      with:
+        payment_id: tools.payment_id

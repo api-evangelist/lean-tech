@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/lean-tech/main/json-schema/lean-customer-schema.json",
+  "title": "Lean Customer",
+  "description": "A Lean Customer represents an end-user in the developer's application that Lean uses to anchor data and payment consents.",
+  "type": "object",
+  "required": ["app_user_id"],
+  "properties": {
+    "customer_id": {
+      "type": "string",
+      "format": "uuid",
+      "description": "Lean-issued customer identifier."
+    },
+    "app_user_id": {
+      "type": "string",
+      "description": "The developer-supplied identifier for the end-user."
+    },
+    "app_id": {
+      "type": "string",
+      "description": "Identifier of the Lean Application that owns this customer."
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time"
+    }
+  }
+}

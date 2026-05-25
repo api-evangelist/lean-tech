@@ -1,0 +1,161 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Lean Customers API — Customers
+  description: 'Lean Customers — create, list, and look up customer records by id or app_user_id.'
+  tags:
+  - Lean
+  - Customers
+  created: '2026-05-25'
+  modified: '2026-05-25'
+binds:
+- namespace: env
+  keys:
+    LEAN_API_TOKEN: LEAN_API_TOKEN
+capability:
+  consumes:
+  - type: http
+    namespace: customers-customers
+    baseUri: https://api2.leantech.me
+    description: Lean Customers API — Customers business capability backed by Lean Technologies APIs.
+    resources:
+    - name: customers
+      path: /customers/v1
+      operations:
+      - name: createCustomer
+        method: POST
+        description: Lean Create Customer
+        outputRawFormat: json
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          required: true
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: listCustomers
+        method: GET
+        description: Lean List Customers
+        outputRawFormat: json
+        inputParameters: []
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: customer-by-id
+      path: /customers/v1/{customer_id}
+      operations:
+      - name: getCustomerById
+        method: GET
+        description: Lean Get Customer By Id
+        outputRawFormat: json
+        inputParameters:
+        - name: customer_id
+          in: path
+          type: string
+          required: true
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: customer-by-app-user-id
+      path: /customers/v1/app-user-id/{app_user_id}
+      operations:
+      - name: getCustomerByAppUserId
+        method: GET
+        description: Lean Get Customer By App User Id
+        outputRawFormat: json
+        inputParameters:
+        - name: app_user_id
+          in: path
+          type: string
+          required: true
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    authentication:
+      type: apikey
+      key: Authorization
+      value: 'Bearer {{env.LEAN_API_TOKEN}}'
+      placement: header
+  exposes:
+  - type: rest
+    namespace: customers-customers-rest
+    port: 8080
+    description: REST adapter for Lean Customers API — Customers.
+    resources:
+    - path: /v1/customers/v1
+      name: customers
+      operations:
+      - method: POST
+        name: createCustomer
+        description: Lean Create Customer
+        call: customers-customers.createCustomer
+        with:
+          body: rest.body
+      - method: GET
+        name: listCustomers
+        description: Lean List Customers
+        call: customers-customers.listCustomers
+        with: {}
+    - path: /v1/customers/v1/{customer_id}
+      name: customer-by-id
+      operations:
+      - method: GET
+        name: getCustomerById
+        description: Lean Get Customer By Id
+        call: customers-customers.getCustomerById
+        with:
+          customer_id: rest.path.customer_id
+    - path: /v1/customers/v1/app-user-id/{app_user_id}
+      name: customer-by-app-user-id
+      operations:
+      - method: GET
+        name: getCustomerByAppUserId
+        description: Lean Get Customer By App User Id
+        call: customers-customers.getCustomerByAppUserId
+        with:
+          app_user_id: rest.path.app_user_id
+  - type: mcp
+    namespace: customers-customers-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Lean Customers API — Customers.
+    tools:
+    - name: lean-createcustomer
+      description: Lean Create Customer
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: customers-customers.createCustomer
+      with:
+        body: tools.body
+    - name: lean-listcustomers
+      description: Lean List Customers
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: customers-customers.listCustomers
+      with: {}
+    - name: lean-getcustomerbyid
+      description: Lean Get Customer By Id
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: customers-customers.getCustomerById
+      with:
+        customer_id: tools.customer_id
+    - name: lean-getcustomerbyappuserid
+      description: Lean Get Customer By App User Id
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: customers-customers.getCustomerByAppUserId
+      with:
+        app_user_id: tools.app_user_id

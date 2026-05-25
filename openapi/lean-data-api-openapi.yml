@@ -1,0 +1,247 @@
+openapi: 3.1.0
+info:
+  title: Lean Data API
+  description: >
+    Raw bank-account data retrieval (v2). After a customer has granted an
+    Account Information consent through the LinkSDK and Lean has provisioned
+    an entity, the Data API exposes accounts, transactions, balances,
+    beneficiaries, direct debits, standing orders, scheduled payments, and
+    identity. Includes endpoints to trigger and inspect manual data
+    refreshes.
+  version: '2.0'
+  contact:
+    name: Lean Support
+    url: https://help.leantech.me
+servers:
+  - url: https://api2.leantech.me
+    description: Production
+  - url: https://sandbox.ae.leantech.me
+    description: Sandbox - UAE
+  - url: https://sandbox.sa.leantech.me
+    description: Sandbox - KSA
+security:
+  - BearerAuth: []
+tags:
+  - name: Accounts
+  - name: Transactions
+  - name: Balances
+  - name: Identity
+  - name: Refreshes
+paths:
+  /data/v2/accounts:
+    get:
+      summary: Lean Get Accounts
+      operationId: getAccounts
+      tags: [Accounts]
+      parameters:
+        - $ref: '#/components/parameters/EntityIdHeader'
+      responses:
+        '200':
+          description: Accounts list
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Account'
+  /data/v2/accounts/{account_id}/transactions:
+    get:
+      summary: Lean Get Transactions
+      operationId: getTransactions
+      tags: [Transactions]
+      parameters:
+        - $ref: '#/components/parameters/AccountId'
+        - $ref: '#/components/parameters/EntityIdHeader'
+        - name: start_date
+          in: query
+          schema:
+            type: string
+            format: date
+        - name: end_date
+          in: query
+          schema:
+            type: string
+            format: date
+      responses:
+        '200':
+          description: Transactions
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Transaction'
+  /data/v2/accounts/{account_id}/balances:
+    get:
+      summary: Lean Get Balances
+      operationId: getBalances
+      tags: [Balances]
+      parameters:
+        - $ref: '#/components/parameters/AccountId'
+        - $ref: '#/components/parameters/EntityIdHeader'
+      responses:
+        '200':
+          description: Balances
+  /data/v2/accounts/{account_id}/beneficiaries:
+    get:
+      summary: Lean Get Beneficiaries
+      operationId: getBeneficiaries
+      tags: [Accounts]
+      parameters:
+        - $ref: '#/components/parameters/AccountId'
+        - $ref: '#/components/parameters/EntityIdHeader'
+      responses:
+        '200':
+          description: Beneficiaries
+  /data/v2/accounts/{account_id}/direct-debits:
+    get:
+      summary: Lean Get Direct Debits
+      operationId: getDirectDebits
+      tags: [Accounts]
+      parameters:
+        - $ref: '#/components/parameters/AccountId'
+        - $ref: '#/components/parameters/EntityIdHeader'
+      responses:
+        '200':
+          description: Direct debits
+  /data/v2/accounts/{account_id}/scheduled-payments:
+    get:
+      summary: Lean Get Scheduled Payments
+      operationId: getScheduledPayments
+      tags: [Accounts]
+      parameters:
+        - $ref: '#/components/parameters/AccountId'
+        - $ref: '#/components/parameters/EntityIdHeader'
+      responses:
+        '200':
+          description: Scheduled payments
+  /data/v2/accounts/{account_id}/standing-orders:
+    get:
+      summary: Lean Get Standing Orders
+      operationId: getStandingOrders
+      tags: [Accounts]
+      parameters:
+        - $ref: '#/components/parameters/AccountId'
+        - $ref: '#/components/parameters/EntityIdHeader'
+      responses:
+        '200':
+          description: Standing orders
+  /data/v2/accounts/{account_id}/identities:
+    get:
+      summary: Lean Get Account Identities
+      operationId: getAccountIdentities
+      tags: [Identity]
+      parameters:
+        - $ref: '#/components/parameters/AccountId'
+        - $ref: '#/components/parameters/EntityIdHeader'
+      responses:
+        '200':
+          description: Account identities
+  /data/v2/identity:
+    get:
+      summary: Lean Get Identity
+      operationId: getIdentity
+      tags: [Identity]
+      parameters:
+        - $ref: '#/components/parameters/EntityIdHeader'
+      responses:
+        '200':
+          description: Identity
+  /data/v2/refreshes:
+    post:
+      summary: Lean Trigger Manual Data Refresh
+      operationId: triggerDataRefresh
+      tags: [Refreshes]
+      parameters:
+        - $ref: '#/components/parameters/EntityIdHeader'
+      responses:
+        '202':
+          description: Refresh triggered
+    get:
+      summary: Lean Get Data Refreshes
+      operationId: getDataRefreshes
+      tags: [Refreshes]
+      parameters:
+        - $ref: '#/components/parameters/EntityIdHeader'
+      responses:
+        '200':
+          description: Refreshes
+  /data/v2/refreshes/{refresh_id}:
+    get:
+      summary: Lean Get Data Refresh Status
+      operationId: getDataRefreshStatus
+      tags: [Refreshes]
+      parameters:
+        - name: refresh_id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - $ref: '#/components/parameters/EntityIdHeader'
+      responses:
+        '200':
+          description: Refresh status
+components:
+  parameters:
+    AccountId:
+      name: account_id
+      in: path
+      required: true
+      schema:
+        type: string
+    EntityIdHeader:
+      name: entity_id
+      in: header
+      required: true
+      schema:
+        type: string
+        format: uuid
+      description: Lean entity identifier returned after a successful LinkSDK consent.
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+  schemas:
+    Account:
+      type: object
+      properties:
+        account_id:
+          type: string
+        name:
+          type: string
+        type:
+          type: string
+          enum: [CURRENT, SAVINGS, CREDIT_CARD, LOAN]
+        currency:
+          type: string
+        iban:
+          type: string
+        account_number:
+          type: string
+        bic:
+          type: string
+    Transaction:
+      type: object
+      properties:
+        id:
+          type: string
+        amount:
+          type: object
+          properties:
+            amount:
+              type: number
+            currency:
+              type: string
+        timestamp:
+          type: string
+          format: date-time
+        description:
+          type: string
+        credit_debit_indicator:
+          type: string
+          enum: [CREDIT, DEBIT]
+        booking_status:
+          type: string
+          enum: [BOOKED, PENDING]

@@ -1,0 +1,107 @@
+openapi: 3.1.0
+info:
+  title: Lean Payment Sources API
+  description: >
+    Tokenized representation of a customer's funding bank account once it
+    has been linked through an Account-on-File consent. Payment sources can
+    be re-used for repeat charges without re-prompting the customer for
+    bank authentication.
+  version: '1.0'
+  contact:
+    name: Lean Support
+    url: https://help.leantech.me
+servers:
+  - url: https://api2.leantech.me
+    description: Production
+security:
+  - BearerAuth: []
+tags:
+  - name: Payment Sources
+paths:
+  /customers/v1/{customer_id}/payment-sources:
+    get:
+      summary: Lean List Customer Payment Sources
+      operationId: listCustomerPaymentSources
+      tags: [Payment Sources]
+      parameters:
+        - $ref: '#/components/parameters/CustomerId'
+      responses:
+        '200':
+          description: Payment sources
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/PaymentSource'
+  /customers/v1/{customer_id}/payment-sources/{payment_source_id}:
+    get:
+      summary: Lean Get Payment Source By Id
+      operationId: getPaymentSourceById
+      tags: [Payment Sources]
+      parameters:
+        - $ref: '#/components/parameters/CustomerId'
+        - $ref: '#/components/parameters/PaymentSourceId'
+      responses:
+        '200':
+          description: Payment source
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaymentSource'
+    delete:
+      summary: Lean Delete Payment Source
+      operationId: deletePaymentSource
+      tags: [Payment Sources]
+      parameters:
+        - $ref: '#/components/parameters/CustomerId'
+        - $ref: '#/components/parameters/PaymentSourceId'
+      responses:
+        '204':
+          description: Deleted
+components:
+  parameters:
+    CustomerId:
+      name: customer_id
+      in: path
+      required: true
+      schema:
+        type: string
+        format: uuid
+    PaymentSourceId:
+      name: payment_source_id
+      in: path
+      required: true
+      schema:
+        type: string
+        format: uuid
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+  schemas:
+    PaymentSource:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        customer_id:
+          type: string
+          format: uuid
+        bank_identifier:
+          type: string
+        consent_id:
+          type: string
+          format: uuid
+        account_iban_last4:
+          type: string
+        currency:
+          type: string
+        status:
+          type: string
+          enum: [ACTIVE, EXPIRED, REVOKED]
+        created_at:
+          type: string
+          format: date-time

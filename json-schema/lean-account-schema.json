@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/lean-tech/main/json-schema/lean-account-schema.json",
+  "title": "Lean Account",
+  "description": "A bank account exposed by Lean's Data API following a successful Account Information consent.",
+  "type": "object",
+  "required": ["account_id"],
+  "properties": {
+    "account_id": {"type": "string"},
+    "name": {"type": "string"},
+    "type": {
+      "type": "string",
+      "enum": ["CURRENT", "SAVINGS", "CREDIT_CARD", "LOAN"]
+    },
+    "currency": {
+      "type": "string",
+      "pattern": "^[A-Z]{3}$"
+    },
+    "iban": {
+      "type": "string",
+      "description": "IBAN where available (UAE, KSA, EU)."
+    },
+    "account_number": {"type": "string"},
+    "bic": {"type": "string"},
+    "bank_identifier": {"type": "string"},
+    "owner_name": {"type": "string"}
+  }
+}

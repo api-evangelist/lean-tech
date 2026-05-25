@@ -1,0 +1,71 @@
+extends:
+  - [spectral:oas, recommended]
+formats:
+  - oas3
+documentationUrl: https://github.com/api-evangelist/lean-tech
+rules:
+  # Operation conventions observed across Lean's API surface
+  operation-summary-title-case:
+    description: All operation summaries should use Title Case starting with the "Lean" prefix.
+    message: '{{property}} summary should use Title Case (e.g. "Lean Get Accounts").'
+    severity: warn
+    given: $.paths[*][get,post,put,delete,patch].summary
+    then:
+      function: pattern
+      functionOptions:
+        match: '^Lean(\s[A-Z][A-Za-z0-9]*)+$'
+
+  operation-operationId-camelCase:
+    description: operationId should be lowerCamelCase.
+    message: '{{path}} operationId "{{value}}" must be lowerCamelCase.'
+    severity: error
+    given: $.paths[*][get,post,put,delete,patch].operationId
+    then:
+      function: pattern
+      functionOptions:
+        match: '^[a-z][a-zA-Z0-9]*$'
+
+  # Versioned, plural, kebab-case path segments
+  path-versioned-plural:
+    description: Lean paths are versioned (v1 / v2) and use plural resource names where applicable.
+    message: '{{path}} should include a version segment and plural resources.'
+    severity: warn
+    given: $.paths
+    then:
+      field: '@key'
+      function: pattern
+      functionOptions:
+        match: '^/(?:[a-z0-9-]+/)?v\d+(?:/[a-z0-9{}_-]+)*/?$'
+
+  # Mutating operations should support idempotency
+  mutating-operations-require-idempotency:
+    description: POST/PUT/DELETE on payments, payouts, and refunds should accept an idempotency key.
+    message: '{{path}} mutating payment operations should accept Idempotency-Key.'
+    severity: warn
+    given: "$.paths[?(@property.match(/payments|payouts|refunds/))][post,put,delete].parameters"
+    then:
+      function: schema
+      functionOptions:
+        schema:
+          type: array
+
+  # Auth and security
+  security-bearer-required:
+    description: All non-auth endpoints should require BearerAuth.
+    message: '{{path}} operations should declare BearerAuth security.'
+    severity: warn
+    given: "$.paths[?(!@property.match(/oauth2/))][get,post,put,delete,patch]"
+    then:
+      field: security
+      function: truthy
+
+  # Server URL must point at api2.leantech.me or auth.leantech.me
+  servers-must-be-lean:
+    description: Server URLs must be canonical Lean endpoints.
+    message: 'Server URL "{{value}}" is not a recognised Lean host.'
+    severity: error
+    given: $.servers[*].url
+    then:
+      function: pattern
+      functionOptions:
+        match: '^https://([a-z0-9-]+\.)*leantech\.me$'

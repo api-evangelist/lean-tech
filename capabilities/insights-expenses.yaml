@@ -1,0 +1,66 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Lean Insights API — Expenses
+  description: 'Lean Insights — categorised expense analytics across an entitys transaction history.'
+  tags:
+  - Lean
+  - Insights
+  - Expenses
+  created: '2026-05-25'
+  modified: '2026-05-25'
+binds:
+- namespace: env
+  keys:
+    LEAN_API_TOKEN: LEAN_API_TOKEN
+capability:
+  consumes:
+  - type: http
+    namespace: insights-expenses
+    baseUri: https://api2.leantech.me
+    description: Lean Insights API — Expenses business capability backed by Lean Technologies APIs.
+    resources:
+    - name: expenses
+      path: /insights/v2/expenses
+      operations:
+      - name: getExpenses
+        method: GET
+        description: Lean Get Expenses
+        outputRawFormat: json
+        inputParameters: []
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    authentication:
+      type: apikey
+      key: Authorization
+      value: 'Bearer {{env.LEAN_API_TOKEN}}'
+      placement: header
+  exposes:
+  - type: rest
+    namespace: insights-expenses-rest
+    port: 8080
+    description: REST adapter for Lean Insights API — Expenses.
+    resources:
+    - path: /v1/insights/v2/expenses
+      name: expenses
+      operations:
+      - method: GET
+        name: getExpenses
+        description: Lean Get Expenses
+        call: insights-expenses.getExpenses
+        with: {}
+  - type: mcp
+    namespace: insights-expenses-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Lean Insights API — Expenses.
+    tools:
+    - name: lean-getexpenses
+      description: Lean Get Expenses
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: insights-expenses.getExpenses
+      with: {}

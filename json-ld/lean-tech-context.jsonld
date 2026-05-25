@@ -1,0 +1,90 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "@vocab": "https://schema.org/",
+    "lean": "https://api2.leantech.me/",
+    "schema": "https://schema.org/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "dcterms": "http://purl.org/dc/terms/",
+    "fibo": "https://spec.edmcouncil.org/fibo/ontology/",
+
+    "Customer": {
+      "@id": "lean:Customer",
+      "@context": {
+        "customer_id": {"@id": "lean:Customer/customer_id", "@type": "xsd:string"},
+        "app_user_id": {"@id": "lean:Customer/app_user_id", "@type": "xsd:string"},
+        "app_id": {"@id": "lean:Customer/app_id", "@type": "xsd:string"},
+        "created_at": {"@id": "lean:Customer/created_at", "@type": "xsd:dateTime"}
+      }
+    },
+
+    "Entity": {
+      "@id": "lean:Entity",
+      "@context": {
+        "id": {"@id": "lean:Entity/id", "@type": "xsd:string"},
+        "customer_id": {"@id": "lean:Entity/customer_id", "@type": "xsd:string"},
+        "bank_identifier": {"@id": "lean:Entity/bank_identifier", "@type": "xsd:string"},
+        "permissions": {"@id": "lean:Entity/permissions", "@container": "@list"}
+      }
+    },
+
+    "Account": {
+      "@id": "fibo:FBC/ProductsAndServices/FinancialProductsAndServices/Account",
+      "@context": {
+        "account_id": {"@id": "lean:Account/account_id", "@type": "xsd:string"},
+        "name": {"@id": "schema:name", "@type": "xsd:string"},
+        "type": {"@id": "lean:Account/type", "@type": "xsd:string"},
+        "currency": {"@id": "schema:priceCurrency", "@type": "xsd:string"},
+        "iban": {"@id": "fibo:FBC/FunctionalEntities/FinancialServicesEntities/IBAN", "@type": "xsd:string"},
+        "account_number": {"@id": "lean:Account/account_number", "@type": "xsd:string"},
+        "bic": {"@id": "lean:Account/bic", "@type": "xsd:string"}
+      }
+    },
+
+    "Transaction": {
+      "@id": "fibo:FND/TransactionsExt/FinancialTransaction",
+      "@context": {
+        "id": {"@id": "schema:identifier", "@type": "xsd:string"},
+        "amount": {"@id": "schema:amount"},
+        "timestamp": {"@id": "schema:datePosted", "@type": "xsd:dateTime"},
+        "description": {"@id": "schema:description", "@type": "xsd:string"},
+        "credit_debit_indicator": {"@id": "lean:Transaction/credit_debit_indicator", "@type": "xsd:string"},
+        "booking_status": {"@id": "lean:Transaction/booking_status", "@type": "xsd:string"}
+      }
+    },
+
+    "PaymentIntent": {
+      "@id": "lean:PaymentIntent",
+      "@context": {
+        "intent_id": {"@id": "schema:identifier", "@type": "xsd:string"},
+        "status": {"@id": "lean:PaymentIntent/status", "@type": "xsd:string"},
+        "amount": {"@id": "schema:amount"},
+        "currency": {"@id": "schema:priceCurrency", "@type": "xsd:string"},
+        "reference": {"@id": "lean:PaymentIntent/reference", "@type": "xsd:string"},
+        "beneficiary": {"@id": "lean:PaymentIntent/beneficiary"}
+      }
+    },
+
+    "Payout": {
+      "@id": "lean:Payout",
+      "@context": {
+        "id": {"@id": "schema:identifier", "@type": "xsd:string"},
+        "status": {"@id": "lean:Payout/status", "@type": "xsd:string"},
+        "amount": {"@id": "schema:amount"},
+        "currency": {"@id": "schema:priceCurrency", "@type": "xsd:string"},
+        "destination_id": {"@id": "lean:Payout/destination_id", "@type": "xsd:string"}
+      }
+    },
+
+    "Consent": {
+      "@id": "lean:Consent",
+      "@context": {
+        "consent_id": {"@id": "schema:identifier", "@type": "xsd:string"},
+        "customer_id": {"@id": "lean:Consent/customer_id", "@type": "xsd:string"},
+        "max_amount": {"@id": "lean:Consent/max_amount"},
+        "currency": {"@id": "schema:priceCurrency", "@type": "xsd:string"},
+        "expires_at": {"@id": "schema:expires", "@type": "xsd:dateTime"}
+      }
+    }
+  }
+}

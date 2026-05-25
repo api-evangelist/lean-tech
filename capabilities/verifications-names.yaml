@@ -1,0 +1,73 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Lean Verifications API — Name Verification
+  description: 'Lean Verifications — Confirmation of Payee. Compare a supplied name against the bank record.'
+  tags:
+  - Lean
+  - Verifications
+  - Name Verification
+  - Confirmation of Payee
+  created: '2026-05-25'
+  modified: '2026-05-25'
+binds:
+- namespace: env
+  keys:
+    LEAN_API_TOKEN: LEAN_API_TOKEN
+capability:
+  consumes:
+  - type: http
+    namespace: verifications-names
+    baseUri: https://api2.leantech.me
+    description: Lean Verifications API — Name Verification business capability backed by Lean Technologies APIs.
+    resources:
+    - name: name-verification
+      path: /insights/v1/name-verification
+      operations:
+      - name: verifyName
+        method: POST
+        description: Lean Verify Name
+        outputRawFormat: json
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          required: true
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    authentication:
+      type: apikey
+      key: Authorization
+      value: 'Bearer {{env.LEAN_API_TOKEN}}'
+      placement: header
+  exposes:
+  - type: rest
+    namespace: verifications-names-rest
+    port: 8080
+    description: REST adapter for Lean Verifications API — Name Verification.
+    resources:
+    - path: /v1/insights/v1/name-verification
+      name: name-verification
+      operations:
+      - method: POST
+        name: verifyName
+        description: Lean Verify Name
+        call: verifications-names.verifyName
+        with:
+          body: rest.body
+  - type: mcp
+    namespace: verifications-names-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Lean Verifications API — Name Verification.
+    tools:
+    - name: lean-verifyname
+      description: Lean Verify Name
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: verifications-names.verifyName
+      with:
+        body: tools.body

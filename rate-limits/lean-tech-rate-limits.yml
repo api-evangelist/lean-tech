@@ -1,0 +1,62 @@
+specification: API Commons Rate Limits
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/RateLimits
+provider: Lean Technologies
+providerId: lean-tech
+created: '2026-05-25'
+modified: '2026-05-25'
+reconciled: false
+tags:
+  - Open Banking
+  - Rate Limiting
+  - Quotas
+description: >
+  Documented rate-limiting behaviour for Lean's APIs. Lean enforces per-application quotas and bank-side
+  Open Banking rate limits. Specific per-environment limits are configured against a sales agreement and
+  are not published as a public table; the patterns below capture the algorithm, throttling responses,
+  and the relevant headers.
+sources:
+  - https://docs.leantech.me
+  - https://help.leantech.me
+headers:
+  limit: x-ratelimit-limit
+  remaining: x-ratelimit-remaining
+  reset: x-ratelimit-reset
+  retryAfter: retry-after
+responseCodes:
+  throttled: 429
+  quotaExceeded: 429
+algorithm: token-bucket
+scopes:
+  - level: application
+    description: Per-application caps shared across all customers of a Lean app.
+  - level: customer
+    description: Per-customer caps on data refresh and consent-bound endpoints to honour bank-side limits.
+  - level: bank
+    description: Underlying bank Open Banking rate limits (e.g. consent re-authentication windows) pass
+      through to the caller as 429 or bank-specific error codes mapped by Lean.
+limits:
+  - api: Authentication
+    endpoint: /oauth2/token
+    rpm: 60
+    notes: Reuse access tokens until expiry rather than re-minting per request.
+  - api: Data
+    endpoint: /data/v2/refreshes
+    perCustomerPerDay: 4
+    notes: Manual data refresh is rate-limited per linked customer per day; underlying bank quotas apply.
+  - api: Data
+    endpoint: /data/v2/accounts/{account_id}/transactions
+    notes: Pagination required for large windows; bank-side caps may force backoff.
+  - api: Payments
+    endpoint: /payments/v1/intents
+    notes: Idempotency-Key header required for safe retries.
+  - api: Payouts
+    endpoint: /payouts/v1/payment
+    notes: Idempotency-Key header required for safe retries; per-application daily payout caps apply.
+  - api: Verifications
+    endpoint: /verifications/v1/accounts
+    notes: Subject to per-country provider rate limits.
+retryGuidance:
+  recommendBackoff: exponential
+  retryOn: [429, 502, 503, 504]
+  honorRetryAfter: true

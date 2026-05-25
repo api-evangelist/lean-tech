@@ -1,0 +1,72 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Lean Verifications API — Account Verification
+  description: 'Lean Verifications — confirm ownership and validity of a bank account in 27+ countries by IBAN or local identifier.'
+  tags:
+  - Lean
+  - Verifications
+  - Account Verification
+  created: '2026-05-25'
+  modified: '2026-05-25'
+binds:
+- namespace: env
+  keys:
+    LEAN_API_TOKEN: LEAN_API_TOKEN
+capability:
+  consumes:
+  - type: http
+    namespace: verifications-accounts
+    baseUri: https://api2.leantech.me
+    description: Lean Verifications API — Account Verification business capability backed by Lean Technologies APIs.
+    resources:
+    - name: account-verification
+      path: /verifications/v1/accounts
+      operations:
+      - name: verifyAccount
+        method: POST
+        description: Lean Verify Account
+        outputRawFormat: json
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          required: true
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    authentication:
+      type: apikey
+      key: Authorization
+      value: 'Bearer {{env.LEAN_API_TOKEN}}'
+      placement: header
+  exposes:
+  - type: rest
+    namespace: verifications-accounts-rest
+    port: 8080
+    description: REST adapter for Lean Verifications API — Account Verification.
+    resources:
+    - path: /v1/verifications/v1/accounts
+      name: account-verification
+      operations:
+      - method: POST
+        name: verifyAccount
+        description: Lean Verify Account
+        call: verifications-accounts.verifyAccount
+        with:
+          body: rest.body
+  - type: mcp
+    namespace: verifications-accounts-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Lean Verifications API — Account Verification.
+    tools:
+    - name: lean-verifyaccount
+      description: Lean Verify Account
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: verifications-accounts.verifyAccount
+      with:
+        body: tools.body

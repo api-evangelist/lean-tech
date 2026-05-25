@@ -1,0 +1,24 @@
+{
+  "request": {
+    "method": "POST",
+    "url": "https://api2.leantech.me/verifications/v1/accounts",
+    "headers": {
+      "Authorization": "Bearer eyJhbGciOiJSUzI1NiIs...",
+      "Content-Type": "application/json"
+    },
+    "body": {
+      "country": "AE",
+      "iban": "AE070331234567890123456",
+      "beneficiary_name": "Acme Trading LLC"
+    }
+  },
+  "response": {
+    "status": 200,
+    "body": {
+      "verified": true,
+      "match_strength": "FULL",
+      "bank_name": "Emirates NBD",
+      "account_holder": "Acme Trading LLC"
+    }
+  }
+}

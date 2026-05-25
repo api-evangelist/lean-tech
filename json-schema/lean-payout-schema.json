@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/lean-tech/main/json-schema/lean-payout-schema.json",
+  "title": "Lean Payout",
+  "description": "An outbound bank-to-bank payout created via the Lean Payouts API.",
+  "type": "object",
+  "required": ["id", "status", "amount", "currency", "destination_id"],
+  "properties": {
+    "id": {"type": "string", "format": "uuid"},
+    "status": {
+      "type": "string",
+      "enum": ["PENDING", "SUBMITTED", "COMPLETED", "FAILED", "REJECTED"]
+    },
+    "amount": {"type": "number"},
+    "currency": {"type": "string", "pattern": "^[A-Z]{3}$"},
+    "destination_id": {"type": "string", "format": "uuid"},
+    "reference": {"type": "string"},
+    "description": {"type": "string"},
+    "idempotency_key": {"type": "string"},
+    "created_at": {"type": "string", "format": "date-time"}
+  }
+}

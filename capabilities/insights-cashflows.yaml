@@ -1,0 +1,66 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Lean Insights API — Cashflows
+  description: 'Lean Insights — cashflow analytics derived from transaction history.'
+  tags:
+  - Lean
+  - Insights
+  - Cashflows
+  created: '2026-05-25'
+  modified: '2026-05-25'
+binds:
+- namespace: env
+  keys:
+    LEAN_API_TOKEN: LEAN_API_TOKEN
+capability:
+  consumes:
+  - type: http
+    namespace: insights-cashflows
+    baseUri: https://api2.leantech.me
+    description: Lean Insights API — Cashflows business capability backed by Lean Technologies APIs.
+    resources:
+    - name: cashflows
+      path: /insights/v2/assets/cashflows
+      operations:
+      - name: getCashflows
+        method: GET
+        description: Lean Get Cashflows
+        outputRawFormat: json
+        inputParameters: []
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    authentication:
+      type: apikey
+      key: Authorization
+      value: 'Bearer {{env.LEAN_API_TOKEN}}'
+      placement: header
+  exposes:
+  - type: rest
+    namespace: insights-cashflows-rest
+    port: 8080
+    description: REST adapter for Lean Insights API — Cashflows.
+    resources:
+    - path: /v1/insights/v2/assets/cashflows
+      name: cashflows
+      operations:
+      - method: GET
+        name: getCashflows
+        description: Lean Get Cashflows
+        call: insights-cashflows.getCashflows
+        with: {}
+  - type: mcp
+    namespace: insights-cashflows-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Lean Insights API — Cashflows.
+    tools:
+    - name: lean-getcashflows
+      description: Lean Get Cashflows
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: insights-cashflows.getCashflows
+      with: {}

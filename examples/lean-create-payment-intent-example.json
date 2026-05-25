@@ -1,0 +1,36 @@
+{
+  "request": {
+    "method": "POST",
+    "url": "https://api2.leantech.me/payments/v1/intents",
+    "headers": {
+      "Authorization": "Bearer eyJhbGciOiJSUzI1NiIs...",
+      "Content-Type": "application/json",
+      "Idempotency-Key": "intent-2026-05-25-001"
+    },
+    "body": {
+      "amount": 250.00,
+      "currency": "AED",
+      "description": "Order #54321",
+      "reference": "ORDER-54321",
+      "customer_id": "a1b2c3d4-e5f6-7890-abcd-ef0123456789",
+      "beneficiary": {
+        "name": "Acme Trading LLC",
+        "iban": "AE070331234567890123456"
+      }
+    }
+  },
+  "response": {
+    "status": 201,
+    "body": {
+      "intent_id": "9f8e7d6c-5b4a-3210-fedc-ba9876543210",
+      "status": "AWAITING_AUTHORIZATION",
+      "amount": 250.00,
+      "currency": "AED",
+      "description": "Order #54321",
+      "reference": "ORDER-54321",
+      "customer_id": "a1b2c3d4-e5f6-7890-abcd-ef0123456789",
+      "link_url": "https://link.leantech.me/pay/9f8e7d6c-5b4a-3210-fedc-ba9876543210",
+      "created_at": "2026-05-25T08:42:11Z"
+    }
+  }
+}

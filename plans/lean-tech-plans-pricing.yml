@@ -1,0 +1,134 @@
+specification: API Commons Plans
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/Plans
+provider: Lean Technologies
+providerId: lean-tech
+created: '2026-05-25'
+modified: '2026-05-25'
+reconciled: false
+tags:
+  - Open Banking
+  - Open Finance
+  - MENA
+  - Pay by Bank
+  - Payouts
+description: >
+  Reconciled commercial plans and per-API pricing for Lean Technologies. Lean publishes per-product pricing
+  by sales contact rather than a public price list. The model below captures the documented product surface
+  and unit-economic dimensions; concrete unit prices require a signed agreement and are intentionally left
+  as "Contact Sales" placeholders.
+sources:
+  - https://www.leantech.me
+  - https://docs.leantech.me
+  - https://help.leantech.me
+plans:
+  - id: lean-developer-sandbox
+    name: Developer Sandbox
+    type: free
+    description: >
+      Free sandbox environment with mock banks for UAE and KSA. Includes the LinkSDK, full API surface
+      (Data, Insights, Verifications, Payments, Payouts, Refunds), and a Postman collection. No production
+      transactions; rate-limited.
+    entries:
+      - label: Sandbox usage
+        name: sandbox
+        type: free
+        metric: request
+        limit: -1
+        timeFrame: monthly
+        geo: global
+        unit: 1
+        price: '0.00'
+        userMultiplied: false
+  - id: lean-data-production
+    name: Data — Production
+    type: usage-based
+    description: >
+      Per-customer-per-month and/or per-call pricing for the Data API (accounts, balances, transactions,
+      beneficiaries, identity, direct debits, scheduled payments, standing orders) and Insights (income,
+      expenses, cashflows). Sold under a master services agreement.
+    entries:
+      - label: Per linked customer per month
+        name: data_mau
+        type: metered
+        metric: linked_customer_month
+        limit: -1
+        timeFrame: monthly
+        geo: MENA
+        unit: 1
+        price: Contact Sales
+        userMultiplied: true
+  - id: lean-payments-production
+    name: Payments — Production
+    type: usage-based
+    description: >
+      Per-transaction Pay by Bank and Account-on-File pricing. Configured by region (UAE / KSA), payment
+      rail (single instant payment vs AOF), and volume tier.
+    entries:
+      - label: Per successful Pay by Bank payment
+        name: payment_success
+        type: metered
+        metric: transaction
+        limit: -1
+        timeFrame: usage
+        geo: MENA
+        unit: 1
+        price: Contact Sales
+        userMultiplied: false
+      - label: Per AOF payment
+        name: aof_payment
+        type: metered
+        metric: transaction
+        limit: -1
+        timeFrame: usage
+        geo: MENA
+        unit: 1
+        price: Contact Sales
+        userMultiplied: false
+  - id: lean-payouts-production
+    name: Payouts — Production
+    type: usage-based
+    description: >
+      Per-payout fees plus optional fixed monthly platform fee. UAE and KSA outbound rails.
+    entries:
+      - label: Per successful payout
+        name: payout_success
+        type: metered
+        metric: transaction
+        limit: -1
+        timeFrame: usage
+        geo: MENA
+        unit: 1
+        price: Contact Sales
+        userMultiplied: false
+  - id: lean-verifications-production
+    name: Verifications — Production
+    type: usage-based
+    description: >
+      Per-verification pricing for Account Verification (27+ countries) and Name Verification.
+    entries:
+      - label: Per account verification
+        name: account_verification
+        type: metered
+        metric: verification
+        limit: -1
+        timeFrame: usage
+        geo: global
+        unit: 1
+        price: Contact Sales
+        userMultiplied: false
+      - label: Per name verification
+        name: name_verification
+        type: metered
+        metric: verification
+        limit: -1
+        timeFrame: usage
+        geo: global
+        unit: 1
+        price: Contact Sales
+        userMultiplied: false
+notes:
+  - Lean's published collateral does not include a public per-unit price list; sales contracts set unit
+    prices, ramp commitments, and tier discounts.
+  - All production usage requires a signed commercial agreement and completion of Lean's onboarding
+    checks. Regulated entities receive additional contractual coverage per CBUAE / SAMA frameworks.

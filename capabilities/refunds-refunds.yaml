@@ -1,0 +1,144 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Lean Refunds API — Refunds
+  description: 'Lean Refunds — issue, list, and process refunds against prior Pay by Bank payments and look up canonical refund reasons.'
+  tags:
+  - Lean
+  - Refunds
+  - Payouts
+  created: '2026-05-25'
+  modified: '2026-05-25'
+binds:
+- namespace: env
+  keys:
+    LEAN_API_TOKEN: LEAN_API_TOKEN
+capability:
+  consumes:
+  - type: http
+    namespace: refunds-refunds
+    baseUri: https://api2.leantech.me
+    description: Lean Refunds API — Refunds business capability backed by Lean Technologies APIs.
+    resources:
+    - name: refunds
+      path: /payouts/refunds
+      operations:
+      - name: listRefunds
+        method: GET
+        description: Lean List Refunds
+        outputRawFormat: json
+        inputParameters: []
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: createRefund
+        method: POST
+        description: Lean Create Refund
+        outputRawFormat: json
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          required: true
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: processRefunds
+        method: PUT
+        description: Lean Process Refunds
+        outputRawFormat: json
+        inputParameters: []
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: refund-reasons
+      path: /payouts/refunds/reasons
+      operations:
+      - name: getRefundReasons
+        method: GET
+        description: Lean Get Refund Reasons
+        outputRawFormat: json
+        inputParameters: []
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    authentication:
+      type: apikey
+      key: Authorization
+      value: 'Bearer {{env.LEAN_API_TOKEN}}'
+      placement: header
+  exposes:
+  - type: rest
+    namespace: refunds-refunds-rest
+    port: 8080
+    description: REST adapter for Lean Refunds API — Refunds.
+    resources:
+    - path: /v1/payouts/refunds
+      name: refunds
+      operations:
+      - method: GET
+        name: listRefunds
+        description: Lean List Refunds
+        call: refunds-refunds.listRefunds
+        with: {}
+      - method: POST
+        name: createRefund
+        description: Lean Create Refund
+        call: refunds-refunds.createRefund
+        with:
+          body: rest.body
+      - method: PUT
+        name: processRefunds
+        description: Lean Process Refunds
+        call: refunds-refunds.processRefunds
+        with: {}
+    - path: /v1/payouts/refunds/reasons
+      name: refund-reasons
+      operations:
+      - method: GET
+        name: getRefundReasons
+        description: Lean Get Refund Reasons
+        call: refunds-refunds.getRefundReasons
+        with: {}
+  - type: mcp
+    namespace: refunds-refunds-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Lean Refunds API — Refunds.
+    tools:
+    - name: lean-listrefunds
+      description: Lean List Refunds
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: refunds-refunds.listRefunds
+      with: {}
+    - name: lean-createrefund
+      description: Lean Create Refund
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: refunds-refunds.createRefund
+      with:
+        body: tools.body
+    - name: lean-processrefunds
+      description: Lean Process Refunds
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: refunds-refunds.processRefunds
+      with: {}
+    - name: lean-getrefundreasons
+      description: Lean Get Refund Reasons
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: refunds-refunds.getRefundReasons
+      with: {}

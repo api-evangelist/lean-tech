@@ -1,0 +1,105 @@
+specification: FinOps Framework
+specificationVersion: '1.0'
+schema: https://www.finops.org/framework/
+provider: Lean Technologies
+providerId: lean-tech
+created: '2026-05-25'
+modified: '2026-05-25'
+reconciled: false
+tags:
+  - FinOps
+  - FOCUS
+  - Open Banking
+  - Payments
+description: >
+  FOCUS-aligned FinOps definition for Lean Technologies. Lean's commercial model mixes per-linked-customer
+  subscription metering for Data/Insights with per-transaction metering for Payments, Payouts, Refunds,
+  and Verifications. Bank-side cost pass-through is the most material variable cost on the Payments and
+  Payouts surface.
+sources:
+  - https://www.leantech.me
+  - https://docs.leantech.me
+alignedWith:
+  framework: FinOps Foundation Framework
+  frameworkUrl: https://www.finops.org/framework/
+  dataSpec: FOCUS
+  dataSpecVersion: '1.3'
+  dataSpecUrl: https://focus.finops.org/focus-specification/v1-3/
+publisherName: Lean Technologies
+serviceCategory: Financial Services
+billingModel:
+  pricingCategory: Usage-Based
+  billingFrequency: Monthly
+  billingCurrency: USD
+  altBillingCurrencies: [AED, SAR]
+  chargeCategories:
+    - Usage
+    - Purchase
+    - Tax
+    - Credit
+    - Adjustment
+  primaryUnit: transaction
+  secondaryUnits:
+    - linked_customer_month
+    - verification
+    - api_call
+focusColumns:
+  ServiceName: Lean Open Finance Platform
+  ServiceCategory: Financial Services
+  ProviderName: Lean Technologies
+  PublisherName: Lean Technologies
+  InvoiceIssuerName: Lean UAE LLC
+  PricingCategory: Usage-Based
+  PricingUnit: transaction
+  BillingCurrency: USD
+meters:
+  - name: linked_customer_month
+    unit: linked_customer_month
+    aggregation: max_in_period
+    dimensions: [region, app_id, plan]
+    notes: One unit per unique customer linked through the LinkSDK in a billing period.
+  - name: payment_transaction
+    unit: transaction
+    aggregation: count
+    dimensions: [region, rail, status, currency, bank_identifier]
+    notes: Counted on successful settlement of Pay by Bank or AOF payments.
+  - name: payout_transaction
+    unit: transaction
+    aggregation: count
+    dimensions: [region, status, currency, destination_bank]
+  - name: refund_transaction
+    unit: transaction
+    aggregation: count
+    dimensions: [region, reason_code, status]
+  - name: account_verification
+    unit: verification
+    aggregation: count
+    dimensions: [country, match_strength]
+  - name: name_verification
+    unit: verification
+    aggregation: count
+    dimensions: [country, match_strength]
+  - name: data_api_call
+    unit: api_call
+    aggregation: count
+    dimensions: [resource, account_type, bank_identifier]
+    notes: Used for fair-use enforcement rather than direct billing on most plans.
+costDimensions:
+  - Region
+  - Application
+  - Plan
+  - Bank
+  - Rail
+  - Status
+  - Currency
+  - ReasonCode
+discountLanes:
+  - name: Volume Tier
+    description: Negotiated per-transaction discounts at volume tiers; commercial.
+  - name: Multi-product Bundle
+    description: Bundled pricing across Data + Payments + Payouts.
+notes:
+  - Bank interchange and scheme fees are pass-through on payments and payouts in some commercial
+    structures; capture as a separate cost-of-goods meter when applicable.
+  - Currency conversion to USD for FOCUS reporting follows the invoice-issuer's published rates at
+    billing close.

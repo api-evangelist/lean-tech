@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/lean-tech/main/json-schema/lean-transaction-schema.json",
+  "title": "Lean Transaction",
+  "description": "A normalized bank transaction returned by the Lean Data API.",
+  "type": "object",
+  "required": ["id", "amount", "timestamp"],
+  "properties": {
+    "id": {"type": "string"},
+    "account_id": {"type": "string"},
+    "amount": {
+      "type": "object",
+      "required": ["amount", "currency"],
+      "properties": {
+        "amount": {"type": "number"},
+        "currency": {"type": "string", "pattern": "^[A-Z]{3}$"}
+      }
+    },
+    "timestamp": {"type": "string", "format": "date-time"},
+    "description": {"type": "string"},
+    "credit_debit_indicator": {"type": "string", "enum": ["CREDIT", "DEBIT"]},
+    "booking_status": {"type": "string", "enum": ["BOOKED", "PENDING"]},
+    "balance_after": {"type": "number"},
+    "category": {"type": "string"},
+    "merchant": {
+      "type": "object",
+      "properties": {
+        "name": {"type": "string"},
+        "category": {"type": "string"}
+      }
+    }
+  }
+}

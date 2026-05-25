@@ -1,0 +1,202 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Lean Payouts API — Payouts
+  description: 'Lean Payouts — create outbound payouts, list payouts, retrieve payouts and intents, and review per-payment history.'
+  tags:
+  - Lean
+  - Payouts
+  - Disbursements
+  created: '2026-05-25'
+  modified: '2026-05-25'
+binds:
+- namespace: env
+  keys:
+    LEAN_API_TOKEN: LEAN_API_TOKEN
+capability:
+  consumes:
+  - type: http
+    namespace: payouts-payments
+    baseUri: https://api2.leantech.me
+    description: Lean Payouts API — Payouts business capability backed by Lean Technologies APIs.
+    resources:
+    - name: payout-payment
+      path: /payouts/v1/payment
+      operations:
+      - name: createPayoutPayment
+        method: POST
+        description: Lean Create Payout Payment
+        outputRawFormat: json
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          required: true
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: payout-payments
+      path: /payouts/v1/payments
+      operations:
+      - name: listPayouts
+        method: GET
+        description: Lean List Payouts
+        outputRawFormat: json
+        inputParameters: []
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: payout-history
+      path: /payouts/v1/payments/{payment_id}/history
+      operations:
+      - name: getPayoutPaymentHistory
+        method: GET
+        description: Lean Get Payout Payment History
+        outputRawFormat: json
+        inputParameters:
+        - name: payment_id
+          in: path
+          type: string
+          required: true
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: payout
+      path: /payouts/v1/{payment_id}
+      operations:
+      - name: getPayout
+        method: GET
+        description: Lean Get Payout
+        outputRawFormat: json
+        inputParameters:
+        - name: payment_id
+          in: path
+          type: string
+          required: true
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: payout-intent
+      path: /payouts/v1/intents/{payment_intent_id}
+      operations:
+      - name: getPayoutIntent
+        method: GET
+        description: Lean Get Payout Intent
+        outputRawFormat: json
+        inputParameters:
+        - name: payment_intent_id
+          in: path
+          type: string
+          required: true
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    authentication:
+      type: apikey
+      key: Authorization
+      value: 'Bearer {{env.LEAN_API_TOKEN}}'
+      placement: header
+  exposes:
+  - type: rest
+    namespace: payouts-payments-rest
+    port: 8080
+    description: REST adapter for Lean Payouts API — Payouts.
+    resources:
+    - path: /v1/payouts/v1/payment
+      name: payout-payment
+      operations:
+      - method: POST
+        name: createPayoutPayment
+        description: Lean Create Payout Payment
+        call: payouts-payments.createPayoutPayment
+        with:
+          body: rest.body
+    - path: /v1/payouts/v1/payments
+      name: payout-payments
+      operations:
+      - method: GET
+        name: listPayouts
+        description: Lean List Payouts
+        call: payouts-payments.listPayouts
+        with: {}
+    - path: /v1/payouts/v1/payments/{payment_id}/history
+      name: payout-history
+      operations:
+      - method: GET
+        name: getPayoutPaymentHistory
+        description: Lean Get Payout Payment History
+        call: payouts-payments.getPayoutPaymentHistory
+        with:
+          payment_id: rest.path.payment_id
+    - path: /v1/payouts/v1/{payment_id}
+      name: payout
+      operations:
+      - method: GET
+        name: getPayout
+        description: Lean Get Payout
+        call: payouts-payments.getPayout
+        with:
+          payment_id: rest.path.payment_id
+    - path: /v1/payouts/v1/intents/{payment_intent_id}
+      name: payout-intent
+      operations:
+      - method: GET
+        name: getPayoutIntent
+        description: Lean Get Payout Intent
+        call: payouts-payments.getPayoutIntent
+        with:
+          payment_intent_id: rest.path.payment_intent_id
+  - type: mcp
+    namespace: payouts-payments-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Lean Payouts API — Payouts.
+    tools:
+    - name: lean-createpayoutpayment
+      description: Lean Create Payout Payment
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: payouts-payments.createPayoutPayment
+      with:
+        body: tools.body
+    - name: lean-listpayouts
+      description: Lean List Payouts
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: payouts-payments.listPayouts
+      with: {}
+    - name: lean-getpayoutpaymenthistory
+      description: Lean Get Payout Payment History
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: payouts-payments.getPayoutPaymentHistory
+      with:
+        payment_id: tools.payment_id
+    - name: lean-getpayout
+      description: Lean Get Payout
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: payouts-payments.getPayout
+      with:
+        payment_id: tools.payment_id
+    - name: lean-getpayoutintent
+      description: Lean Get Payout Intent
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: payouts-payments.getPayoutIntent
+      with:
+        payment_intent_id: tools.payment_intent_id

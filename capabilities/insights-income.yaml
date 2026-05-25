@@ -1,0 +1,72 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Lean Insights API — Income
+  description: 'Lean Insights — compute detected income streams over an entitys transaction history.'
+  tags:
+  - Lean
+  - Insights
+  - Income
+  created: '2026-05-25'
+  modified: '2026-05-25'
+binds:
+- namespace: env
+  keys:
+    LEAN_API_TOKEN: LEAN_API_TOKEN
+capability:
+  consumes:
+  - type: http
+    namespace: insights-income
+    baseUri: https://api2.leantech.me
+    description: Lean Insights API — Income business capability backed by Lean Technologies APIs.
+    resources:
+    - name: income
+      path: /insights/v2/income
+      operations:
+      - name: computeIncome
+        method: POST
+        description: Lean Compute Income
+        outputRawFormat: json
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          required: true
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    authentication:
+      type: apikey
+      key: Authorization
+      value: 'Bearer {{env.LEAN_API_TOKEN}}'
+      placement: header
+  exposes:
+  - type: rest
+    namespace: insights-income-rest
+    port: 8080
+    description: REST adapter for Lean Insights API — Income.
+    resources:
+    - path: /v1/insights/v2/income
+      name: income
+      operations:
+      - method: POST
+        name: computeIncome
+        description: Lean Compute Income
+        call: insights-income.computeIncome
+        with:
+          body: rest.body
+  - type: mcp
+    namespace: insights-income-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Lean Insights API — Income.
+    tools:
+    - name: lean-computeincome
+      description: Lean Compute Income
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: insights-income.computeIncome
+      with:
+        body: tools.body

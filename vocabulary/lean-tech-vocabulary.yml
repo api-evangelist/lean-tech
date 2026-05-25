@@ -1,0 +1,106 @@
+vocabulary: API Evangelist Vocabulary
+version: '0.1'
+provider: Lean Technologies
+providerId: lean-tech
+created: '2026-05-25'
+modified: '2026-05-25'
+description: Domain vocabulary and taxonomy for Lean Technologies — Middle East Open Banking and Open Finance.
+
+dimensions:
+  industry:
+    - Financial Services
+    - Open Banking
+    - Open Finance
+    - Payments
+    - Fintech
+  region:
+    - MENA
+    - UAE
+    - Saudi Arabia
+    - ADGM
+  regulator:
+    - Central Bank of UAE (CBUAE)
+    - Saudi Central Bank (SAMA)
+    - Abu Dhabi Global Market FSRA
+  certification:
+    - SOC 2 Type II
+    - ISO 27001:2022
+  capability:
+    - Account Information (AIS)
+    - Payment Initiation (PIS)
+    - Payouts
+    - Refunds
+    - Account Verification
+    - Name Verification (Confirmation of Payee)
+    - Insights — Income
+    - Insights — Expenses
+    - Insights — Cashflows
+    - Account on File (AOF)
+
+resources:
+  - id: Customer
+    label: Customer
+    definition: An end-user in the developer's application that Lean uses to anchor data and payment consents.
+  - id: Entity
+    label: Entity
+    definition: A customer's authenticated connection to a single bank, scoped by granted permissions.
+  - id: Account
+    label: Account
+    definition: A bank account exposed through an entity following an AIS consent.
+  - id: Transaction
+    label: Transaction
+    definition: A booked or pending money movement on an account.
+  - id: Identity
+    label: Identity
+    definition: The account-holder's identifying information (name, address, contact) as known to the bank.
+  - id: Consent
+    label: Consent
+    definition: A regulated authorisation from an end-user to access data or initiate payments on their bank account.
+  - id: PaymentIntent
+    label: Payment Intent
+    definition: A single-instant Pay by Bank payment ready for end-user authorisation.
+  - id: AofConsent
+    label: AOF Consent
+    definition: A long-lived consent allowing recurring or repeat payment initiation against a customer's bank account.
+  - id: PaymentSource
+    label: Payment Source
+    definition: A tokenized funding bank account derived from an AOF consent.
+  - id: Payout
+    label: Payout
+    definition: An outbound bank-to-bank transfer from a corporate funding account to a beneficiary.
+  - id: PayoutDestination
+    label: Payout Destination
+    definition: A beneficiary record (IBAN / account / bank metadata) used as a payout target.
+  - id: Refund
+    label: Refund
+    definition: A full or partial return of funds against a prior Pay by Bank payment.
+  - id: Verification
+    label: Verification
+    definition: A real-time confirmation of bank account ownership or payee name.
+
+actions:
+  - createCustomer
+  - linkBank
+  - retrieveAccounts
+  - retrieveTransactions
+  - triggerDataRefresh
+  - computeIncome
+  - verifyAccount
+  - verifyName
+  - createPaymentIntent
+  - initiateAofPayment
+  - createConsent
+  - createPayout
+  - createRefund
+
+related:
+  standards:
+    - UK Open Banking
+    - Berlin Group NextGenPSD2
+    - FAPI 2.0
+    - SAMA Open Banking Framework
+    - CBUAE Open Finance Framework
+  fibo:
+    - FinancialAccount
+    - FinancialTransaction
+    - PaymentTransaction

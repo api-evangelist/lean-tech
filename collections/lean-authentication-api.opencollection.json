@@ -1,0 +1,33 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Lean Authentication API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Authentication",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Lean Generate Access Token",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://auth.leantech.me/oauth2/token",
+            "body": {
+              "type": "form-urlencoded",
+              "data": []
+            }
+          },
+          "docs": "Exchange client_id and client_secret for a JWT access token. Use scope=api for backend API calls or scope=customer.<customer_id> for the LinkSDK.\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

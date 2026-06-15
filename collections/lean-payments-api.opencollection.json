@@ -1,0 +1,204 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Lean Payments API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Payment Intents",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Lean List Payment Intents",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api2.leantech.me/payments/v1/intents"
+          },
+          "docs": "Lean List Payment Intents"
+        },
+        {
+          "info": {
+            "name": "Lean Create Payment Intent",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api2.leantech.me/payments/v1/intents",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Lean Create Payment Intent"
+        },
+        {
+          "info": {
+            "name": "Lean Get Payment By Intent Id",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api2.leantech.me/payments/v1/intents/:intent_id",
+            "params": [
+              {
+                "name": "intent_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Lean Get Payment By Intent Id"
+        },
+        {
+          "info": {
+            "name": "Lean Get Payment By Payment Id",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api2.leantech.me/payments/v1/:payment_id",
+            "params": [
+              {
+                "name": "payment_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Lean Get Payment By Payment Id"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Account on File",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Lean Initiate Aof Payment",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api2.leantech.me/payments/account-on-file",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Lean Initiate Aof Payment"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Consents",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Lean Create Aof Consent",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api2.leantech.me/consents/account-on-file",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Lean Create Aof Consent"
+        },
+        {
+          "info": {
+            "name": "Lean List Customer Consents",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api2.leantech.me/consents/v1",
+            "params": [
+              {
+                "name": "customer_id",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Lean List Customer Consents"
+        },
+        {
+          "info": {
+            "name": "Lean Get Consent Details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api2.leantech.me/consents/:consent_id",
+            "params": [
+              {
+                "name": "consent_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Lean Get Consent Details"
+        },
+        {
+          "info": {
+            "name": "Lean Fetch Consent Balance",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api2.leantech.me/consents/:consent_id/balance",
+            "params": [
+              {
+                "name": "consent_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Lean Fetch Consent Balance"
+        },
+        {
+          "info": {
+            "name": "Lean Get Consent History",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api2.leantech.me/consents/:consent_id/history",
+            "params": [
+              {
+                "name": "consent_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Lean Get Consent History"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

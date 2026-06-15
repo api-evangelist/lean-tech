@@ -1,0 +1,47 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Lean Banks API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Banks",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Lean List Banks",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api2.leantech.me/banks/v1/",
+            "params": [
+              {
+                "name": "country",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "capability",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Lean List Banks"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

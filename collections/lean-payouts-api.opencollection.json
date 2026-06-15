@@ -1,0 +1,156 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Lean Payouts API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Payouts",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Lean Create Payout Payment",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api2.leantech.me/payouts/v1/payment",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Lean Create Payout Payment"
+        },
+        {
+          "info": {
+            "name": "Lean List Payouts",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api2.leantech.me/payouts/v1/payments"
+          },
+          "docs": "Lean List Payouts"
+        },
+        {
+          "info": {
+            "name": "Lean Get Payout Payment History",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api2.leantech.me/payouts/v1/payments/:payment_id/history",
+            "params": [
+              {
+                "name": "payment_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Lean Get Payout Payment History"
+        },
+        {
+          "info": {
+            "name": "Lean Get Payout",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api2.leantech.me/payouts/v1/:payment_id",
+            "params": [
+              {
+                "name": "payment_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Lean Get Payout"
+        },
+        {
+          "info": {
+            "name": "Lean Get Payout Intent",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api2.leantech.me/payouts/v1/intents/:payment_intent_id",
+            "params": [
+              {
+                "name": "payment_intent_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Lean Get Payout Intent"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Payout Destinations",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Lean List Payout Destinations",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api2.leantech.me/payouts/v1/payment/destinations"
+          },
+          "docs": "Lean List Payout Destinations"
+        },
+        {
+          "info": {
+            "name": "Lean Create Payout Destination",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api2.leantech.me/payouts/v1/payment/destinations",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Lean Create Payout Destination"
+        },
+        {
+          "info": {
+            "name": "Lean Get Payout Destination",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api2.leantech.me/payouts/v1/payment/destinations/:destination_id",
+            "params": [
+              {
+                "name": "destination_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Lean Get Payout Destination"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

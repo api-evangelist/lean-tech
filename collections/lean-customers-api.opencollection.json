@@ -1,0 +1,86 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Lean Customers API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Customers",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Lean List Customers",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api2.leantech.me/customers/v1"
+          },
+          "docs": "Lean List Customers"
+        },
+        {
+          "info": {
+            "name": "Lean Create Customer",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api2.leantech.me/customers/v1",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Lean Create Customer"
+        },
+        {
+          "info": {
+            "name": "Lean Get Customer By Id",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api2.leantech.me/customers/v1/:customer_id",
+            "params": [
+              {
+                "name": "customer_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Lean Get Customer By Id"
+        },
+        {
+          "info": {
+            "name": "Lean Get Customer By App User Id",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api2.leantech.me/customers/v1/app-user-id/:app_user_id",
+            "params": [
+              {
+                "name": "app_user_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Lean Get Customer By App User Id"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,408 @@
+{
+  "item": [
+    {
+      "id": "22ea6da2-8921-4685-9606-d2ea34d7176d",
+      "name": "Customers",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "940ffdb8-9b5a-438b-ae17-d6149784c43e",
+          "name": "Lean Create Customer",
+          "request": {
+            "name": "Lean Create Customer",
+            "description": {},
+            "url": {
+              "path": [
+                "customers",
+                "v1"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"app_user_id\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "5bd0d0d8-edec-4b95-8c38-911dc1e6bea6",
+              "name": "Customer created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    "v1"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"app_user_id\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"customer_id\": \"b9c58d74-ec02-cecd-e659-21791756d85f\",\n  \"app_user_id\": \"string\",\n  \"app_id\": \"string\",\n  \"created_at\": \"2004-04-28T00:54:43.759Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "45fe27a3-3591-4ad3-8561-443e0cc0e3a1",
+          "name": "Lean List Customers",
+          "request": {
+            "name": "Lean List Customers",
+            "description": {},
+            "url": {
+              "path": [
+                "customers",
+                "v1"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f560f9a0-914a-4e34-9442-488bf09444e8",
+              "name": "List of customers",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    "v1"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"customer_id\": \"a166db5a-26fc-6d69-53f8-6e6375e10201\",\n    \"app_user_id\": \"string\",\n    \"app_id\": \"string\",\n    \"created_at\": \"2017-04-05T19:39:32.408Z\"\n  },\n  {\n    \"customer_id\": \"d57c52a5-ecf6-a653-69a2-44b633a770b5\",\n    \"app_user_id\": \"string\",\n    \"app_id\": \"string\",\n    \"created_at\": \"2004-12-27T00:31:04.337Z\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "71ba69a8-5585-4b50-8697-889401f6967b",
+          "name": "Lean Get Customer By Id",
+          "request": {
+            "name": "Lean Get Customer By Id",
+            "description": {},
+            "url": {
+              "path": [
+                "customers",
+                "v1",
+                ":customer_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "customer_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "8beeb7c9-6488-4e98-a0eb-a2af7216d21c",
+              "name": "Customer",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    "v1",
+                    ":customer_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "customer_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"customer_id\": \"b9c58d74-ec02-cecd-e659-21791756d85f\",\n  \"app_user_id\": \"string\",\n  \"app_id\": \"string\",\n  \"created_at\": \"2004-04-28T00:54:43.759Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "33437900-91d7-497e-8cd1-9c618ae35717",
+          "name": "Lean Get Customer By App User Id",
+          "request": {
+            "name": "Lean Get Customer By App User Id",
+            "description": {},
+            "url": {
+              "path": [
+                "customers",
+                "v1",
+                "app-user-id",
+                ":app_user_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "app_user_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "7467e10a-8363-4a4c-9263-b4f56c6b3bc4",
+              "name": "Customer",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    "v1",
+                    "app-user-id",
+                    ":app_user_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "app_user_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"customer_id\": \"b9c58d74-ec02-cecd-e659-21791756d85f\",\n  \"app_user_id\": \"string\",\n  \"app_id\": \"string\",\n  \"created_at\": \"2004-04-28T00:54:43.759Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api2.leantech.me",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "d5274b02-5bfa-4dbc-b679-20a0a3ac69d4",
+    "name": "Lean Customers API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Manage end-user customer records that Lean uses to anchor data and payment consents. A customer is created with an app_user_id that maps Lean's customer identifier to the developer's own user identifier.\n\n\nContact Support:\n Name: Lean Support",
+      "type": "text/plain"
+    }
+  }
+}

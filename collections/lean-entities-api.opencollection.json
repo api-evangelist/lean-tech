@@ -1,0 +1,88 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Lean Entities API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Entities",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Lean Get Entities For Customer",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api2.leantech.me/customers/v1/:customer_id/entities",
+            "params": [
+              {
+                "name": "customer_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Lean Get Entities For Customer"
+        },
+        {
+          "info": {
+            "name": "Lean Get Entity By Id",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api2.leantech.me/customers/v1/:customer_id/entities/:entity_id",
+            "params": [
+              {
+                "name": "customer_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "entity_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Lean Get Entity By Id"
+        },
+        {
+          "info": {
+            "name": "Lean Retrieve All Entities For Date Range",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api2.leantech.me/customers/v1/entities",
+            "params": [
+              {
+                "name": "start_date",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "end_date",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Lean Retrieve All Entities For Date Range"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

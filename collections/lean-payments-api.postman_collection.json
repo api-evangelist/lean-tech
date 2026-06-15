@@ -1,0 +1,915 @@
+{
+  "item": [
+    {
+      "id": "318f2983-4595-471c-b268-5b37b5292cec",
+      "name": "Payment Intents",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "a2794e19-fc4d-485d-a6b9-15feab915d20",
+          "name": "Lean Create Payment Intent",
+          "request": {
+            "name": "Lean Create Payment Intent",
+            "description": {},
+            "url": {
+              "path": [
+                "payments",
+                "v1",
+                "intents"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"amount\": \"<number>\",\n  \"currency\": \"<string>\",\n  \"beneficiary\": {\n    \"name\": \"<string>\",\n    \"iban\": \"<string>\",\n    \"account_number\": \"<string>\"\n  },\n  \"description\": \"<string>\",\n  \"reference\": \"<string>\",\n  \"customer_id\": \"<uuid>\",\n  \"creditor_reference\": \"<string>\",\n  \"idempotency_key\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "108712ee-1959-43ba-9f3a-803d08ec7662",
+              "name": "Payment intent created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "payments",
+                    "v1",
+                    "intents"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"amount\": \"<number>\",\n  \"currency\": \"<string>\",\n  \"beneficiary\": {\n    \"name\": \"<string>\",\n    \"iban\": \"<string>\",\n    \"account_number\": \"<string>\"\n  },\n  \"description\": \"<string>\",\n  \"reference\": \"<string>\",\n  \"customer_id\": \"<uuid>\",\n  \"creditor_reference\": \"<string>\",\n  \"idempotency_key\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"intent_id\": \"454231b7-4f9d-0329-ea54-c3ae9c20a01d\",\n  \"status\": \"FAILED\",\n  \"amount\": 1240.0034279964334,\n  \"currency\": \"string\",\n  \"created_at\": \"1984-10-16T13:28:42.479Z\",\n  \"link_url\": \"http://OelhuBGaMjLHnnhPQogBHRnvh.iqvzfH+y9WSsqd9DNYLYjj1XJKxkrBYgtk\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "96a24363-9361-4057-8e17-b28687cf41fe",
+          "name": "Lean List Payment Intents",
+          "request": {
+            "name": "Lean List Payment Intents",
+            "description": {},
+            "url": {
+              "path": [
+                "payments",
+                "v1",
+                "intents"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "4475fb9e-8a54-44d0-bc42-6f1dcba850ad",
+              "name": "Payment intents",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "payments",
+                    "v1",
+                    "intents"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "cefb0c47-37f3-49b5-98bb-c4c928942a48",
+          "name": "Lean Get Payment By Intent Id",
+          "request": {
+            "name": "Lean Get Payment By Intent Id",
+            "description": {},
+            "url": {
+              "path": [
+                "payments",
+                "v1",
+                "intents",
+                ":intent_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "intent_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "9e7ef8c9-74f7-459a-ad84-11e190daabac",
+              "name": "Payment intent",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "payments",
+                    "v1",
+                    "intents",
+                    ":intent_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "intent_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "95383a5d-94ba-40ad-a3f9-bf9fbf731b2e",
+          "name": "Lean Get Payment By Payment Id",
+          "request": {
+            "name": "Lean Get Payment By Payment Id",
+            "description": {},
+            "url": {
+              "path": [
+                "payments",
+                "v1",
+                ":payment_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "payment_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "17d61983-4af1-4171-a70d-cca83ef5ff7e",
+              "name": "Payment",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "payments",
+                    "v1",
+                    ":payment_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "payment_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "43b6da95-c297-4451-a51a-0c433a39bfa9",
+      "name": "Account on File",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "870b2b3f-2cb7-4e5c-874f-ae32a1daa0d7",
+          "name": "Lean Initiate Aof Payment",
+          "request": {
+            "name": "Lean Initiate Aof Payment",
+            "description": {},
+            "url": {
+              "path": [
+                "payments",
+                "account-on-file"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"consent_id\": \"<uuid>\",\n  \"amount\": \"<number>\",\n  \"currency\": \"<string>\",\n  \"description\": \"<string>\",\n  \"reference\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "db07972a-b508-42aa-9e2a-79e62586c1c2",
+              "name": "AOF payment initiated",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "payments",
+                    "account-on-file"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"consent_id\": \"<uuid>\",\n  \"amount\": \"<number>\",\n  \"currency\": \"<string>\",\n  \"description\": \"<string>\",\n  \"reference\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "0f3b6d9b-c9d0-4875-bc3d-8e7cd432585b",
+      "name": "Consents",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "040f5b79-c528-4918-8a0d-ac05305cd75c",
+          "name": "Lean Create Aof Consent",
+          "request": {
+            "name": "Lean Create Aof Consent",
+            "description": {},
+            "url": {
+              "path": [
+                "consents",
+                "account-on-file"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"customer_id\": \"<uuid>\",\n  \"bank_identifier\": \"<string>\",\n  \"max_amount\": \"<number>\",\n  \"currency\": \"<string>\",\n  \"expires_at\": \"<dateTime>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "9f09df67-d686-4d78-b4fa-a939bfa8a7e6",
+              "name": "Consent created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "consents",
+                    "account-on-file"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"customer_id\": \"<uuid>\",\n  \"bank_identifier\": \"<string>\",\n  \"max_amount\": \"<number>\",\n  \"currency\": \"<string>\",\n  \"expires_at\": \"<dateTime>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b535f144-2bf6-4790-a8e2-0e4de26bf64d",
+          "name": "Lean List Customer Consents",
+          "request": {
+            "name": "Lean List Customer Consents",
+            "description": {},
+            "url": {
+              "path": [
+                "consents",
+                "v1"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "customer_id",
+                  "value": "<uuid>"
+                }
+              ],
+              "variable": []
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "8c3df24d-dfae-4ef6-9466-f23b35e4c9d0",
+              "name": "Consents",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "consents",
+                    "v1"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "customer_id",
+                      "value": "<uuid>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1e30afdb-d41d-4111-9b02-ac651019c042",
+          "name": "Lean Get Consent Details",
+          "request": {
+            "name": "Lean Get Consent Details",
+            "description": {},
+            "url": {
+              "path": [
+                "consents",
+                ":consent_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "consent_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ecbbddf1-3e26-4819-9073-08a0013aaccf",
+              "name": "Consent",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "consents",
+                    ":consent_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "consent_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d34bc9f5-0b83-4834-b8c7-b5a1a9d7811b",
+          "name": "Lean Fetch Consent Balance",
+          "request": {
+            "name": "Lean Fetch Consent Balance",
+            "description": {},
+            "url": {
+              "path": [
+                "consents",
+                ":consent_id",
+                "balance"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "consent_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c3f47303-dd83-4dbb-9ca3-53ae9216893f",
+              "name": "Consent balance",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "consents",
+                    ":consent_id",
+                    "balance"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "consent_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9700ec0a-da82-4c6e-9589-491666043d86",
+          "name": "Lean Get Consent History",
+          "request": {
+            "name": "Lean Get Consent History",
+            "description": {},
+            "url": {
+              "path": [
+                "consents",
+                ":consent_id",
+                "history"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "consent_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "33834480-5904-4a8b-a8e8-4006997ac27a",
+              "name": "Consent history",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "consents",
+                    ":consent_id",
+                    "history"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "consent_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api2.leantech.me",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "01e6cbfb-eeda-4ce7-83b9-14a641969868",
+    "name": "Lean Payments API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Pay by Bank single instant payment initiation, Account-on-File (AOF) payment initiation, and consent management. Supports creating payment intents, retrieving payments by intent or payment id, listing intents, and managing long-lived AOF consents with balance and history endpoints.\n\n\nContact Support:\n Name: Lean Support",
+      "type": "text/plain"
+    }
+  }
+}

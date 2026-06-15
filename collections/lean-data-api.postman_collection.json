@@ -1,0 +1,1275 @@
+{
+  "item": [
+    {
+      "id": "e8e7e23b-1a98-4bbd-a278-f357540f11c2",
+      "name": "Accounts",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "332f39c3-f7c3-4f60-8d77-5204fa6862b2",
+          "name": "Lean Get Accounts",
+          "request": {
+            "name": "Lean Get Accounts",
+            "description": {},
+            "url": {
+              "path": [
+                "data",
+                "v2",
+                "accounts"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) Lean entity identifier returned after a successful LinkSDK consent.",
+                "key": "entity_id",
+                "value": "<uuid>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e32f4cd8-1bdf-4ab0-ac9e-e87da14ea34f",
+              "name": "Accounts list",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "data",
+                    "v2",
+                    "accounts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Lean entity identifier returned after a successful LinkSDK consent.",
+                    "key": "entity_id",
+                    "value": "<uuid>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"account_id\": \"string\",\n    \"name\": \"string\",\n    \"type\": \"SAVINGS\",\n    \"currency\": \"string\",\n    \"iban\": \"string\",\n    \"account_number\": \"string\",\n    \"bic\": \"string\"\n  },\n  {\n    \"account_id\": \"string\",\n    \"name\": \"string\",\n    \"type\": \"CREDIT_CARD\",\n    \"currency\": \"string\",\n    \"iban\": \"string\",\n    \"account_number\": \"string\",\n    \"bic\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1bce7862-6348-42ba-828f-0d85b2a45e05",
+          "name": "Lean Get Beneficiaries",
+          "request": {
+            "name": "Lean Get Beneficiaries",
+            "description": {},
+            "url": {
+              "path": [
+                "data",
+                "v2",
+                "accounts",
+                ":account_id",
+                "beneficiaries"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "account_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) Lean entity identifier returned after a successful LinkSDK consent.",
+                "key": "entity_id",
+                "value": "<uuid>"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "76d43800-6ce3-4d2b-b096-90ebc4742d38",
+              "name": "Beneficiaries",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "data",
+                    "v2",
+                    "accounts",
+                    ":account_id",
+                    "beneficiaries"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "account_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Lean entity identifier returned after a successful LinkSDK consent.",
+                    "key": "entity_id",
+                    "value": "<uuid>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9a4176cb-089a-4f57-8c3c-4fd4e32e7417",
+          "name": "Lean Get Direct Debits",
+          "request": {
+            "name": "Lean Get Direct Debits",
+            "description": {},
+            "url": {
+              "path": [
+                "data",
+                "v2",
+                "accounts",
+                ":account_id",
+                "direct-debits"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "account_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) Lean entity identifier returned after a successful LinkSDK consent.",
+                "key": "entity_id",
+                "value": "<uuid>"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "044e35c2-4610-44c0-92d3-f11b700eb8b4",
+              "name": "Direct debits",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "data",
+                    "v2",
+                    "accounts",
+                    ":account_id",
+                    "direct-debits"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "account_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Lean entity identifier returned after a successful LinkSDK consent.",
+                    "key": "entity_id",
+                    "value": "<uuid>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "cc0a4a62-d002-419b-a1cb-082f89306e2a",
+          "name": "Lean Get Scheduled Payments",
+          "request": {
+            "name": "Lean Get Scheduled Payments",
+            "description": {},
+            "url": {
+              "path": [
+                "data",
+                "v2",
+                "accounts",
+                ":account_id",
+                "scheduled-payments"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "account_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) Lean entity identifier returned after a successful LinkSDK consent.",
+                "key": "entity_id",
+                "value": "<uuid>"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "fcbe5979-1aa2-40dd-a4b3-99b11974a7e5",
+              "name": "Scheduled payments",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "data",
+                    "v2",
+                    "accounts",
+                    ":account_id",
+                    "scheduled-payments"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "account_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Lean entity identifier returned after a successful LinkSDK consent.",
+                    "key": "entity_id",
+                    "value": "<uuid>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "db993746-5000-4fec-9c4c-ea43aecfe1f5",
+          "name": "Lean Get Standing Orders",
+          "request": {
+            "name": "Lean Get Standing Orders",
+            "description": {},
+            "url": {
+              "path": [
+                "data",
+                "v2",
+                "accounts",
+                ":account_id",
+                "standing-orders"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "account_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) Lean entity identifier returned after a successful LinkSDK consent.",
+                "key": "entity_id",
+                "value": "<uuid>"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "6485d3a0-57df-4989-8434-ae67fba5d9ee",
+              "name": "Standing orders",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "data",
+                    "v2",
+                    "accounts",
+                    ":account_id",
+                    "standing-orders"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "account_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Lean entity identifier returned after a successful LinkSDK consent.",
+                    "key": "entity_id",
+                    "value": "<uuid>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "724e2da2-b6e1-42d0-be9d-35e9e7b0ef8c",
+      "name": "Transactions",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "0bf8ef92-6536-4985-8e0b-25f65fb8037f",
+          "name": "Lean Get Transactions",
+          "request": {
+            "name": "Lean Get Transactions",
+            "description": {},
+            "url": {
+              "path": [
+                "data",
+                "v2",
+                "accounts",
+                ":account_id",
+                "transactions"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "start_date",
+                  "value": "<date>"
+                },
+                {
+                  "disabled": false,
+                  "key": "end_date",
+                  "value": "<date>"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "account_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) Lean entity identifier returned after a successful LinkSDK consent.",
+                "key": "entity_id",
+                "value": "<uuid>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ae030e94-090b-4f6a-8538-42cb2856e60f",
+              "name": "Transactions",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "data",
+                    "v2",
+                    "accounts",
+                    ":account_id",
+                    "transactions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "start_date",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "end_date",
+                      "value": "<date>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "account_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Lean entity identifier returned after a successful LinkSDK consent.",
+                    "key": "entity_id",
+                    "value": "<uuid>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": \"string\",\n    \"amount\": {\n      \"amount\": 3106.0957704356297,\n      \"currency\": \"string\"\n    },\n    \"timestamp\": \"1962-11-10T21:28:02.279Z\",\n    \"description\": \"string\",\n    \"credit_debit_indicator\": \"DEBIT\",\n    \"booking_status\": \"BOOKED\"\n  },\n  {\n    \"id\": \"string\",\n    \"amount\": {\n      \"amount\": 6797.135086614491,\n      \"currency\": \"string\"\n    },\n    \"timestamp\": \"1983-07-25T08:17:55.198Z\",\n    \"description\": \"string\",\n    \"credit_debit_indicator\": \"DEBIT\",\n    \"booking_status\": \"PENDING\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "1bf77982-4ba9-4396-afbb-d50a6741c73d",
+      "name": "Balances",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "e4eddb0a-6610-431a-9c1b-c18bc8cab839",
+          "name": "Lean Get Balances",
+          "request": {
+            "name": "Lean Get Balances",
+            "description": {},
+            "url": {
+              "path": [
+                "data",
+                "v2",
+                "accounts",
+                ":account_id",
+                "balances"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "account_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) Lean entity identifier returned after a successful LinkSDK consent.",
+                "key": "entity_id",
+                "value": "<uuid>"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "6c356d51-8984-4254-9a5d-7a6d9029ae94",
+              "name": "Balances",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "data",
+                    "v2",
+                    "accounts",
+                    ":account_id",
+                    "balances"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "account_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Lean entity identifier returned after a successful LinkSDK consent.",
+                    "key": "entity_id",
+                    "value": "<uuid>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "f394e294-885a-405e-a472-7f5149aa9fef",
+      "name": "Identity",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "89edfd19-63ea-4622-9eaf-d3d0603e4c13",
+          "name": "Lean Get Account Identities",
+          "request": {
+            "name": "Lean Get Account Identities",
+            "description": {},
+            "url": {
+              "path": [
+                "data",
+                "v2",
+                "accounts",
+                ":account_id",
+                "identities"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "account_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) Lean entity identifier returned after a successful LinkSDK consent.",
+                "key": "entity_id",
+                "value": "<uuid>"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "6eb63fba-6d6e-4d2c-a88d-b100f445e265",
+              "name": "Account identities",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "data",
+                    "v2",
+                    "accounts",
+                    ":account_id",
+                    "identities"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "account_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Lean entity identifier returned after a successful LinkSDK consent.",
+                    "key": "entity_id",
+                    "value": "<uuid>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "24631dad-4a51-49a5-89ec-1f34102934ec",
+          "name": "Lean Get Identity",
+          "request": {
+            "name": "Lean Get Identity",
+            "description": {},
+            "url": {
+              "path": [
+                "data",
+                "v2",
+                "identity"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) Lean entity identifier returned after a successful LinkSDK consent.",
+                "key": "entity_id",
+                "value": "<uuid>"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "161322c4-3188-46ad-8fb0-56a025928781",
+              "name": "Identity",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "data",
+                    "v2",
+                    "identity"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Lean entity identifier returned after a successful LinkSDK consent.",
+                    "key": "entity_id",
+                    "value": "<uuid>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "846c95db-f817-4a1b-8aae-b1c1a50e5f82",
+      "name": "Refreshes",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "d45f937b-5da6-4175-b259-1b0211a3024f",
+          "name": "Lean Trigger Manual Data Refresh",
+          "request": {
+            "name": "Lean Trigger Manual Data Refresh",
+            "description": {},
+            "url": {
+              "path": [
+                "data",
+                "v2",
+                "refreshes"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) Lean entity identifier returned after a successful LinkSDK consent.",
+                "key": "entity_id",
+                "value": "<uuid>"
+              }
+            ],
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f8826cc1-485d-4304-9e42-901ed50ea367",
+              "name": "Refresh triggered",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "data",
+                    "v2",
+                    "refreshes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Lean entity identifier returned after a successful LinkSDK consent.",
+                    "key": "entity_id",
+                    "value": "<uuid>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Accepted",
+              "code": 202,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "893466e3-d324-449e-bd43-ce0a2421e281",
+          "name": "Lean Get Data Refreshes",
+          "request": {
+            "name": "Lean Get Data Refreshes",
+            "description": {},
+            "url": {
+              "path": [
+                "data",
+                "v2",
+                "refreshes"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) Lean entity identifier returned after a successful LinkSDK consent.",
+                "key": "entity_id",
+                "value": "<uuid>"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "80c2c327-f432-4c27-a917-f781f45c6bff",
+              "name": "Refreshes",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "data",
+                    "v2",
+                    "refreshes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Lean entity identifier returned after a successful LinkSDK consent.",
+                    "key": "entity_id",
+                    "value": "<uuid>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "fb2ba352-0d74-4349-9343-ce48413fd3c2",
+          "name": "Lean Get Data Refresh Status",
+          "request": {
+            "name": "Lean Get Data Refresh Status",
+            "description": {},
+            "url": {
+              "path": [
+                "data",
+                "v2",
+                "refreshes",
+                ":refresh_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "refresh_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) Lean entity identifier returned after a successful LinkSDK consent.",
+                "key": "entity_id",
+                "value": "<uuid>"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "3401d701-802f-4082-b05d-58d5e1f6c3ac",
+              "name": "Refresh status",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "data",
+                    "v2",
+                    "refreshes",
+                    ":refresh_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "refresh_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Lean entity identifier returned after a successful LinkSDK consent.",
+                    "key": "entity_id",
+                    "value": "<uuid>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api2.leantech.me",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "85cc4fb8-8ebb-4bce-b2cd-b1155a237635",
+    "name": "Lean Data API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Raw bank-account data retrieval (v2). After a customer has granted an Account Information consent through the LinkSDK and Lean has provisioned an entity, the Data API exposes accounts, transactions, balances, beneficiaries, direct debits, standing orders, scheduled payments, and identity. Includes endpoints to trigger and inspect manual data refreshes.\n\n\nContact Support:\n Name: Lean Support",
+      "type": "text/plain"
+    }
+  }
+}

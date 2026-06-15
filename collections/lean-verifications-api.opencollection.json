@@ -1,0 +1,62 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Lean Verifications API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Account Verification",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Lean Verify Account",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api2.leantech.me/verifications/v1/accounts",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Verify a bank account in one of 27+ supported countries. The request payload differs per country to accommodate local identifier formats (IBAN, sort-code/account-number, CLABE, etc.). Supported country codes include AE, SA, AR, BD, BE, BR, CN, FR, ID, IN, IT, KR, MX, NG, NL, NP, PK, PL, UG, GB, US, VN, MY, UY, PE, TR, and ZA.\n"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Name Verification",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Lean Verify Name",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api2.leantech.me/insights/v1/name-verification",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Compare a supplied account-holder name against the canonical name held by the receiving bank to perform Confirmation of Payee.\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

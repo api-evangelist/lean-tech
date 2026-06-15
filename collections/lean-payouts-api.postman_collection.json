@@ -1,0 +1,736 @@
+{
+  "item": [
+    {
+      "id": "6d05fee8-7fa3-40cf-ae92-486c5a077de3",
+      "name": "Payouts",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "190ffa6b-cd4e-4369-a1cf-78fac4bf3033",
+          "name": "Lean Create Payout Payment",
+          "request": {
+            "name": "Lean Create Payout Payment",
+            "description": {},
+            "url": {
+              "path": [
+                "payouts",
+                "v1",
+                "payment"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"amount\": \"<number>\",\n  \"currency\": \"<string>\",\n  \"destination_id\": \"<uuid>\",\n  \"description\": \"<string>\",\n  \"reference\": \"<string>\",\n  \"idempotency_key\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "da16c635-e690-4c60-99ee-f235f2cd9e5b",
+              "name": "Payout created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "payouts",
+                    "v1",
+                    "payment"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"amount\": \"<number>\",\n  \"currency\": \"<string>\",\n  \"destination_id\": \"<uuid>\",\n  \"description\": \"<string>\",\n  \"reference\": \"<string>\",\n  \"idempotency_key\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"f62abf99-9f89-0e05-7860-485dc545bbb8\",\n  \"status\": \"FAILED\",\n  \"amount\": 2488.4968815091934,\n  \"currency\": \"string\",\n  \"destination_id\": \"7c3be952-5a4e-4b06-b546-53dc8b01278a\",\n  \"created_at\": \"1981-09-20T10:55:33.101Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "385ad79a-5eb8-4632-a982-179c94a13898",
+          "name": "Lean List Payouts",
+          "request": {
+            "name": "Lean List Payouts",
+            "description": {},
+            "url": {
+              "path": [
+                "payouts",
+                "v1",
+                "payments"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ed01c7f4-cbf1-4ea7-8bcc-c1fc7393d873",
+              "name": "Payouts",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "payouts",
+                    "v1",
+                    "payments"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b91f6f95-0eaa-4104-b785-cb8e01408276",
+          "name": "Lean Get Payout Payment History",
+          "request": {
+            "name": "Lean Get Payout Payment History",
+            "description": {},
+            "url": {
+              "path": [
+                "payouts",
+                "v1",
+                "payments",
+                ":payment_id",
+                "history"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "payment_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c602c014-90ee-4328-a0ff-3965018df4ae",
+              "name": "History",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "payouts",
+                    "v1",
+                    "payments",
+                    ":payment_id",
+                    "history"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "payment_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c61a8529-bac2-4595-b0f7-5161b8f5222e",
+          "name": "Lean Get Payout",
+          "request": {
+            "name": "Lean Get Payout",
+            "description": {},
+            "url": {
+              "path": [
+                "payouts",
+                "v1",
+                ":payment_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "payment_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "772508b5-860e-4d76-8283-86b6e239897e",
+              "name": "Payout",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "payouts",
+                    "v1",
+                    ":payment_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "payment_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "56c32e7e-73b6-49d2-885e-3c20e1c5456f",
+          "name": "Lean Get Payout Intent",
+          "request": {
+            "name": "Lean Get Payout Intent",
+            "description": {},
+            "url": {
+              "path": [
+                "payouts",
+                "v1",
+                "intents",
+                ":payment_intent_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "payment_intent_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "05963540-5972-4723-b80c-aa332bbef9db",
+              "name": "Payout intent",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "payouts",
+                    "v1",
+                    "intents",
+                    ":payment_intent_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "payment_intent_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "efdd2b29-ddc9-4042-9c87-af4056e54ae3",
+      "name": "Payout Destinations",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "0248b4d1-fa41-4830-95ca-c2029a5ad859",
+          "name": "Lean Create Payout Destination",
+          "request": {
+            "name": "Lean Create Payout Destination",
+            "description": {},
+            "url": {
+              "path": [
+                "payouts",
+                "v1",
+                "payment",
+                "destinations"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"beneficiary_name\": \"<string>\",\n  \"iban\": \"<string>\",\n  \"account_number\": \"<string>\",\n  \"bank_code\": \"<string>\",\n  \"country\": \"<string>\",\n  \"currency\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "ea90468d-35df-4f58-a2c6-e4be55ff1fd2",
+              "name": "Destination created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "payouts",
+                    "v1",
+                    "payment",
+                    "destinations"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"beneficiary_name\": \"<string>\",\n  \"iban\": \"<string>\",\n  \"account_number\": \"<string>\",\n  \"bank_code\": \"<string>\",\n  \"country\": \"<string>\",\n  \"currency\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "407b5535-b096-47a1-8608-fcddfe60df0a",
+          "name": "Lean List Payout Destinations",
+          "request": {
+            "name": "Lean List Payout Destinations",
+            "description": {},
+            "url": {
+              "path": [
+                "payouts",
+                "v1",
+                "payment",
+                "destinations"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "cfc8d17f-dd65-4252-af36-fb6af6cb5ef9",
+              "name": "Destinations",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "payouts",
+                    "v1",
+                    "payment",
+                    "destinations"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "71f6ee83-e203-415b-be4f-8eaeac362b5b",
+          "name": "Lean Get Payout Destination",
+          "request": {
+            "name": "Lean Get Payout Destination",
+            "description": {},
+            "url": {
+              "path": [
+                "payouts",
+                "v1",
+                "payment",
+                "destinations",
+                ":destination_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "destination_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "9c66de04-d705-4473-9c06-111466e6e0ea",
+              "name": "Destination",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "payouts",
+                    "v1",
+                    "payment",
+                    "destinations",
+                    ":destination_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "destination_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api2.leantech.me",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "00f68fd9-8f20-47d7-9143-90158ea04935",
+    "name": "Lean Payouts API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Initiate outbound bank-to-bank payouts from corporate accounts to consumer or business beneficiaries. Manage payout destinations (beneficiary records), create payout payments, list payouts, retrieve payout intents, and pull per-payment history.\n\n\nContact Support:\n Name: Lean Support",
+      "type": "text/plain"
+    }
+  }
+}

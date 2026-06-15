@@ -1,0 +1,79 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Lean Insights API",
+    "version": "2.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Insights",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Lean Compute Income",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api2.leantech.me/insights/v2/income",
+            "headers": [
+              {
+                "name": "entity_id",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Lean Compute Income"
+        },
+        {
+          "info": {
+            "name": "Lean Get Expenses",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api2.leantech.me/insights/v2/expenses",
+            "headers": [
+              {
+                "name": "entity_id",
+                "value": ""
+              }
+            ]
+          },
+          "docs": "Lean Get Expenses"
+        },
+        {
+          "info": {
+            "name": "Lean Get Cashflows",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api2.leantech.me/insights/v2/assets/cashflows",
+            "headers": [
+              {
+                "name": "entity_id",
+                "value": ""
+              }
+            ]
+          },
+          "docs": "Lean Get Cashflows"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

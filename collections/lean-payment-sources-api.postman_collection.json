@@ -1,0 +1,354 @@
+{
+  "item": [
+    {
+      "id": "9b1b1443-7c2e-4b42-93a1-404b860e59cc",
+      "name": "Payment Sources",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "fa951585-6837-4432-a95c-9dc1b0399c29",
+          "name": "Lean List Customer Payment Sources",
+          "request": {
+            "name": "Lean List Customer Payment Sources",
+            "description": {},
+            "url": {
+              "path": [
+                "customers",
+                "v1",
+                ":customer_id",
+                "payment-sources"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "customer_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f0c34edf-8c2e-4b49-b371-aa3a0d9a411c",
+              "name": "Payment sources",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    "v1",
+                    ":customer_id",
+                    "payment-sources"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "customer_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": \"d41fe3fb-2537-acfc-0492-e764dd3695ab\",\n    \"customer_id\": \"b30797d7-0b25-5ae7-3bd2-cf26f7f02616\",\n    \"bank_identifier\": \"string\",\n    \"consent_id\": \"cd0f9bdb-872f-dd35-6028-7a4c39fc7460\",\n    \"account_iban_last4\": \"string\",\n    \"currency\": \"string\",\n    \"status\": \"REVOKED\",\n    \"created_at\": \"2023-04-02T23:55:46.210Z\"\n  },\n  {\n    \"id\": \"0f540a68-ccda-a364-6209-5fc5e4dde96e\",\n    \"customer_id\": \"a5bac0a9-583a-ae26-5cd6-ebbe33f42efc\",\n    \"bank_identifier\": \"string\",\n    \"consent_id\": \"cedc708a-2acb-389c-b895-80efcec3d18b\",\n    \"account_iban_last4\": \"string\",\n    \"currency\": \"string\",\n    \"status\": \"REVOKED\",\n    \"created_at\": \"2009-12-08T21:49:50.883Z\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e2f15619-39a6-4e91-9464-8d2b2c1c750f",
+          "name": "Lean Get Payment Source By Id",
+          "request": {
+            "name": "Lean Get Payment Source By Id",
+            "description": {},
+            "url": {
+              "path": [
+                "customers",
+                "v1",
+                ":customer_id",
+                "payment-sources",
+                ":payment_source_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "customer_id",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "payment_source_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "0b08ea3c-9b66-4ae1-a346-a419ee521d90",
+              "name": "Payment source",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    "v1",
+                    ":customer_id",
+                    "payment-sources",
+                    ":payment_source_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "customer_id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "payment_source_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"1172b7cf-05d0-1beb-367e-0c80f80404b5\",\n  \"customer_id\": \"7a612d7c-dd58-c5a8-210b-117287191692\",\n  \"bank_identifier\": \"string\",\n  \"consent_id\": \"48d25b7d-1b13-f038-447d-98c1082e9760\",\n  \"account_iban_last4\": \"string\",\n  \"currency\": \"string\",\n  \"status\": \"ACTIVE\",\n  \"created_at\": \"2010-07-15T11:17:32.637Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9c90bcf7-ca3a-4992-8c17-e8bd2ad28a62",
+          "name": "Lean Delete Payment Source",
+          "request": {
+            "name": "Lean Delete Payment Source",
+            "description": {},
+            "url": {
+              "path": [
+                "customers",
+                "v1",
+                ":customer_id",
+                "payment-sources",
+                ":payment_source_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "customer_id",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "payment_source_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "de4d0e24-97e7-4afa-b15e-654298e75d63",
+              "name": "Deleted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    "v1",
+                    ":customer_id",
+                    "payment-sources",
+                    ":payment_source_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "customer_id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "payment_source_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api2.leantech.me",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "d2ad5735-0e19-4811-9ffa-1d9e5f00c227",
+    "name": "Lean Payment Sources API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Tokenized representation of a customer's funding bank account once it has been linked through an Account-on-File consent. Payment sources can be re-used for repeat charges without re-prompting the customer for bank authentication.\n\n\nContact Support:\n Name: Lean Support",
+      "type": "text/plain"
+    }
+  }
+}

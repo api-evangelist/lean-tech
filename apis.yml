@@ -1,309 +1,279 @@
 aid: lean-tech
 url: https://raw.githubusercontent.com/api-evangelist/lean-tech/refs/heads/main/apis.yml
 apis:
-- aid: lean-tech:lean-authentication-api
-  name: Lean Authentication API
-  tags:
-  - Authentication
-  - OAuth
-  - Open Banking
-  humanURL: https://docs.leantech.me/docs/authentication
-  properties:
-  - url: https://docs.leantech.me/docs/authentication
-    type: Documentation
-  - url: openapi/lean-authentication-api-openapi.yml
-    type: OpenAPI
-  - type: NaftikoCapability
-    url: capabilities/authentication-tokens.yaml
-  description: OAuth 2.0 client-credentials token issuance for Lean APIs. Generates API access tokens (scope=api)
-    for server-to-server calls and customer-scoped access tokens (scope=customer.<customer_id>) for the LinkSDK.
-    Production auth endpoint is auth.leantech.me; sandbox endpoints are regional (auth.sandbox.sa.leantech.me,
-    auth.sandbox.ae.leantech.me).
-- aid: lean-tech:lean-customers-api
-  name: Lean Customers API
-  tags:
-  - Customers
-  - Open Banking
-  - End Users
-  humanURL: https://docs.leantech.me/reference/customers
-  properties:
-  - url: https://docs.leantech.me/reference/customers
-    type: Documentation
-  - url: openapi/lean-customers-api-openapi.yml
-    type: OpenAPI
-  - url: json-schema/lean-customer-schema.json
-    type: JSONSchema
-  - type: NaftikoCapability
-    url: capabilities/customers-customers.yaml
-  description: Manage end-user customer records that Lean uses to anchor data and payment consents. Create
-    customers with an app_user_id, list customers, and retrieve a customer by ID or by app_user_id.
-- aid: lean-tech:lean-entities-api
-  name: Lean Entities API
-  tags:
-  - Entities
-  - Open Banking
-  - Consents
-  humanURL: https://docs.leantech.me/reference/entities
-  properties:
-  - url: https://docs.leantech.me/reference/entities
-    type: Documentation
-  - url: openapi/lean-entities-api-openapi.yml
-    type: OpenAPI
-  - type: NaftikoCapability
-    url: capabilities/entities-entities.yaml
-  description: Entities represent a customer's authenticated connection to a single bank, returned after a
-    successful LinkSDK consent. List entities for a customer, retrieve a single entity by ID, or query entities
-    across a date range.
-- aid: lean-tech:lean-data-api
-  name: Lean Data API
-  tags:
-  - Open Banking
-  - Account Information
-  - Transactions
-  - Balances
-  - Identity
-  humanURL: https://docs.leantech.me/reference/data-api
-  properties:
-  - url: https://docs.leantech.me/reference/data-api
-    type: Documentation
-  - url: openapi/lean-data-api-openapi.yml
-    type: OpenAPI
-  - url: json-schema/lean-account-schema.json
-    type: JSONSchema
-  - url: json-schema/lean-transaction-schema.json
-    type: JSONSchema
-  - url: json-ld/lean-tech-context.jsonld
-    type: JSONLD
-  - type: NaftikoCapability
-    url: capabilities/data-accounts.yaml
-  - type: NaftikoCapability
-    url: capabilities/data-transactions.yaml
-  - type: NaftikoCapability
-    url: capabilities/data-identity.yaml
-  description: Raw bank-account data retrieval (v2) returning accounts, transactions, balances, beneficiaries,
-    standing orders, scheduled payments, direct debits, and identity, plus manual data refresh triggers and
-    refresh status. Available after an Account Information consent has been collected via the LinkSDK.
-- aid: lean-tech:lean-insights-api
-  name: Lean Insights API
-  tags:
-  - Open Banking
-  - Insights
-  - Income
-  - Expenses
-  - Cashflows
-  humanURL: https://docs.leantech.me/reference/insights
-  properties:
-  - url: https://docs.leantech.me/reference/insights
-    type: Documentation
-  - url: openapi/lean-insights-api-openapi.yml
-    type: OpenAPI
-  - type: NaftikoCapability
-    url: capabilities/insights-income.yaml
-  - type: NaftikoCapability
-    url: capabilities/insights-expenses.yaml
-  - type: NaftikoCapability
-    url: capabilities/insights-cashflows.yaml
-  description: Derived analytics over an entity's transaction history — income detection, expense categorisation,
-    and cashflow summaries — for underwriting, affordability, and BFM use cases.
-- aid: lean-tech:lean-banks-api
-  name: Lean Banks API
-  tags:
-  - Open Banking
-  - Banks
-  - Coverage
-  humanURL: https://docs.leantech.me/reference/banks
-  properties:
-  - url: https://docs.leantech.me/reference/banks
-    type: Documentation
-  - url: openapi/lean-banks-api-openapi.yml
-    type: OpenAPI
-  - type: NaftikoCapability
-    url: capabilities/banks-banks.yaml
-  description: List the banks Lean currently supports for Data and Payments per region, including identifiers,
-    logos, and supported product surfaces (AIS, PIS, AOF, payouts).
-- aid: lean-tech:lean-verifications-api
-  name: Lean Verifications API
-  tags:
-  - Verifications
-  - Account Verification
-  - Name Verification
-  - KYC
-  humanURL: https://docs.leantech.me/reference/verifications
-  properties:
-  - url: https://docs.leantech.me/reference/verifications
-    type: Documentation
-  - url: openapi/lean-verifications-api-openapi.yml
-    type: OpenAPI
-  - type: NaftikoCapability
-    url: capabilities/verifications-accounts.yaml
-  - type: NaftikoCapability
-    url: capabilities/verifications-names.yaml
-  description: Account Verification confirms ownership and validity of a bank account by IBAN or local
-    account number across 27+ countries (UAE, KSA, GB, US, EU, BR, IN, ID, NG, ZA, and more). Name Verification
-    compares a supplied name against a payee record. Used for fraud reduction, payout pre-checks, and
-    Confirmation of Payee.
-- aid: lean-tech:lean-payments-api
-  name: Lean Payments API
-  tags:
-  - Open Banking
-  - Payments
-  - Pay by Bank
-  - PIS
-  - A2A
-  humanURL: https://docs.leantech.me/reference/payments
-  properties:
-  - url: https://docs.leantech.me/reference/payments
-    type: Documentation
-  - url: openapi/lean-payments-api-openapi.yml
-    type: OpenAPI
-  - url: json-schema/lean-payment-intent-schema.json
-    type: JSONSchema
-  - type: NaftikoCapability
-    url: capabilities/payments-intents.yaml
-  - type: NaftikoCapability
-    url: capabilities/payments-aof.yaml
-  - type: NaftikoCapability
-    url: capabilities/payments-consents.yaml
-  description: Single Instant Payment ("Pay by Bank") and Account-on-File (AOF) payment initiation, plus
-    consent management. Create payment intents, retrieve payments by intent or payment id, list payment intents,
-    and manage long-lived AOF consents with balance and history endpoints.
-- aid: lean-tech:lean-payment-sources-api
-  name: Lean Payment Sources API
-  tags:
-  - Open Banking
-  - Payment Sources
-  - Tokenization
-  humanURL: https://docs.leantech.me/reference/payment-sources
-  properties:
-  - url: https://docs.leantech.me/reference/payment-sources
-    type: Documentation
-  - url: openapi/lean-payment-sources-api-openapi.yml
-    type: OpenAPI
-  - type: NaftikoCapability
-    url: capabilities/payment-sources-payment-sources.yaml
-  description: Tokenized representation of a customer's funding bank account once linked. List payment
-    sources for a customer, retrieve a single source by ID, and delete a payment source to revoke its
-    associated AOF consent.
-- aid: lean-tech:lean-payouts-api
-  name: Lean Payouts API
-  tags:
-  - Open Banking
-  - Payouts
-  - Disbursements
-  - A2A
-  humanURL: https://docs.leantech.me/reference/payouts
-  properties:
-  - url: https://docs.leantech.me/reference/payouts
-    type: Documentation
-  - url: openapi/lean-payouts-api-openapi.yml
-    type: OpenAPI
-  - url: json-schema/lean-payout-schema.json
-    type: JSONSchema
-  - type: NaftikoCapability
-    url: capabilities/payouts-payments.yaml
-  - type: NaftikoCapability
-    url: capabilities/payouts-destinations.yaml
-  description: Initiate outbound bank-to-bank payouts from corporate accounts to consumer or business
-    beneficiaries. Create payout payments, list payouts, retrieve a payout intent, get per-payment history,
-    and manage payout destinations (the beneficiary records that receive funds).
-- aid: lean-tech:lean-refunds-api
-  name: Lean Refunds API
-  tags:
-  - Open Banking
-  - Refunds
-  - Payouts
-  humanURL: https://docs.leantech.me/reference/refunds
-  properties:
-  - url: https://docs.leantech.me/reference/refunds
-    type: Documentation
-  - url: openapi/lean-refunds-api-openapi.yml
-    type: OpenAPI
-  - type: NaftikoCapability
-    url: capabilities/refunds-refunds.yaml
-  description: Issue full or partial refunds against prior Pay by Bank payments. List refunds, create a new
-    refund, process queued refunds, and retrieve the canonical list of refund reason codes.
+  - aid: lean-tech:lean-authentication-api
+    name: Lean Authentication API
+    tags:
+      - Authentication
+      - OAuth
+      - Open Banking
+    humanURL: https://docs.leantech.me/docs/authentication
+    properties:
+      - url: https://docs.leantech.me/docs/authentication
+        type: Documentation
+      - url: openapi/lean-authentication-api-openapi.yml
+        type: OpenAPI
+    description: >-
+      OAuth 2.0 client-credentials token issuance for Lean APIs. Generates API access tokens (scope=api) for
+      server-to-server calls and customer-scoped access tokens (scope=customer.<customer_id>) for the LinkSDK.
+      Production auth endpoint is auth.leantech.me; sandbox endpoints are regional (auth.sandbox.sa.leantech.me,
+      auth.sandbox.ae.leantech.me).
+  - aid: lean-tech:lean-customers-api
+    name: Lean Customers API
+    tags:
+      - Customers
+      - Open Banking
+      - End Users
+    humanURL: https://docs.leantech.me/reference/customers
+    properties:
+      - url: https://docs.leantech.me/reference/customers
+        type: Documentation
+      - url: openapi/lean-customers-api-openapi.yml
+        type: OpenAPI
+      - url: json-schema/lean-customer-schema.json
+        type: JSONSchema
+    description: >-
+      Manage end-user customer records that Lean uses to anchor data and payment consents. Create customers with an
+      app_user_id, list customers, and retrieve a customer by ID or by app_user_id.
+  - aid: lean-tech:lean-entities-api
+    name: Lean Entities API
+    tags:
+      - Entities
+      - Open Banking
+      - Consents
+    humanURL: https://docs.leantech.me/reference/entities
+    properties:
+      - url: https://docs.leantech.me/reference/entities
+        type: Documentation
+      - url: openapi/lean-entities-api-openapi.yml
+        type: OpenAPI
+    description: >-
+      Entities represent a customer's authenticated connection to a single bank, returned after a successful LinkSDK
+      consent. List entities for a customer, retrieve a single entity by ID, or query entities across a date range.
+  - aid: lean-tech:lean-data-api
+    name: Lean Data API
+    tags:
+      - Open Banking
+      - Account Information
+      - Transactions
+      - Balances
+      - Identity
+    humanURL: https://docs.leantech.me/reference/data-api
+    properties:
+      - url: https://docs.leantech.me/reference/data-api
+        type: Documentation
+      - url: openapi/lean-data-api-openapi.yml
+        type: OpenAPI
+      - url: json-schema/lean-account-schema.json
+        type: JSONSchema
+      - url: json-schema/lean-transaction-schema.json
+        type: JSONSchema
+      - url: json-ld/lean-tech-context.jsonld
+        type: JSONLD
+    description: >-
+      Raw bank-account data retrieval (v2) returning accounts, transactions, balances, beneficiaries, standing orders,
+      scheduled payments, direct debits, and identity, plus manual data refresh triggers and refresh status. Available
+      after an Account Information consent has been collected via the LinkSDK.
+  - aid: lean-tech:lean-insights-api
+    name: Lean Insights API
+    tags:
+      - Open Banking
+      - Insights
+      - Income
+      - Expenses
+      - Cashflows
+    humanURL: https://docs.leantech.me/reference/insights
+    properties:
+      - url: https://docs.leantech.me/reference/insights
+        type: Documentation
+      - url: openapi/lean-insights-api-openapi.yml
+        type: OpenAPI
+    description: >-
+      Derived analytics over an entity's transaction history — income detection, expense categorisation, and cashflow
+      summaries — for underwriting, affordability, and BFM use cases.
+  - aid: lean-tech:lean-banks-api
+    name: Lean Banks API
+    tags:
+      - Open Banking
+      - Banks
+      - Coverage
+    humanURL: https://docs.leantech.me/reference/banks
+    properties:
+      - url: https://docs.leantech.me/reference/banks
+        type: Documentation
+      - url: openapi/lean-banks-api-openapi.yml
+        type: OpenAPI
+    description: >-
+      List the banks Lean currently supports for Data and Payments per region, including identifiers, logos, and
+      supported product surfaces (AIS, PIS, AOF, payouts).
+  - aid: lean-tech:lean-verifications-api
+    name: Lean Verifications API
+    tags:
+      - Verifications
+      - Account Verification
+      - Name Verification
+      - KYC
+    humanURL: https://docs.leantech.me/reference/verifications
+    properties:
+      - url: https://docs.leantech.me/reference/verifications
+        type: Documentation
+      - url: openapi/lean-verifications-api-openapi.yml
+        type: OpenAPI
+    description: >-
+      Account Verification confirms ownership and validity of a bank account by IBAN or local account number across 27+
+      countries (UAE, KSA, GB, US, EU, BR, IN, ID, NG, ZA, and more). Name Verification compares a supplied name against
+      a payee record. Used for fraud reduction, payout pre-checks, and Confirmation of Payee.
+  - aid: lean-tech:lean-payments-api
+    name: Lean Payments API
+    tags:
+      - Open Banking
+      - Payments
+      - Pay by Bank
+      - PIS
+      - A2A
+    humanURL: https://docs.leantech.me/reference/payments
+    properties:
+      - url: https://docs.leantech.me/reference/payments
+        type: Documentation
+      - url: openapi/lean-payments-api-openapi.yml
+        type: OpenAPI
+      - url: json-schema/lean-payment-intent-schema.json
+        type: JSONSchema
+    description: >-
+      Single Instant Payment ("Pay by Bank") and Account-on-File (AOF) payment initiation, plus consent management.
+      Create payment intents, retrieve payments by intent or payment id, list payment intents, and manage long-lived AOF
+      consents with balance and history endpoints.
+  - aid: lean-tech:lean-payment-sources-api
+    name: Lean Payment Sources API
+    tags:
+      - Open Banking
+      - Payment Sources
+      - Tokenization
+    humanURL: https://docs.leantech.me/reference/payment-sources
+    properties:
+      - url: https://docs.leantech.me/reference/payment-sources
+        type: Documentation
+      - url: openapi/lean-payment-sources-api-openapi.yml
+        type: OpenAPI
+    description: >-
+      Tokenized representation of a customer's funding bank account once linked. List payment sources for a customer,
+      retrieve a single source by ID, and delete a payment source to revoke its associated AOF consent.
+  - aid: lean-tech:lean-payouts-api
+    name: Lean Payouts API
+    tags:
+      - Open Banking
+      - Payouts
+      - Disbursements
+      - A2A
+    humanURL: https://docs.leantech.me/reference/payouts
+    properties:
+      - url: https://docs.leantech.me/reference/payouts
+        type: Documentation
+      - url: openapi/lean-payouts-api-openapi.yml
+        type: OpenAPI
+      - url: json-schema/lean-payout-schema.json
+        type: JSONSchema
+    description: >-
+      Initiate outbound bank-to-bank payouts from corporate accounts to consumer or business beneficiaries. Create
+      payout payments, list payouts, retrieve a payout intent, get per-payment history, and manage payout destinations
+      (the beneficiary records that receive funds).
+  - aid: lean-tech:lean-refunds-api
+    name: Lean Refunds API
+    tags:
+      - Open Banking
+      - Refunds
+      - Payouts
+    humanURL: https://docs.leantech.me/reference/refunds
+    properties:
+      - url: https://docs.leantech.me/reference/refunds
+        type: Documentation
+      - url: openapi/lean-refunds-api-openapi.yml
+        type: OpenAPI
+    description: >-
+      Issue full or partial refunds against prior Pay by Bank payments. List refunds, create a new refund, process
+      queued refunds, and retrieve the canonical list of refund reason codes.
 name: Lean Technologies
 tags:
-- Open Banking
-- Open Finance
-- MENA
-- UAE
-- Saudi Arabia
-- Payments
-- Pay by Bank
-- A2A
-- Account Information
-- Payment Initiation
-- Verifications
-- Identity
-- Fintech
+  - Open Banking
+  - Open Finance
+  - MENA
+  - UAE
+  - Saudi Arabia
+  - Payments
+  - Pay by Bank
+  - A2A
+  - Account Information
+  - Payment Initiation
+  - Verifications
+  - Identity
+  - Fintech
 kind: contract
 image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 access: 3rd-Party
 common:
-- type: LinkedIn
-  url: https://www.linkedin.com/company/leantech
-- url: https://www.leantech.me
-  name: Lean Technologies
-  type: Portal
-- url: https://docs.leantech.me
-  name: Lean Developer Docs
-  type: Documentation
-- url: https://docs.leantech.me/reference
-  name: Lean API Reference
-  type: Documentation
-- url: https://dev.leantech.me
-  name: Lean Application Dashboard
-  type: Console
-- url: https://status.leantech.me
-  name: Lean Status
-  type: StatusPage
-- url: https://help.leantech.me
-  name: Lean Help Center
-  type: Support
-- url: https://docs.leantech.me/docs/authentication
-  name: Authentication Guide
-  type: Documentation
-- url: https://github.com/leantechnologies
-  name: Lean Technologies on GitHub
-  type: SourceCode
-- url: https://github.com/leantechnologies/lean-postman
-  name: Lean Postman Collection
-  type: PostmanCollection
-- url: https://github.com/leantechnologies/link-sdk-react-native
-  name: LinkSDK - React Native
-  type: SDK
-- url: https://github.com/leantechnologies/link-sdk-ios-distribution
-  name: LinkSDK - iOS
-  type: SDK
-- url: https://github.com/leantechnologies/link-sdk-flutter
-  name: LinkSDK - Flutter
-  type: SDK
-- url: https://github.com/leantechnologies/integration-snippets
-  name: Integration Snippets
-  type: SampleCode
-- url: plans/lean-tech-plans-pricing.yml
-  type: Plans
-- url: rate-limits/lean-tech-rate-limits.yml
-  type: RateLimits
-- url: finops/lean-tech-finops.yml
-  type: FinOps
-- url: vocabulary/lean-tech-vocabulary.yml
-  type: Vocabulary
-- url: rules/lean-tech-rules.yml
-  type: SpectralRules
+  - type: LinkedIn
+    url: https://www.linkedin.com/company/leantech
+  - url: https://www.leantech.me
+    name: Lean Technologies
+    type: Portal
+  - url: https://docs.leantech.me
+    name: Lean Developer Docs
+    type: Documentation
+  - url: https://docs.leantech.me/reference
+    name: Lean API Reference
+    type: Documentation
+  - url: https://dev.leantech.me
+    name: Lean Application Dashboard
+    type: Console
+  - url: https://status.leantech.me
+    name: Lean Status
+    type: StatusPage
+  - url: https://help.leantech.me
+    name: Lean Help Center
+    type: Support
+  - url: https://docs.leantech.me/docs/authentication
+    name: Authentication Guide
+    type: Documentation
+  - url: https://github.com/leantechnologies
+    name: Lean Technologies on GitHub
+    type: SourceCode
+  - url: https://github.com/leantechnologies/lean-postman
+    name: Lean Postman Collection
+    type: PostmanCollection
+  - url: https://github.com/leantechnologies/link-sdk-react-native
+    name: LinkSDK - React Native
+    type: SDK
+  - url: https://github.com/leantechnologies/link-sdk-ios-distribution
+    name: LinkSDK - iOS
+    type: SDK
+  - url: https://github.com/leantechnologies/link-sdk-flutter
+    name: LinkSDK - Flutter
+    type: SDK
+  - url: https://github.com/leantechnologies/integration-snippets
+    name: Integration Snippets
+    type: SampleCode
+  - url: plans/lean-tech-plans-pricing.yml
+    type: Plans
+  - url: rate-limits/lean-tech-rate-limits.yml
+    type: RateLimits
+  - url: finops/lean-tech-finops.yml
+    type: FinOps
+  - url: vocabulary/lean-tech-vocabulary.yml
+    type: Vocabulary
+  - url: rules/lean-tech-rules.yml
+    type: SpectralRules
 maintainers:
-- FN: API Evangelist
-  email: info@apievangelist.com
+  - FN: API Evangelist
+    email: info@apievangelist.com
 created: '2026-05-25'
 modified: '2026-05-25'
 specificationVersion: '0.20'
-description: 'Lean Technologies is a Middle East Open Banking and Open Finance infrastructure provider
-  founded in 2019 and headquartered in the UAE. Lean offers regulated Account Information (AIS), Payment
-  Initiation (PIS), payouts, refunds, account and name verifications, and derived insights across the UAE
-  and Saudi Arabia, with verification coverage extending to 27+ countries globally. Lean holds an
-  In-Principle Approval from the Central Bank of UAE for Open Finance Services (August 2025), a Major
-  Payment Institution licence from the Saudi Central Bank (SAMA), and an FSP licence from the Abu Dhabi
-  Global Market FSRA (no. 200033). The platform is SOC 2 Type II and ISO 27001:2022 certified and has
-  processed AED 16B+ across 2M+ linked accounts. Investors include Sequoia, General Catalyst, Breyer
-  Capital, Shorooq, Raed, BCV, and Liberty City.'
+description: >-
+  Lean Technologies is a Middle East Open Banking and Open Finance infrastructure provider founded in 2019 and
+  headquartered in the UAE. Lean offers regulated Account Information (AIS), Payment Initiation (PIS), payouts, refunds,
+  account and name verifications, and derived insights across the UAE and Saudi Arabia, with verification coverage
+  extending to 27+ countries globally. Lean holds an In-Principle Approval from the Central Bank of UAE for Open Finance
+  Services (August 2025), a Major Payment Institution licence from the Saudi Central Bank (SAMA), and an FSP licence
+  from the Abu Dhabi Global Market FSRA (no. 200033). The platform is SOC 2 Type II and ISO 27001:2022 certified and has
+  processed AED 16B+ across 2M+ linked accounts. Investors include Sequoia, General Catalyst, Breyer Capital, Shorooq,
+  Raed, BCV, and Liberty City.

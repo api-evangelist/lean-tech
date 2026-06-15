@@ -1,0 +1,250 @@
+{
+  "item": [
+    {
+      "id": "25390652-6447-4fe4-ae9f-a2aac8d88cb1",
+      "name": "Account Verification",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "2455f3cc-5ecc-47cc-899e-2215258f6d8e",
+          "name": "Lean Verify Account",
+          "request": {
+            "name": "Lean Verify Account",
+            "description": {
+              "content": "Verify a bank account in one of 27+ supported countries. The request payload differs per country to accommodate local identifier formats (IBAN, sort-code/account-number, CLABE, etc.). Supported country codes include AE, SA, AR, BD, BE, BR, CN, FR, ID, IN, IT, KR, MX, NG, NL, NP, PK, PL, UG, GB, US, VN, MY, UY, PE, TR, and ZA.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "verifications",
+                "v1",
+                "accounts"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"country\": \"<string>\",\n  \"iban\": \"<string>\",\n  \"account_number\": \"<string>\",\n  \"bank_code\": \"<string>\",\n  \"branch_code\": \"<string>\",\n  \"beneficiary_name\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "9585381c-7b95-482d-85a0-595696835229",
+              "name": "Verification result",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "verifications",
+                    "v1",
+                    "accounts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"country\": \"<string>\",\n  \"iban\": \"<string>\",\n  \"account_number\": \"<string>\",\n  \"bank_code\": \"<string>\",\n  \"branch_code\": \"<string>\",\n  \"beneficiary_name\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"verified\": true,\n  \"match_strength\": \"PARTIAL\",\n  \"bank_name\": \"string\",\n  \"account_holder\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "ec150577-d807-4a90-8d95-60ceea33ccdf",
+      "name": "Name Verification",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "e7ef0824-0eed-4673-8cbc-a1376d58690f",
+          "name": "Lean Verify Name",
+          "request": {
+            "name": "Lean Verify Name",
+            "description": {
+              "content": "Compare a supplied account-holder name against the canonical name held by the receiving bank to perform Confirmation of Payee.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "insights",
+                "v1",
+                "name-verification"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"account\": {\n    \"iban\": \"<string>\",\n    \"account_number\": \"<string>\",\n    \"country\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "17d97e17-8d2f-4567-8180-321f83167d99",
+              "name": "Name verification result",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "insights",
+                    "v1",
+                    "name-verification"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"account\": {\n    \"iban\": \"<string>\",\n    \"account_number\": \"<string>\",\n    \"country\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api2.leantech.me",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "e0b44717-b9b4-4714-95a4-5bef2fa74819",
+    "name": "Lean Verifications API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Account Verification confirms ownership and validity of a bank account by IBAN or local account number across 27+ countries in the MENA region, Europe, the Americas, Asia, and Africa. Name Verification compares a supplied name against the registered payee record. Used for fraud reduction, payout pre-checks, and Confirmation of Payee.\n\n\nContact Support:\n Name: Lean Support",
+      "type": "text/plain"
+    }
+  }
+}

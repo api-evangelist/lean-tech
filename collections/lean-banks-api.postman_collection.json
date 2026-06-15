@@ -1,0 +1,140 @@
+{
+  "item": [
+    {
+      "id": "3a9c53f2-fd17-4d29-919e-a113c13b95e1",
+      "name": "Banks",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "1459fbcb-ddec-4517-8287-7ba566286ae6",
+          "name": "Lean List Banks",
+          "request": {
+            "name": "Lean List Banks",
+            "description": {},
+            "url": {
+              "path": [
+                "banks",
+                "v1",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "country",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "capability",
+                  "value": "<string>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c333f4de-4447-4905-90a9-b9ef1a026842",
+              "name": "List of supported banks",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "banks",
+                    "v1",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "country",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "capability",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"identifier\": \"string\",\n    \"name\": \"string\",\n    \"country\": \"string\",\n    \"logo\": \"https://UqoepSJCu.tbgyzJg.sKTI,eWlt8ZyfpIBx4\",\n    \"supported_account_types\": [\n      \"string\",\n      \"string\"\n    ],\n    \"capabilities\": [\n      \"data\",\n      \"payouts\"\n    ]\n  },\n  {\n    \"identifier\": \"string\",\n    \"name\": \"string\",\n    \"country\": \"string\",\n    \"logo\": \"https://Wv.mlhphtVg6M8lhcTpUBe,qb\",\n    \"supported_account_types\": [\n      \"string\",\n      \"string\"\n    ],\n    \"capabilities\": [\n      \"data\",\n      \"aof\"\n    ]\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api2.leantech.me",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "d13a3fd5-c447-4b09-aca2-2d40ccf94ba3",
+    "name": "Lean Banks API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "List the banks Lean currently supports in each region for Data, Payments, and Payouts. Returns bank identifiers, display names, logos, country codes, and which product capabilities each bank supports.\n\n\nContact Support:\n Name: Lean Support",
+      "type": "text/plain"
+    }
+  }
+}

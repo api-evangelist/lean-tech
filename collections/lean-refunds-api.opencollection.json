@@ -1,0 +1,72 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Lean Refunds API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Refunds",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Lean List Refunds",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api2.leantech.me/payouts/refunds"
+          },
+          "docs": "Lean List Refunds"
+        },
+        {
+          "info": {
+            "name": "Lean Create Refund",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api2.leantech.me/payouts/refunds",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Lean Create Refund"
+        },
+        {
+          "info": {
+            "name": "Lean Process Refunds",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api2.leantech.me/payouts/refunds"
+          },
+          "docs": "Lean Process Refunds"
+        },
+        {
+          "info": {
+            "name": "Lean Get Refund Reasons",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api2.leantech.me/payouts/refunds/reasons"
+          },
+          "docs": "Lean Get Refund Reasons"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

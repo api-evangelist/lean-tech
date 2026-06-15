@@ -1,0 +1,326 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Lean Data API",
+    "version": "2.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Accounts",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Lean Get Accounts",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api2.leantech.me/data/v2/accounts",
+            "headers": [
+              {
+                "name": "entity_id",
+                "value": ""
+              }
+            ]
+          },
+          "docs": "Lean Get Accounts"
+        },
+        {
+          "info": {
+            "name": "Lean Get Beneficiaries",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api2.leantech.me/data/v2/accounts/:account_id/beneficiaries",
+            "headers": [
+              {
+                "name": "entity_id",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "account_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Lean Get Beneficiaries"
+        },
+        {
+          "info": {
+            "name": "Lean Get Direct Debits",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api2.leantech.me/data/v2/accounts/:account_id/direct-debits",
+            "headers": [
+              {
+                "name": "entity_id",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "account_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Lean Get Direct Debits"
+        },
+        {
+          "info": {
+            "name": "Lean Get Scheduled Payments",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api2.leantech.me/data/v2/accounts/:account_id/scheduled-payments",
+            "headers": [
+              {
+                "name": "entity_id",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "account_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Lean Get Scheduled Payments"
+        },
+        {
+          "info": {
+            "name": "Lean Get Standing Orders",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api2.leantech.me/data/v2/accounts/:account_id/standing-orders",
+            "headers": [
+              {
+                "name": "entity_id",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "account_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Lean Get Standing Orders"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Transactions",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Lean Get Transactions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api2.leantech.me/data/v2/accounts/:account_id/transactions",
+            "headers": [
+              {
+                "name": "entity_id",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "account_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "start_date",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "end_date",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Lean Get Transactions"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Balances",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Lean Get Balances",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api2.leantech.me/data/v2/accounts/:account_id/balances",
+            "headers": [
+              {
+                "name": "entity_id",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "account_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Lean Get Balances"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Identity",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Lean Get Account Identities",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api2.leantech.me/data/v2/accounts/:account_id/identities",
+            "headers": [
+              {
+                "name": "entity_id",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "account_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Lean Get Account Identities"
+        },
+        {
+          "info": {
+            "name": "Lean Get Identity",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api2.leantech.me/data/v2/identity",
+            "headers": [
+              {
+                "name": "entity_id",
+                "value": ""
+              }
+            ]
+          },
+          "docs": "Lean Get Identity"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Refreshes",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Lean Get Data Refreshes",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api2.leantech.me/data/v2/refreshes",
+            "headers": [
+              {
+                "name": "entity_id",
+                "value": ""
+              }
+            ]
+          },
+          "docs": "Lean Get Data Refreshes"
+        },
+        {
+          "info": {
+            "name": "Lean Trigger Manual Data Refresh",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api2.leantech.me/data/v2/refreshes",
+            "headers": [
+              {
+                "name": "entity_id",
+                "value": ""
+              }
+            ]
+          },
+          "docs": "Lean Trigger Manual Data Refresh"
+        },
+        {
+          "info": {
+            "name": "Lean Get Data Refresh Status",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api2.leantech.me/data/v2/refreshes/:refresh_id",
+            "headers": [
+              {
+                "name": "entity_id",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "refresh_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Lean Get Data Refresh Status"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

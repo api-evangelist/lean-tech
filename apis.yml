@@ -242,13 +242,13 @@ common:
     type: PostmanCollection
   - url: https://github.com/leantechnologies/link-sdk-react-native
     name: LinkSDK - React Native
-    type: SDK
+    type: SDKs
   - url: https://github.com/leantechnologies/link-sdk-ios-distribution
     name: LinkSDK - iOS
-    type: SDK
+    type: SDKs
   - url: https://github.com/leantechnologies/link-sdk-flutter
     name: LinkSDK - Flutter
-    type: SDK
+    type: SDKs
   - url: https://github.com/leantechnologies/integration-snippets
     name: Integration Snippets
     type: SampleCode

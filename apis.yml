@@ -211,6 +211,14 @@ kind: contract
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
 access: 3rd-Party
 common:
+  - type: TrustCenter
+    url: security/lean-tech-trust-center.yml
+  - type: VulnerabilityDisclosure
+    url: security/lean-tech-vulnerability-disclosure.yml
+  - type: DomainSecurity
+    url: security/lean-tech-domain-security.yml
+  - type: Authentication
+    url: authentication/lean-tech-authentication.yml
   - type: LinkedIn
     url: https://www.linkedin.com/company/leantech
   - url: https://www.leantech.me
@@ -262,6 +270,8 @@ common:
     type: Vocabulary
   - url: rules/lean-tech-rules.yml
     type: SpectralRules
+  - url: https://www.leantech.me/uae/en/blog
+    type: Blog
 maintainers:
   - FN: API Evangelist
     email: info@apievangelist.com

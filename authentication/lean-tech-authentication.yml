@@ -1,0 +1,25 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/lean-banks-api-openapi.yml, openapi/lean-customers-api-openapi.yml, openapi/lean-data-api-openapi.yml,
+  openapi/lean-entities-api-openapi.yml, openapi/lean-insights-api-openapi.yml, openapi/lean-payment-sources-api-openapi.yml,
+  openapi/lean-payments-api-openapi.yml, openapi/lean-payouts-api-openapi.yml, openapi/lean-refunds-api-openapi.yml,
+  openapi/lean-verifications-api-openapi.yml
+summary:
+  types:
+  - http
+schemes:
+- name: BearerAuth
+  type: http
+  scheme: bearer
+  bearerFormat: JWT
+  sources:
+  - openapi/lean-banks-api-openapi.yml
+  - openapi/lean-customers-api-openapi.yml
+  - openapi/lean-data-api-openapi.yml
+  - openapi/lean-entities-api-openapi.yml
+  - openapi/lean-insights-api-openapi.yml
+  - openapi/lean-payment-sources-api-openapi.yml
+  - openapi/lean-payments-api-openapi.yml
+  - openapi/lean-payouts-api-openapi.yml
+  - openapi/lean-refunds-api-openapi.yml
+  - openapi/lean-verifications-api-openapi.yml

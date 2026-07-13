@@ -1,0 +1,14 @@
+{
+  "repo": "lean-tech",
+  "feeds": [
+    {
+      "source": "https://www.leantech.me/uae/en/blog",
+      "feed_url": "https://www.leantech.me/uae/en/blog",
+      "title": "",
+      "saved": 0,
+      "method": "none"
+    }
+  ],
+  "fetched": "2026-07-11T11:50:51Z",
+  "post_count": 6
+}

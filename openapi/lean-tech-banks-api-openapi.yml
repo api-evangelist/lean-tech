@@ -1,0 +1,81 @@
+openapi: 3.1.0
+info:
+  title: Lean Authentication Account on File Banks API
+  description: 'OAuth 2.0 client-credentials token issuance for Lean APIs. Generates two classes of JWT access token: (1) scope=api for server-to-server backend calls, and (2) scope=customer.<customer_id> for the LinkSDK to act on behalf of an end-user. All tokens must be generated from a secure backend using credentials issued in the Lean Application Dashboard.
+
+    '
+  version: '1.0'
+  contact:
+    name: Lean Support
+    url: https://help.leantech.me
+  license:
+    name: Lean Terms of Service
+    url: https://www.leantech.me
+servers:
+- url: https://auth.leantech.me
+  description: Production
+- url: https://auth.sandbox.ae.leantech.me
+  description: Sandbox - UAE
+- url: https://auth.sandbox.sa.leantech.me
+  description: Sandbox - KSA
+tags:
+- name: Banks
+paths:
+  /banks/v1/:
+    get:
+      summary: Lean List Banks
+      operationId: listBanks
+      tags:
+      - Banks
+      parameters:
+      - name: country
+        in: query
+        schema:
+          type: string
+          enum:
+          - AE
+          - SA
+      - name: capability
+        in: query
+        schema:
+          type: string
+          enum:
+          - data
+          - payments
+          - payouts
+      responses:
+        '200':
+          description: List of supported banks
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Bank'
+components:
+  schemas:
+    Bank:
+      type: object
+      properties:
+        identifier:
+          type: string
+        name:
+          type: string
+        country:
+          type: string
+        logo:
+          type: string
+          format: uri
+        supported_account_types:
+          type: array
+          items:
+            type: string
+        capabilities:
+          type: array
+          items:
+            type: string
+            enum:
+            - data
+            - payments
+            - payouts
+            - aof

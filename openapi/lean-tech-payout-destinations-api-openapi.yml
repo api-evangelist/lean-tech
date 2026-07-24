@@ -1,0 +1,81 @@
+openapi: 3.1.0
+info:
+  title: Lean Authentication Account on File Payout Destinations API
+  description: 'OAuth 2.0 client-credentials token issuance for Lean APIs. Generates two classes of JWT access token: (1) scope=api for server-to-server backend calls, and (2) scope=customer.<customer_id> for the LinkSDK to act on behalf of an end-user. All tokens must be generated from a secure backend using credentials issued in the Lean Application Dashboard.
+
+    '
+  version: '1.0'
+  contact:
+    name: Lean Support
+    url: https://help.leantech.me
+  license:
+    name: Lean Terms of Service
+    url: https://www.leantech.me
+servers:
+- url: https://auth.leantech.me
+  description: Production
+- url: https://auth.sandbox.ae.leantech.me
+  description: Sandbox - UAE
+- url: https://auth.sandbox.sa.leantech.me
+  description: Sandbox - KSA
+tags:
+- name: Payout Destinations
+paths:
+  /payouts/v1/payment/destinations:
+    post:
+      summary: Lean Create Payout Destination
+      operationId: createPayoutDestination
+      tags:
+      - Payout Destinations
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PayoutDestinationRequest'
+      responses:
+        '201':
+          description: Destination created
+    get:
+      summary: Lean List Payout Destinations
+      operationId: listPayoutDestinations
+      tags:
+      - Payout Destinations
+      responses:
+        '200':
+          description: Destinations
+  /payouts/v1/payment/destinations/{destination_id}:
+    get:
+      summary: Lean Get Payout Destination
+      operationId: getPayoutDestination
+      tags:
+      - Payout Destinations
+      parameters:
+      - name: destination_id
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      responses:
+        '200':
+          description: Destination
+components:
+  schemas:
+    PayoutDestinationRequest:
+      type: object
+      required:
+      - beneficiary_name
+      properties:
+        beneficiary_name:
+          type: string
+        iban:
+          type: string
+        account_number:
+          type: string
+        bank_code:
+          type: string
+        country:
+          type: string
+        currency:
+          type: string

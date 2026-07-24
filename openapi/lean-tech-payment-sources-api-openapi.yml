@@ -1,30 +1,34 @@
 openapi: 3.1.0
 info:
-  title: Lean Payment Sources API
-  description: >
-    Tokenized representation of a customer's funding bank account once it
-    has been linked through an Account-on-File consent. Payment sources can
-    be re-used for repeat charges without re-prompting the customer for
-    bank authentication.
+  title: Lean Authentication Account on File Payment Sources API
+  description: 'OAuth 2.0 client-credentials token issuance for Lean APIs. Generates two classes of JWT access token: (1) scope=api for server-to-server backend calls, and (2) scope=customer.<customer_id> for the LinkSDK to act on behalf of an end-user. All tokens must be generated from a secure backend using credentials issued in the Lean Application Dashboard.
+
+    '
   version: '1.0'
   contact:
     name: Lean Support
     url: https://help.leantech.me
+  license:
+    name: Lean Terms of Service
+    url: https://www.leantech.me
 servers:
-  - url: https://api2.leantech.me
-    description: Production
-security:
-  - BearerAuth: []
+- url: https://auth.leantech.me
+  description: Production
+- url: https://auth.sandbox.ae.leantech.me
+  description: Sandbox - UAE
+- url: https://auth.sandbox.sa.leantech.me
+  description: Sandbox - KSA
 tags:
-  - name: Payment Sources
+- name: Payment Sources
 paths:
   /customers/v1/{customer_id}/payment-sources:
     get:
       summary: Lean List Customer Payment Sources
       operationId: listCustomerPaymentSources
-      tags: [Payment Sources]
+      tags:
+      - Payment Sources
       parameters:
-        - $ref: '#/components/parameters/CustomerId'
+      - $ref: '#/components/parameters/CustomerId'
       responses:
         '200':
           description: Payment sources
@@ -38,10 +42,11 @@ paths:
     get:
       summary: Lean Get Payment Source By Id
       operationId: getPaymentSourceById
-      tags: [Payment Sources]
+      tags:
+      - Payment Sources
       parameters:
-        - $ref: '#/components/parameters/CustomerId'
-        - $ref: '#/components/parameters/PaymentSourceId'
+      - $ref: '#/components/parameters/CustomerId'
+      - $ref: '#/components/parameters/PaymentSourceId'
       responses:
         '200':
           description: Payment source
@@ -52,10 +57,11 @@ paths:
     delete:
       summary: Lean Delete Payment Source
       operationId: deletePaymentSource
-      tags: [Payment Sources]
+      tags:
+      - Payment Sources
       parameters:
-        - $ref: '#/components/parameters/CustomerId'
-        - $ref: '#/components/parameters/PaymentSourceId'
+      - $ref: '#/components/parameters/CustomerId'
+      - $ref: '#/components/parameters/PaymentSourceId'
       responses:
         '204':
           description: Deleted
@@ -75,11 +81,6 @@ components:
       schema:
         type: string
         format: uuid
-  securitySchemes:
-    BearerAuth:
-      type: http
-      scheme: bearer
-      bearerFormat: JWT
   schemas:
     PaymentSource:
       type: object
@@ -101,7 +102,10 @@ components:
           type: string
         status:
           type: string
-          enum: [ACTIVE, EXPIRED, REVOKED]
+          enum:
+          - ACTIVE
+          - EXPIRED
+          - REVOKED
         created_at:
           type: string
           format: date-time

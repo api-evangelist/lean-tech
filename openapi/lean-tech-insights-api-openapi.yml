@@ -1,29 +1,34 @@
 openapi: 3.1.0
 info:
-  title: Lean Insights API
-  description: >
-    Derived analytics over an entity's transaction history. Income detection,
-    expense categorisation, and cashflow summaries used for underwriting,
-    affordability, and personal financial management use cases.
-  version: '2.0'
+  title: Lean Authentication Account on File Insights API
+  description: 'OAuth 2.0 client-credentials token issuance for Lean APIs. Generates two classes of JWT access token: (1) scope=api for server-to-server backend calls, and (2) scope=customer.<customer_id> for the LinkSDK to act on behalf of an end-user. All tokens must be generated from a secure backend using credentials issued in the Lean Application Dashboard.
+
+    '
+  version: '1.0'
   contact:
     name: Lean Support
     url: https://help.leantech.me
+  license:
+    name: Lean Terms of Service
+    url: https://www.leantech.me
 servers:
-  - url: https://api2.leantech.me
-    description: Production
-security:
-  - BearerAuth: []
+- url: https://auth.leantech.me
+  description: Production
+- url: https://auth.sandbox.ae.leantech.me
+  description: Sandbox - UAE
+- url: https://auth.sandbox.sa.leantech.me
+  description: Sandbox - KSA
 tags:
-  - name: Insights
+- name: Insights
 paths:
   /insights/v2/income:
     post:
       summary: Lean Compute Income
       operationId: computeIncome
-      tags: [Insights]
+      tags:
+      - Insights
       parameters:
-        - $ref: '#/components/parameters/EntityIdHeader'
+      - $ref: '#/components/parameters/EntityIdHeader'
       requestBody:
         required: false
         content:
@@ -44,9 +49,10 @@ paths:
     get:
       summary: Lean Get Expenses
       operationId: getExpenses
-      tags: [Insights]
+      tags:
+      - Insights
       parameters:
-        - $ref: '#/components/parameters/EntityIdHeader'
+      - $ref: '#/components/parameters/EntityIdHeader'
       responses:
         '200':
           description: Expenses analysis
@@ -54,9 +60,10 @@ paths:
     get:
       summary: Lean Get Cashflows
       operationId: getCashflows
-      tags: [Insights]
+      tags:
+      - Insights
       parameters:
-        - $ref: '#/components/parameters/EntityIdHeader'
+      - $ref: '#/components/parameters/EntityIdHeader'
       responses:
         '200':
           description: Cashflows analysis
@@ -69,8 +76,3 @@ components:
       schema:
         type: string
         format: uuid
-  securitySchemes:
-    BearerAuth:
-      type: http
-      scheme: bearer
-      bearerFormat: JWT

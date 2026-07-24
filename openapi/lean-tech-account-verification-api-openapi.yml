@@ -1,0 +1,80 @@
+openapi: 3.1.0
+info:
+  title: Lean Authentication Account on File Account Verification API
+  description: 'OAuth 2.0 client-credentials token issuance for Lean APIs. Generates two classes of JWT access token: (1) scope=api for server-to-server backend calls, and (2) scope=customer.<customer_id> for the LinkSDK to act on behalf of an end-user. All tokens must be generated from a secure backend using credentials issued in the Lean Application Dashboard.
+
+    '
+  version: '1.0'
+  contact:
+    name: Lean Support
+    url: https://help.leantech.me
+  license:
+    name: Lean Terms of Service
+    url: https://www.leantech.me
+servers:
+- url: https://auth.leantech.me
+  description: Production
+- url: https://auth.sandbox.ae.leantech.me
+  description: Sandbox - UAE
+- url: https://auth.sandbox.sa.leantech.me
+  description: Sandbox - KSA
+tags:
+- name: Account Verification
+paths:
+  /verifications/v1/accounts:
+    post:
+      summary: Lean Verify Account
+      description: 'Verify a bank account in one of 27+ supported countries. The request payload differs per country to accommodate local identifier formats (IBAN, sort-code/account-number, CLABE, etc.). Supported country codes include AE, SA, AR, BD, BE, BR, CN, FR, ID, IN, IT, KR, MX, NG, NL, NP, PK, PL, UG, GB, US, VN, MY, UY, PE, TR, and ZA.
+
+        '
+      operationId: verifyAccount
+      tags:
+      - Account Verification
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AccountVerificationRequest'
+      responses:
+        '200':
+          description: Verification result
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AccountVerificationResponse'
+components:
+  schemas:
+    AccountVerificationRequest:
+      type: object
+      required:
+      - country
+      properties:
+        country:
+          type: string
+          description: ISO 3166-1 alpha-2 country code.
+        iban:
+          type: string
+        account_number:
+          type: string
+        bank_code:
+          type: string
+        branch_code:
+          type: string
+        beneficiary_name:
+          type: string
+    AccountVerificationResponse:
+      type: object
+      properties:
+        verified:
+          type: boolean
+        match_strength:
+          type: string
+          enum:
+          - FULL
+          - PARTIAL
+          - NONE
+        bank_name:
+          type: string
+        account_holder:
+          type: string

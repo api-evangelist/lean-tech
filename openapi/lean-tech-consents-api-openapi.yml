@@ -1,0 +1,108 @@
+openapi: 3.1.0
+info:
+  title: Lean Authentication Account on File Consents API
+  description: 'OAuth 2.0 client-credentials token issuance for Lean APIs. Generates two classes of JWT access token: (1) scope=api for server-to-server backend calls, and (2) scope=customer.<customer_id> for the LinkSDK to act on behalf of an end-user. All tokens must be generated from a secure backend using credentials issued in the Lean Application Dashboard.
+
+    '
+  version: '1.0'
+  contact:
+    name: Lean Support
+    url: https://help.leantech.me
+  license:
+    name: Lean Terms of Service
+    url: https://www.leantech.me
+servers:
+- url: https://auth.leantech.me
+  description: Production
+- url: https://auth.sandbox.ae.leantech.me
+  description: Sandbox - UAE
+- url: https://auth.sandbox.sa.leantech.me
+  description: Sandbox - KSA
+tags:
+- name: Consents
+paths:
+  /consents/account-on-file:
+    post:
+      summary: Lean Create Aof Consent
+      operationId: createAofConsent
+      tags:
+      - Consents
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                customer_id:
+                  type: string
+                  format: uuid
+                bank_identifier:
+                  type: string
+                max_amount:
+                  type: number
+                currency:
+                  type: string
+                expires_at:
+                  type: string
+                  format: date-time
+      responses:
+        '201':
+          description: Consent created
+  /consents/v1:
+    get:
+      summary: Lean List Customer Consents
+      operationId: listCustomerConsents
+      tags:
+      - Consents
+      parameters:
+      - name: customer_id
+        in: query
+        schema:
+          type: string
+          format: uuid
+      responses:
+        '200':
+          description: Consents
+  /consents/{consent_id}:
+    get:
+      summary: Lean Get Consent Details
+      operationId: getConsentDetails
+      tags:
+      - Consents
+      parameters:
+      - $ref: '#/components/parameters/ConsentId'
+      responses:
+        '200':
+          description: Consent
+  /consents/{consent_id}/balance:
+    get:
+      summary: Lean Fetch Consent Balance
+      operationId: fetchConsentBalance
+      tags:
+      - Consents
+      parameters:
+      - $ref: '#/components/parameters/ConsentId'
+      responses:
+        '200':
+          description: Consent balance
+  /consents/{consent_id}/history:
+    get:
+      summary: Lean Get Consent History
+      operationId: getConsentHistory
+      tags:
+      - Consents
+      parameters:
+      - $ref: '#/components/parameters/ConsentId'
+      responses:
+        '200':
+          description: Consent history
+components:
+  parameters:
+    ConsentId:
+      name: consent_id
+      in: path
+      required: true
+      schema:
+        type: string
+        format: uuid

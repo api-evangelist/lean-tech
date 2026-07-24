@@ -1,34 +1,40 @@
 openapi: 3.1.0
 info:
-  title: Lean Refunds API
-  description: >
-    Issue full or partial refunds against prior Pay by Bank payments. List
-    refunds, create a refund, process queued refunds, and retrieve the
-    canonical list of refund reason codes.
+  title: Lean Authentication Account on File Refunds API
+  description: 'OAuth 2.0 client-credentials token issuance for Lean APIs. Generates two classes of JWT access token: (1) scope=api for server-to-server backend calls, and (2) scope=customer.<customer_id> for the LinkSDK to act on behalf of an end-user. All tokens must be generated from a secure backend using credentials issued in the Lean Application Dashboard.
+
+    '
   version: '1.0'
   contact:
     name: Lean Support
     url: https://help.leantech.me
+  license:
+    name: Lean Terms of Service
+    url: https://www.leantech.me
 servers:
-  - url: https://api2.leantech.me
-    description: Production
-security:
-  - BearerAuth: []
+- url: https://auth.leantech.me
+  description: Production
+- url: https://auth.sandbox.ae.leantech.me
+  description: Sandbox - UAE
+- url: https://auth.sandbox.sa.leantech.me
+  description: Sandbox - KSA
 tags:
-  - name: Refunds
+- name: Refunds
 paths:
   /payouts/refunds:
     get:
       summary: Lean List Refunds
       operationId: listRefunds
-      tags: [Refunds]
+      tags:
+      - Refunds
       responses:
         '200':
           description: Refunds
     post:
       summary: Lean Create Refund
       operationId: createRefund
-      tags: [Refunds]
+      tags:
+      - Refunds
       requestBody:
         required: true
         content:
@@ -41,7 +47,8 @@ paths:
     put:
       summary: Lean Process Refunds
       operationId: processRefunds
-      tags: [Refunds]
+      tags:
+      - Refunds
       responses:
         '200':
           description: Refunds processed
@@ -49,7 +56,8 @@ paths:
     get:
       summary: Lean Get Refund Reasons
       operationId: getRefundReasons
-      tags: [Refunds]
+      tags:
+      - Refunds
       responses:
         '200':
           description: Refund reasons
@@ -65,15 +73,13 @@ paths:
                     description:
                       type: string
 components:
-  securitySchemes:
-    BearerAuth:
-      type: http
-      scheme: bearer
-      bearerFormat: JWT
   schemas:
     RefundRequest:
       type: object
-      required: [payment_id, amount, reason_code]
+      required:
+      - payment_id
+      - amount
+      - reason_code
       properties:
         payment_id:
           type: string

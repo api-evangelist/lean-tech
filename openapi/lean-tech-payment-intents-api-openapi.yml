@@ -1,0 +1,142 @@
+openapi: 3.1.0
+info:
+  title: Lean Authentication Account on File Payment Intents API
+  description: 'OAuth 2.0 client-credentials token issuance for Lean APIs. Generates two classes of JWT access token: (1) scope=api for server-to-server backend calls, and (2) scope=customer.<customer_id> for the LinkSDK to act on behalf of an end-user. All tokens must be generated from a secure backend using credentials issued in the Lean Application Dashboard.
+
+    '
+  version: '1.0'
+  contact:
+    name: Lean Support
+    url: https://help.leantech.me
+  license:
+    name: Lean Terms of Service
+    url: https://www.leantech.me
+servers:
+- url: https://auth.leantech.me
+  description: Production
+- url: https://auth.sandbox.ae.leantech.me
+  description: Sandbox - UAE
+- url: https://auth.sandbox.sa.leantech.me
+  description: Sandbox - KSA
+tags:
+- name: Payment Intents
+paths:
+  /payments/v1/intents:
+    post:
+      summary: Lean Create Payment Intent
+      operationId: createPaymentIntent
+      tags:
+      - Payment Intents
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PaymentIntentRequest'
+      responses:
+        '201':
+          description: Payment intent created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaymentIntent'
+    get:
+      summary: Lean List Payment Intents
+      operationId: listPaymentIntents
+      tags:
+      - Payment Intents
+      responses:
+        '200':
+          description: Payment intents
+  /payments/v1/intents/{intent_id}:
+    get:
+      summary: Lean Get Payment By Intent Id
+      operationId: getPaymentByIntentId
+      tags:
+      - Payment Intents
+      parameters:
+      - name: intent_id
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      responses:
+        '200':
+          description: Payment intent
+  /payments/v1/{payment_id}:
+    get:
+      summary: Lean Get Payment By Payment Id
+      operationId: getPaymentByPaymentId
+      tags:
+      - Payment Intents
+      parameters:
+      - name: payment_id
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      responses:
+        '200':
+          description: Payment
+components:
+  schemas:
+    PaymentIntent:
+      type: object
+      properties:
+        intent_id:
+          type: string
+          format: uuid
+        status:
+          type: string
+          enum:
+          - PENDING
+          - AWAITING_AUTHORIZATION
+          - COMPLETED
+          - FAILED
+          - CANCELLED
+        amount:
+          type: number
+        currency:
+          type: string
+        created_at:
+          type: string
+          format: date-time
+        link_url:
+          type: string
+          format: uri
+    PaymentIntentRequest:
+      type: object
+      required:
+      - amount
+      - currency
+      - beneficiary
+      properties:
+        amount:
+          type: number
+        currency:
+          type: string
+          enum:
+          - AED
+          - SAR
+        description:
+          type: string
+        reference:
+          type: string
+        customer_id:
+          type: string
+          format: uuid
+        beneficiary:
+          type: object
+          properties:
+            name:
+              type: string
+            iban:
+              type: string
+            account_number:
+              type: string
+        creditor_reference:
+          type: string
+        idempotency_key:
+          type: string

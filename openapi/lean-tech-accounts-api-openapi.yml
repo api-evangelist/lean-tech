@@ -1,0 +1,127 @@
+openapi: 3.1.0
+info:
+  title: Lean Authentication Account on File Accounts API
+  description: 'OAuth 2.0 client-credentials token issuance for Lean APIs. Generates two classes of JWT access token: (1) scope=api for server-to-server backend calls, and (2) scope=customer.<customer_id> for the LinkSDK to act on behalf of an end-user. All tokens must be generated from a secure backend using credentials issued in the Lean Application Dashboard.
+
+    '
+  version: '1.0'
+  contact:
+    name: Lean Support
+    url: https://help.leantech.me
+  license:
+    name: Lean Terms of Service
+    url: https://www.leantech.me
+servers:
+- url: https://auth.leantech.me
+  description: Production
+- url: https://auth.sandbox.ae.leantech.me
+  description: Sandbox - UAE
+- url: https://auth.sandbox.sa.leantech.me
+  description: Sandbox - KSA
+tags:
+- name: Accounts
+paths:
+  /data/v2/accounts:
+    get:
+      summary: Lean Get Accounts
+      operationId: getAccounts
+      tags:
+      - Accounts
+      parameters:
+      - $ref: '#/components/parameters/EntityIdHeader'
+      responses:
+        '200':
+          description: Accounts list
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Account'
+  /data/v2/accounts/{account_id}/beneficiaries:
+    get:
+      summary: Lean Get Beneficiaries
+      operationId: getBeneficiaries
+      tags:
+      - Accounts
+      parameters:
+      - $ref: '#/components/parameters/AccountId'
+      - $ref: '#/components/parameters/EntityIdHeader'
+      responses:
+        '200':
+          description: Beneficiaries
+  /data/v2/accounts/{account_id}/direct-debits:
+    get:
+      summary: Lean Get Direct Debits
+      operationId: getDirectDebits
+      tags:
+      - Accounts
+      parameters:
+      - $ref: '#/components/parameters/AccountId'
+      - $ref: '#/components/parameters/EntityIdHeader'
+      responses:
+        '200':
+          description: Direct debits
+  /data/v2/accounts/{account_id}/scheduled-payments:
+    get:
+      summary: Lean Get Scheduled Payments
+      operationId: getScheduledPayments
+      tags:
+      - Accounts
+      parameters:
+      - $ref: '#/components/parameters/AccountId'
+      - $ref: '#/components/parameters/EntityIdHeader'
+      responses:
+        '200':
+          description: Scheduled payments
+  /data/v2/accounts/{account_id}/standing-orders:
+    get:
+      summary: Lean Get Standing Orders
+      operationId: getStandingOrders
+      tags:
+      - Accounts
+      parameters:
+      - $ref: '#/components/parameters/AccountId'
+      - $ref: '#/components/parameters/EntityIdHeader'
+      responses:
+        '200':
+          description: Standing orders
+components:
+  parameters:
+    EntityIdHeader:
+      name: entity_id
+      in: header
+      required: true
+      schema:
+        type: string
+        format: uuid
+      description: Lean entity identifier returned after a successful LinkSDK consent.
+    AccountId:
+      name: account_id
+      in: path
+      required: true
+      schema:
+        type: string
+  schemas:
+    Account:
+      type: object
+      properties:
+        account_id:
+          type: string
+        name:
+          type: string
+        type:
+          type: string
+          enum:
+          - CURRENT
+          - SAVINGS
+          - CREDIT_CARD
+          - LOAN
+        currency:
+          type: string
+        iban:
+          type: string
+        account_number:
+          type: string
+        bic:
+          type: string

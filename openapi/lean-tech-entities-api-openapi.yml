@@ -1,30 +1,34 @@
 openapi: 3.1.0
 info:
-  title: Lean Entities API
-  description: >
-    Entities represent a customer's authenticated connection to a single
-    bank, returned after a successful LinkSDK consent. Each entity carries
-    the permissions granted (accounts, transactions, identity, balance) and
-    is the handle used in Data API calls.
+  title: Lean Authentication Account on File Entities API
+  description: 'OAuth 2.0 client-credentials token issuance for Lean APIs. Generates two classes of JWT access token: (1) scope=api for server-to-server backend calls, and (2) scope=customer.<customer_id> for the LinkSDK to act on behalf of an end-user. All tokens must be generated from a secure backend using credentials issued in the Lean Application Dashboard.
+
+    '
   version: '1.0'
   contact:
     name: Lean Support
     url: https://help.leantech.me
+  license:
+    name: Lean Terms of Service
+    url: https://www.leantech.me
 servers:
-  - url: https://api2.leantech.me
-    description: Production
-security:
-  - BearerAuth: []
+- url: https://auth.leantech.me
+  description: Production
+- url: https://auth.sandbox.ae.leantech.me
+  description: Sandbox - UAE
+- url: https://auth.sandbox.sa.leantech.me
+  description: Sandbox - KSA
 tags:
-  - name: Entities
+- name: Entities
 paths:
   /customers/v1/{customer_id}/entities:
     get:
       summary: Lean Get Entities For Customer
       operationId: getEntitiesForCustomer
-      tags: [Entities]
+      tags:
+      - Entities
       parameters:
-        - $ref: '#/components/parameters/CustomerId'
+      - $ref: '#/components/parameters/CustomerId'
       responses:
         '200':
           description: Entities for customer
@@ -38,15 +42,16 @@ paths:
     get:
       summary: Lean Get Entity By Id
       operationId: getEntityById
-      tags: [Entities]
+      tags:
+      - Entities
       parameters:
-        - $ref: '#/components/parameters/CustomerId'
-        - name: entity_id
-          in: path
-          required: true
-          schema:
-            type: string
-            format: uuid
+      - $ref: '#/components/parameters/CustomerId'
+      - name: entity_id
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
       responses:
         '200':
           description: Entity
@@ -58,18 +63,19 @@ paths:
     get:
       summary: Lean Retrieve All Entities For Date Range
       operationId: retrieveEntitiesForDateRange
-      tags: [Entities]
+      tags:
+      - Entities
       parameters:
-        - name: start_date
-          in: query
-          schema:
-            type: string
-            format: date
-        - name: end_date
-          in: query
-          schema:
-            type: string
-            format: date
+      - name: start_date
+        in: query
+        schema:
+          type: string
+          format: date
+      - name: end_date
+        in: query
+        schema:
+          type: string
+          format: date
       responses:
         '200':
           description: Entities
@@ -88,11 +94,6 @@ components:
       schema:
         type: string
         format: uuid
-  securitySchemes:
-    BearerAuth:
-      type: http
-      scheme: bearer
-      bearerFormat: JWT
   schemas:
     Entity:
       type: object
@@ -110,14 +111,14 @@ components:
           items:
             type: string
             enum:
-              - accounts
-              - balance
-              - transactions
-              - identity
-              - direct_debits
-              - standing_orders
-              - scheduled_payments
-              - beneficiaries
+            - accounts
+            - balance
+            - transactions
+            - identity
+            - direct_debits
+            - standing_orders
+            - scheduled_payments
+            - beneficiaries
         created_at:
           type: string
           format: date-time

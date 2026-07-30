@@ -1,197 +1,825 @@
 aid: lean-tech
 url: https://raw.githubusercontent.com/api-evangelist/lean-tech/refs/heads/main/apis.yml
 apis:
-  - aid: lean-tech:lean-authentication-api
-    name: Lean Authentication API
-    tags:
-      - Authentication
-      - OAuth
-      - Open Banking
-    humanURL: https://docs.leantech.me/docs/authentication
-    properties:
-      - url: https://docs.leantech.me/docs/authentication
-        type: Documentation
-      - url: openapi/lean-authentication-api-openapi.yml
-        type: OpenAPI
-    description: >-
-      OAuth 2.0 client-credentials token issuance for Lean APIs. Generates API access tokens (scope=api) for
-      server-to-server calls and customer-scoped access tokens (scope=customer.<customer_id>) for the LinkSDK.
-      Production auth endpoint is auth.leantech.me; sandbox endpoints are regional (auth.sandbox.sa.leantech.me,
-      auth.sandbox.ae.leantech.me).
-  - aid: lean-tech:lean-customers-api
-    name: Lean Customers API
-    tags:
-      - Customers
-      - Open Banking
-      - End Users
-    humanURL: https://docs.leantech.me/reference/customers
-    properties:
-      - url: https://docs.leantech.me/reference/customers
-        type: Documentation
-      - url: openapi/lean-customers-api-openapi.yml
-        type: OpenAPI
-      - url: json-schema/lean-customer-schema.json
-        type: JSONSchema
-    description: >-
-      Manage end-user customer records that Lean uses to anchor data and payment consents. Create customers with an
-      app_user_id, list customers, and retrieve a customer by ID or by app_user_id.
-  - aid: lean-tech:lean-entities-api
-    name: Lean Entities API
-    tags:
-      - Entities
-      - Open Banking
-      - Consents
-    humanURL: https://docs.leantech.me/reference/entities
-    properties:
-      - url: https://docs.leantech.me/reference/entities
-        type: Documentation
-      - url: openapi/lean-entities-api-openapi.yml
-        type: OpenAPI
-    description: >-
-      Entities represent a customer's authenticated connection to a single bank, returned after a successful LinkSDK
-      consent. List entities for a customer, retrieve a single entity by ID, or query entities across a date range.
-  - aid: lean-tech:lean-data-api
-    name: Lean Data API
-    tags:
-      - Open Banking
-      - Account Information
-      - Transactions
-      - Balances
-      - Identity
-    humanURL: https://docs.leantech.me/reference/data-api
-    properties:
-      - url: https://docs.leantech.me/reference/data-api
-        type: Documentation
-      - url: openapi/lean-data-api-openapi.yml
-        type: OpenAPI
-      - url: json-schema/lean-account-schema.json
-        type: JSONSchema
-      - url: json-schema/lean-transaction-schema.json
-        type: JSONSchema
-      - url: json-ld/lean-tech-context.jsonld
-        type: JSONLD
-    description: >-
-      Raw bank-account data retrieval (v2) returning accounts, transactions, balances, beneficiaries, standing orders,
-      scheduled payments, direct debits, and identity, plus manual data refresh triggers and refresh status. Available
-      after an Account Information consent has been collected via the LinkSDK.
-  - aid: lean-tech:lean-insights-api
-    name: Lean Insights API
-    tags:
-      - Open Banking
-      - Insights
-      - Income
-      - Expenses
-      - Cashflows
-    humanURL: https://docs.leantech.me/reference/insights
-    properties:
-      - url: https://docs.leantech.me/reference/insights
-        type: Documentation
-      - url: openapi/lean-insights-api-openapi.yml
-        type: OpenAPI
-    description: >-
-      Derived analytics over an entity's transaction history — income detection, expense categorisation, and cashflow
-      summaries — for underwriting, affordability, and BFM use cases.
-  - aid: lean-tech:lean-banks-api
-    name: Lean Banks API
-    tags:
-      - Open Banking
-      - Banks
-      - Coverage
-    humanURL: https://docs.leantech.me/reference/banks
-    properties:
-      - url: https://docs.leantech.me/reference/banks
-        type: Documentation
-      - url: openapi/lean-banks-api-openapi.yml
-        type: OpenAPI
-    description: >-
-      List the banks Lean currently supports for Data and Payments per region, including identifiers, logos, and
-      supported product surfaces (AIS, PIS, AOF, payouts).
-  - aid: lean-tech:lean-verifications-api
-    name: Lean Verifications API
-    tags:
-      - Verifications
-      - Account Verification
-      - Name Verification
-      - KYC
-    humanURL: https://docs.leantech.me/reference/verifications
-    properties:
-      - url: https://docs.leantech.me/reference/verifications
-        type: Documentation
-      - url: openapi/lean-verifications-api-openapi.yml
-        type: OpenAPI
-    description: >-
-      Account Verification confirms ownership and validity of a bank account by IBAN or local account number across 27+
-      countries (UAE, KSA, GB, US, EU, BR, IN, ID, NG, ZA, and more). Name Verification compares a supplied name against
-      a payee record. Used for fraud reduction, payout pre-checks, and Confirmation of Payee.
-  - aid: lean-tech:lean-payments-api
-    name: Lean Payments API
-    tags:
-      - Open Banking
-      - Payments
-      - Pay by Bank
-      - PIS
-      - A2A
-    humanURL: https://docs.leantech.me/reference/payments
-    properties:
-      - url: https://docs.leantech.me/reference/payments
-        type: Documentation
-      - url: openapi/lean-payments-api-openapi.yml
-        type: OpenAPI
-      - url: json-schema/lean-payment-intent-schema.json
-        type: JSONSchema
-    description: >-
-      Single Instant Payment ("Pay by Bank") and Account-on-File (AOF) payment initiation, plus consent management.
-      Create payment intents, retrieve payments by intent or payment id, list payment intents, and manage long-lived AOF
-      consents with balance and history endpoints.
-  - aid: lean-tech:lean-payment-sources-api
-    name: Lean Payment Sources API
-    tags:
-      - Open Banking
-      - Payment Sources
-      - Tokenization
-    humanURL: https://docs.leantech.me/reference/payment-sources
-    properties:
-      - url: https://docs.leantech.me/reference/payment-sources
-        type: Documentation
-      - url: openapi/lean-payment-sources-api-openapi.yml
-        type: OpenAPI
-    description: >-
-      Tokenized representation of a customer's funding bank account once linked. List payment sources for a customer,
-      retrieve a single source by ID, and delete a payment source to revoke its associated AOF consent.
-  - aid: lean-tech:lean-payouts-api
-    name: Lean Payouts API
-    tags:
-      - Open Banking
-      - Payouts
-      - Disbursements
-      - A2A
-    humanURL: https://docs.leantech.me/reference/payouts
-    properties:
-      - url: https://docs.leantech.me/reference/payouts
-        type: Documentation
-      - url: openapi/lean-payouts-api-openapi.yml
-        type: OpenAPI
-      - url: json-schema/lean-payout-schema.json
-        type: JSONSchema
-    description: >-
-      Initiate outbound bank-to-bank payouts from corporate accounts to consumer or business beneficiaries. Create
-      payout payments, list payouts, retrieve a payout intent, get per-payment history, and manage payout destinations
-      (the beneficiary records that receive funds).
-  - aid: lean-tech:lean-refunds-api
-    name: Lean Refunds API
-    tags:
-      - Open Banking
-      - Refunds
-      - Payouts
-    humanURL: https://docs.leantech.me/reference/refunds
-    properties:
-      - url: https://docs.leantech.me/reference/refunds
-        type: Documentation
-      - url: openapi/lean-refunds-api-openapi.yml
-        type: OpenAPI
-    description: >-
-      Issue full or partial refunds against prior Pay by Bank payments. List refunds, create a new refund, process
-      queued refunds, and retrieve the canonical list of refund reason codes.
+- aid: lean-tech:lean-tech-account-on-file-api
+  name: Lean Technologies Account on File API
+  description: The Account on File API from Lean Technologies — 1 operation(s) for account on file.
+  humanURL: https://docs.leantech.me/docs/authentication
+  tags:
+  - Account on File
+  properties:
+  - type: OpenAPI
+    url: openapi/lean-tech-account-on-file-api-openapi.yml
+  - type: Documentation
+    url: https://docs.leantech.me/docs/authentication
+  - type: Documentation
+    url: https://docs.leantech.me/reference/customers
+  - type: JSONSchema
+    url: json-schema/lean-customer-schema.json
+  - type: Documentation
+    url: https://docs.leantech.me/reference/entities
+  - type: Documentation
+    url: https://docs.leantech.me/reference/data-api
+  - type: JSONSchema
+    url: json-schema/lean-account-schema.json
+  - type: JSONSchema
+    url: json-schema/lean-transaction-schema.json
+  - type: JSONLD
+    url: json-ld/lean-tech-context.jsonld
+  - type: Documentation
+    url: https://docs.leantech.me/reference/insights
+  - type: Documentation
+    url: https://docs.leantech.me/reference/banks
+  - type: Documentation
+    url: https://docs.leantech.me/reference/verifications
+  - type: Documentation
+    url: https://docs.leantech.me/reference/payments
+  - type: JSONSchema
+    url: json-schema/lean-payment-intent-schema.json
+  - type: Documentation
+    url: https://docs.leantech.me/reference/payment-sources
+  - type: Documentation
+    url: https://docs.leantech.me/reference/payouts
+  - type: JSONSchema
+    url: json-schema/lean-payout-schema.json
+  - type: Documentation
+    url: https://docs.leantech.me/reference/refunds
+- aid: lean-tech:lean-tech-account-verification-api
+  name: Lean Technologies Account Verification API
+  description: >-
+    The Account Verification API from Lean Technologies — 1 operation(s) for account verification.
+  humanURL: https://docs.leantech.me/docs/authentication
+  tags:
+  - Account Verification
+  properties:
+  - type: OpenAPI
+    url: openapi/lean-tech-account-verification-api-openapi.yml
+  - type: Documentation
+    url: https://docs.leantech.me/docs/authentication
+  - type: Documentation
+    url: https://docs.leantech.me/reference/customers
+  - type: JSONSchema
+    url: json-schema/lean-customer-schema.json
+  - type: Documentation
+    url: https://docs.leantech.me/reference/entities
+  - type: Documentation
+    url: https://docs.leantech.me/reference/data-api
+  - type: JSONSchema
+    url: json-schema/lean-account-schema.json
+  - type: JSONSchema
+    url: json-schema/lean-transaction-schema.json
+  - type: JSONLD
+    url: json-ld/lean-tech-context.jsonld
+  - type: Documentation
+    url: https://docs.leantech.me/reference/insights
+  - type: Documentation
+    url: https://docs.leantech.me/reference/banks
+  - type: Documentation
+    url: https://docs.leantech.me/reference/verifications
+  - type: Documentation
+    url: https://docs.leantech.me/reference/payments
+  - type: JSONSchema
+    url: json-schema/lean-payment-intent-schema.json
+  - type: Documentation
+    url: https://docs.leantech.me/reference/payment-sources
+  - type: Documentation
+    url: https://docs.leantech.me/reference/payouts
+  - type: JSONSchema
+    url: json-schema/lean-payout-schema.json
+  - type: Documentation
+    url: https://docs.leantech.me/reference/refunds
+- aid: lean-tech:lean-tech-accounts-api
+  name: Lean Technologies Accounts API
+  description: The Accounts API from Lean Technologies — 5 operation(s) for accounts.
+  humanURL: https://docs.leantech.me/docs/authentication
+  tags:
+  - Accounts
+  properties:
+  - type: OpenAPI
+    url: openapi/lean-tech-accounts-api-openapi.yml
+  - type: Documentation
+    url: https://docs.leantech.me/docs/authentication
+  - type: Documentation
+    url: https://docs.leantech.me/reference/customers
+  - type: JSONSchema
+    url: json-schema/lean-customer-schema.json
+  - type: Documentation
+    url: https://docs.leantech.me/reference/entities
+  - type: Documentation
+    url: https://docs.leantech.me/reference/data-api
+  - type: JSONSchema
+    url: json-schema/lean-account-schema.json
+  - type: JSONSchema
+    url: json-schema/lean-transaction-schema.json
+  - type: JSONLD
+    url: json-ld/lean-tech-context.jsonld
+  - type: Documentation
+    url: https://docs.leantech.me/reference/insights
+  - type: Documentation
+    url: https://docs.leantech.me/reference/banks
+  - type: Documentation
+    url: https://docs.leantech.me/reference/verifications
+  - type: Documentation
+    url: https://docs.leantech.me/reference/payments
+  - type: JSONSchema
+    url: json-schema/lean-payment-intent-schema.json
+  - type: Documentation
+    url: https://docs.leantech.me/reference/payment-sources
+  - type: Documentation
+    url: https://docs.leantech.me/reference/payouts
+  - type: JSONSchema
+    url: json-schema/lean-payout-schema.json
+  - type: Documentation
+    url: https://docs.leantech.me/reference/refunds
+- aid: lean-tech:lean-tech-authentication-api
+  name: Lean Technologies Authentication API
+  description: OAuth 2.0 client-credentials token issuance
+  humanURL: https://docs.leantech.me/docs/authentication
+  tags:
+  - Authentication
+  properties:
+  - type: OpenAPI
+    url: openapi/lean-tech-authentication-api-openapi.yml
+  - type: Documentation
+    url: https://docs.leantech.me/docs/authentication
+  - type: Documentation
+    url: https://docs.leantech.me/reference/customers
+  - type: JSONSchema
+    url: json-schema/lean-customer-schema.json
+  - type: Documentation
+    url: https://docs.leantech.me/reference/entities
+  - type: Documentation
+    url: https://docs.leantech.me/reference/data-api
+  - type: JSONSchema
+    url: json-schema/lean-account-schema.json
+  - type: JSONSchema
+    url: json-schema/lean-transaction-schema.json
+  - type: JSONLD
+    url: json-ld/lean-tech-context.jsonld
+  - type: Documentation
+    url: https://docs.leantech.me/reference/insights
+  - type: Documentation
+    url: https://docs.leantech.me/reference/banks
+  - type: Documentation
+    url: https://docs.leantech.me/reference/verifications
+  - type: Documentation
+    url: https://docs.leantech.me/reference/payments
+  - type: JSONSchema
+    url: json-schema/lean-payment-intent-schema.json
+  - type: Documentation
+    url: https://docs.leantech.me/reference/payment-sources
+  - type: Documentation
+    url: https://docs.leantech.me/reference/payouts
+  - type: JSONSchema
+    url: json-schema/lean-payout-schema.json
+  - type: Documentation
+    url: https://docs.leantech.me/reference/refunds
+- aid: lean-tech:lean-tech-balances-api
+  name: Lean Technologies Balances API
+  description: The Balances API from Lean Technologies — 1 operation(s) for balances.
+  humanURL: https://docs.leantech.me/docs/authentication
+  tags:
+  - Balances
+  properties:
+  - type: OpenAPI
+    url: openapi/lean-tech-balances-api-openapi.yml
+  - type: Documentation
+    url: https://docs.leantech.me/docs/authentication
+  - type: Documentation
+    url: https://docs.leantech.me/reference/customers
+  - type: JSONSchema
+    url: json-schema/lean-customer-schema.json
+  - type: Documentation
+    url: https://docs.leantech.me/reference/entities
+  - type: Documentation
+    url: https://docs.leantech.me/reference/data-api
+  - type: JSONSchema
+    url: json-schema/lean-account-schema.json
+  - type: JSONSchema
+    url: json-schema/lean-transaction-schema.json
+  - type: JSONLD
+    url: json-ld/lean-tech-context.jsonld
+  - type: Documentation
+    url: https://docs.leantech.me/reference/insights
+  - type: Documentation
+    url: https://docs.leantech.me/reference/banks
+  - type: Documentation
+    url: https://docs.leantech.me/reference/verifications
+  - type: Documentation
+    url: https://docs.leantech.me/reference/payments
+  - type: JSONSchema
+    url: json-schema/lean-payment-intent-schema.json
+  - type: Documentation
+    url: https://docs.leantech.me/reference/payment-sources
+  - type: Documentation
+    url: https://docs.leantech.me/reference/payouts
+  - type: JSONSchema
+    url: json-schema/lean-payout-schema.json
+  - type: Documentation
+    url: https://docs.leantech.me/reference/refunds
+- aid: lean-tech:lean-tech-banks-api
+  name: Lean Technologies Banks API
+  description: The Banks API from Lean Technologies — 1 operation(s) for banks.
+  humanURL: https://docs.leantech.me/docs/authentication
+  tags:
+  - Banks
+  properties:
+  - type: OpenAPI
+    url: openapi/lean-tech-banks-api-openapi.yml
+  - type: Documentation
+    url: https://docs.leantech.me/docs/authentication
+  - type: Documentation
+    url: https://docs.leantech.me/reference/customers
+  - type: JSONSchema
+    url: json-schema/lean-customer-schema.json
+  - type: Documentation
+    url: https://docs.leantech.me/reference/entities
+  - type: Documentation
+    url: https://docs.leantech.me/reference/data-api
+  - type: JSONSchema
+    url: json-schema/lean-account-schema.json
+  - type: JSONSchema
+    url: json-schema/lean-transaction-schema.json
+  - type: JSONLD
+    url: json-ld/lean-tech-context.jsonld
+  - type: Documentation
+    url: https://docs.leantech.me/reference/insights
+  - type: Documentation
+    url: https://docs.leantech.me/reference/banks
+  - type: Documentation
+    url: https://docs.leantech.me/reference/verifications
+  - type: Documentation
+    url: https://docs.leantech.me/reference/payments
+  - type: JSONSchema
+    url: json-schema/lean-payment-intent-schema.json
+  - type: Documentation
+    url: https://docs.leantech.me/reference/payment-sources
+  - type: Documentation
+    url: https://docs.leantech.me/reference/payouts
+  - type: JSONSchema
+    url: json-schema/lean-payout-schema.json
+  - type: Documentation
+    url: https://docs.leantech.me/reference/refunds
+- aid: lean-tech:lean-tech-consents-api
+  name: Lean Technologies Consents API
+  description: The Consents API from Lean Technologies — 5 operation(s) for consents.
+  humanURL: https://docs.leantech.me/docs/authentication
+  tags:
+  - Consents
+  properties:
+  - type: OpenAPI
+    url: openapi/lean-tech-consents-api-openapi.yml
+  - type: Documentation
+    url: https://docs.leantech.me/docs/authentication
+  - type: Documentation
+    url: https://docs.leantech.me/reference/customers
+  - type: JSONSchema
+    url: json-schema/lean-customer-schema.json
+  - type: Documentation
+    url: https://docs.leantech.me/reference/entities
+  - type: Documentation
+    url: https://docs.leantech.me/reference/data-api
+  - type: JSONSchema
+    url: json-schema/lean-account-schema.json
+  - type: JSONSchema
+    url: json-schema/lean-transaction-schema.json
+  - type: JSONLD
+    url: json-ld/lean-tech-context.jsonld
+  - type: Documentation
+    url: https://docs.leantech.me/reference/insights
+  - type: Documentation
+    url: https://docs.leantech.me/reference/banks
+  - type: Documentation
+    url: https://docs.leantech.me/reference/verifications
+  - type: Documentation
+    url: https://docs.leantech.me/reference/payments
+  - type: JSONSchema
+    url: json-schema/lean-payment-intent-schema.json
+  - type: Documentation
+    url: https://docs.leantech.me/reference/payment-sources
+  - type: Documentation
+    url: https://docs.leantech.me/reference/payouts
+  - type: JSONSchema
+    url: json-schema/lean-payout-schema.json
+  - type: Documentation
+    url: https://docs.leantech.me/reference/refunds
+- aid: lean-tech:lean-tech-customers-api
+  name: Lean Technologies Customers API
+  description: The Customers API from Lean Technologies — 3 operation(s) for customers.
+  humanURL: https://docs.leantech.me/docs/authentication
+  tags:
+  - Customers
+  properties:
+  - type: OpenAPI
+    url: openapi/lean-tech-customers-api-openapi.yml
+  - type: Documentation
+    url: https://docs.leantech.me/docs/authentication
+  - type: Documentation
+    url: https://docs.leantech.me/reference/customers
+  - type: JSONSchema
+    url: json-schema/lean-customer-schema.json
+  - type: Documentation
+    url: https://docs.leantech.me/reference/entities
+  - type: Documentation
+    url: https://docs.leantech.me/reference/data-api
+  - type: JSONSchema
+    url: json-schema/lean-account-schema.json
+  - type: JSONSchema
+    url: json-schema/lean-transaction-schema.json
+  - type: JSONLD
+    url: json-ld/lean-tech-context.jsonld
+  - type: Documentation
+    url: https://docs.leantech.me/reference/insights
+  - type: Documentation
+    url: https://docs.leantech.me/reference/banks
+  - type: Documentation
+    url: https://docs.leantech.me/reference/verifications
+  - type: Documentation
+    url: https://docs.leantech.me/reference/payments
+  - type: JSONSchema
+    url: json-schema/lean-payment-intent-schema.json
+  - type: Documentation
+    url: https://docs.leantech.me/reference/payment-sources
+  - type: Documentation
+    url: https://docs.leantech.me/reference/payouts
+  - type: JSONSchema
+    url: json-schema/lean-payout-schema.json
+  - type: Documentation
+    url: https://docs.leantech.me/reference/refunds
+- aid: lean-tech:lean-tech-entities-api
+  name: Lean Technologies Entities API
+  description: The Entities API from Lean Technologies — 3 operation(s) for entities.
+  humanURL: https://docs.leantech.me/docs/authentication
+  tags:
+  - Entities
+  properties:
+  - type: OpenAPI
+    url: openapi/lean-tech-entities-api-openapi.yml
+  - type: Documentation
+    url: https://docs.leantech.me/docs/authentication
+  - type: Documentation
+    url: https://docs.leantech.me/reference/customers
+  - type: JSONSchema
+    url: json-schema/lean-customer-schema.json
+  - type: Documentation
+    url: https://docs.leantech.me/reference/entities
+  - type: Documentation
+    url: https://docs.leantech.me/reference/data-api
+  - type: JSONSchema
+    url: json-schema/lean-account-schema.json
+  - type: JSONSchema
+    url: json-schema/lean-transaction-schema.json
+  - type: JSONLD
+    url: json-ld/lean-tech-context.jsonld
+  - type: Documentation
+    url: https://docs.leantech.me/reference/insights
+  - type: Documentation
+    url: https://docs.leantech.me/reference/banks
+  - type: Documentation
+    url: https://docs.leantech.me/reference/verifications
+  - type: Documentation
+    url: https://docs.leantech.me/reference/payments
+  - type: JSONSchema
+    url: json-schema/lean-payment-intent-schema.json
+  - type: Documentation
+    url: https://docs.leantech.me/reference/payment-sources
+  - type: Documentation
+    url: https://docs.leantech.me/reference/payouts
+  - type: JSONSchema
+    url: json-schema/lean-payout-schema.json
+  - type: Documentation
+    url: https://docs.leantech.me/reference/refunds
+- aid: lean-tech:lean-tech-identity-api
+  name: Lean Technologies Identity API
+  description: The Identity API from Lean Technologies — 2 operation(s) for identity.
+  humanURL: https://docs.leantech.me/docs/authentication
+  tags:
+  - Identity
+  properties:
+  - type: OpenAPI
+    url: openapi/lean-tech-identity-api-openapi.yml
+  - type: Documentation
+    url: https://docs.leantech.me/docs/authentication
+  - type: Documentation
+    url: https://docs.leantech.me/reference/customers
+  - type: JSONSchema
+    url: json-schema/lean-customer-schema.json
+  - type: Documentation
+    url: https://docs.leantech.me/reference/entities
+  - type: Documentation
+    url: https://docs.leantech.me/reference/data-api
+  - type: JSONSchema
+    url: json-schema/lean-account-schema.json
+  - type: JSONSchema
+    url: json-schema/lean-transaction-schema.json
+  - type: JSONLD
+    url: json-ld/lean-tech-context.jsonld
+  - type: Documentation
+    url: https://docs.leantech.me/reference/insights
+  - type: Documentation
+    url: https://docs.leantech.me/reference/banks
+  - type: Documentation
+    url: https://docs.leantech.me/reference/verifications
+  - type: Documentation
+    url: https://docs.leantech.me/reference/payments
+  - type: JSONSchema
+    url: json-schema/lean-payment-intent-schema.json
+  - type: Documentation
+    url: https://docs.leantech.me/reference/payment-sources
+  - type: Documentation
+    url: https://docs.leantech.me/reference/payouts
+  - type: JSONSchema
+    url: json-schema/lean-payout-schema.json
+  - type: Documentation
+    url: https://docs.leantech.me/reference/refunds
+- aid: lean-tech:lean-tech-insights-api
+  name: Lean Technologies Insights API
+  description: The Insights API from Lean Technologies — 3 operation(s) for insights.
+  humanURL: https://docs.leantech.me/docs/authentication
+  tags:
+  - Insights
+  properties:
+  - type: OpenAPI
+    url: openapi/lean-tech-insights-api-openapi.yml
+  - type: Documentation
+    url: https://docs.leantech.me/docs/authentication
+  - type: Documentation
+    url: https://docs.leantech.me/reference/customers
+  - type: JSONSchema
+    url: json-schema/lean-customer-schema.json
+  - type: Documentation
+    url: https://docs.leantech.me/reference/entities
+  - type: Documentation
+    url: https://docs.leantech.me/reference/data-api
+  - type: JSONSchema
+    url: json-schema/lean-account-schema.json
+  - type: JSONSchema
+    url: json-schema/lean-transaction-schema.json
+  - type: JSONLD
+    url: json-ld/lean-tech-context.jsonld
+  - type: Documentation
+    url: https://docs.leantech.me/reference/insights
+  - type: Documentation
+    url: https://docs.leantech.me/reference/banks
+  - type: Documentation
+    url: https://docs.leantech.me/reference/verifications
+  - type: Documentation
+    url: https://docs.leantech.me/reference/payments
+  - type: JSONSchema
+    url: json-schema/lean-payment-intent-schema.json
+  - type: Documentation
+    url: https://docs.leantech.me/reference/payment-sources
+  - type: Documentation
+    url: https://docs.leantech.me/reference/payouts
+  - type: JSONSchema
+    url: json-schema/lean-payout-schema.json
+  - type: Documentation
+    url: https://docs.leantech.me/reference/refunds
+- aid: lean-tech:lean-tech-name-verification-api
+  name: Lean Technologies Name Verification API
+  description: The Name Verification API from Lean Technologies — 1 operation(s) for name verification.
+  humanURL: https://docs.leantech.me/docs/authentication
+  tags:
+  - Name Verification
+  properties:
+  - type: OpenAPI
+    url: openapi/lean-tech-name-verification-api-openapi.yml
+  - type: Documentation
+    url: https://docs.leantech.me/docs/authentication
+  - type: Documentation
+    url: https://docs.leantech.me/reference/customers
+  - type: JSONSchema
+    url: json-schema/lean-customer-schema.json
+  - type: Documentation
+    url: https://docs.leantech.me/reference/entities
+  - type: Documentation
+    url: https://docs.leantech.me/reference/data-api
+  - type: JSONSchema
+    url: json-schema/lean-account-schema.json
+  - type: JSONSchema
+    url: json-schema/lean-transaction-schema.json
+  - type: JSONLD
+    url: json-ld/lean-tech-context.jsonld
+  - type: Documentation
+    url: https://docs.leantech.me/reference/insights
+  - type: Documentation
+    url: https://docs.leantech.me/reference/banks
+  - type: Documentation
+    url: https://docs.leantech.me/reference/verifications
+  - type: Documentation
+    url: https://docs.leantech.me/reference/payments
+  - type: JSONSchema
+    url: json-schema/lean-payment-intent-schema.json
+  - type: Documentation
+    url: https://docs.leantech.me/reference/payment-sources
+  - type: Documentation
+    url: https://docs.leantech.me/reference/payouts
+  - type: JSONSchema
+    url: json-schema/lean-payout-schema.json
+  - type: Documentation
+    url: https://docs.leantech.me/reference/refunds
+- aid: lean-tech:lean-tech-payment-intents-api
+  name: Lean Technologies Payment Intents API
+  description: The Payment Intents API from Lean Technologies — 3 operation(s) for payment intents.
+  humanURL: https://docs.leantech.me/docs/authentication
+  tags:
+  - Payment Intents
+  properties:
+  - type: OpenAPI
+    url: openapi/lean-tech-payment-intents-api-openapi.yml
+  - type: Documentation
+    url: https://docs.leantech.me/docs/authentication
+  - type: Documentation
+    url: https://docs.leantech.me/reference/customers
+  - type: JSONSchema
+    url: json-schema/lean-customer-schema.json
+  - type: Documentation
+    url: https://docs.leantech.me/reference/entities
+  - type: Documentation
+    url: https://docs.leantech.me/reference/data-api
+  - type: JSONSchema
+    url: json-schema/lean-account-schema.json
+  - type: JSONSchema
+    url: json-schema/lean-transaction-schema.json
+  - type: JSONLD
+    url: json-ld/lean-tech-context.jsonld
+  - type: Documentation
+    url: https://docs.leantech.me/reference/insights
+  - type: Documentation
+    url: https://docs.leantech.me/reference/banks
+  - type: Documentation
+    url: https://docs.leantech.me/reference/verifications
+  - type: Documentation
+    url: https://docs.leantech.me/reference/payments
+  - type: JSONSchema
+    url: json-schema/lean-payment-intent-schema.json
+  - type: Documentation
+    url: https://docs.leantech.me/reference/payment-sources
+  - type: Documentation
+    url: https://docs.leantech.me/reference/payouts
+  - type: JSONSchema
+    url: json-schema/lean-payout-schema.json
+  - type: Documentation
+    url: https://docs.leantech.me/reference/refunds
+- aid: lean-tech:lean-tech-payment-sources-api
+  name: Lean Technologies Payment Sources API
+  description: The Payment Sources API from Lean Technologies — 2 operation(s) for payment sources.
+  humanURL: https://docs.leantech.me/docs/authentication
+  tags:
+  - Payment Sources
+  properties:
+  - type: OpenAPI
+    url: openapi/lean-tech-payment-sources-api-openapi.yml
+  - type: Documentation
+    url: https://docs.leantech.me/docs/authentication
+  - type: Documentation
+    url: https://docs.leantech.me/reference/customers
+  - type: JSONSchema
+    url: json-schema/lean-customer-schema.json
+  - type: Documentation
+    url: https://docs.leantech.me/reference/entities
+  - type: Documentation
+    url: https://docs.leantech.me/reference/data-api
+  - type: JSONSchema
+    url: json-schema/lean-account-schema.json
+  - type: JSONSchema
+    url: json-schema/lean-transaction-schema.json
+  - type: JSONLD
+    url: json-ld/lean-tech-context.jsonld
+  - type: Documentation
+    url: https://docs.leantech.me/reference/insights
+  - type: Documentation
+    url: https://docs.leantech.me/reference/banks
+  - type: Documentation
+    url: https://docs.leantech.me/reference/verifications
+  - type: Documentation
+    url: https://docs.leantech.me/reference/payments
+  - type: JSONSchema
+    url: json-schema/lean-payment-intent-schema.json
+  - type: Documentation
+    url: https://docs.leantech.me/reference/payment-sources
+  - type: Documentation
+    url: https://docs.leantech.me/reference/payouts
+  - type: JSONSchema
+    url: json-schema/lean-payout-schema.json
+  - type: Documentation
+    url: https://docs.leantech.me/reference/refunds
+- aid: lean-tech:lean-tech-payout-destinations-api
+  name: Lean Technologies Payout Destinations API
+  description: >-
+    The Payout Destinations API from Lean Technologies — 2 operation(s) for payout destinations.
+  humanURL: https://docs.leantech.me/docs/authentication
+  tags:
+  - Payout Destinations
+  properties:
+  - type: OpenAPI
+    url: openapi/lean-tech-payout-destinations-api-openapi.yml
+  - type: Documentation
+    url: https://docs.leantech.me/docs/authentication
+  - type: Documentation
+    url: https://docs.leantech.me/reference/customers
+  - type: JSONSchema
+    url: json-schema/lean-customer-schema.json
+  - type: Documentation
+    url: https://docs.leantech.me/reference/entities
+  - type: Documentation
+    url: https://docs.leantech.me/reference/data-api
+  - type: JSONSchema
+    url: json-schema/lean-account-schema.json
+  - type: JSONSchema
+    url: json-schema/lean-transaction-schema.json
+  - type: JSONLD
+    url: json-ld/lean-tech-context.jsonld
+  - type: Documentation
+    url: https://docs.leantech.me/reference/insights
+  - type: Documentation
+    url: https://docs.leantech.me/reference/banks
+  - type: Documentation
+    url: https://docs.leantech.me/reference/verifications
+  - type: Documentation
+    url: https://docs.leantech.me/reference/payments
+  - type: JSONSchema
+    url: json-schema/lean-payment-intent-schema.json
+  - type: Documentation
+    url: https://docs.leantech.me/reference/payment-sources
+  - type: Documentation
+    url: https://docs.leantech.me/reference/payouts
+  - type: JSONSchema
+    url: json-schema/lean-payout-schema.json
+  - type: Documentation
+    url: https://docs.leantech.me/reference/refunds
+- aid: lean-tech:lean-tech-payouts-api
+  name: Lean Technologies Payouts API
+  description: The Payouts API from Lean Technologies — 5 operation(s) for payouts.
+  humanURL: https://docs.leantech.me/docs/authentication
+  tags:
+  - Payouts
+  properties:
+  - type: OpenAPI
+    url: openapi/lean-tech-payouts-api-openapi.yml
+  - type: Documentation
+    url: https://docs.leantech.me/docs/authentication
+  - type: Documentation
+    url: https://docs.leantech.me/reference/customers
+  - type: JSONSchema
+    url: json-schema/lean-customer-schema.json
+  - type: Documentation
+    url: https://docs.leantech.me/reference/entities
+  - type: Documentation
+    url: https://docs.leantech.me/reference/data-api
+  - type: JSONSchema
+    url: json-schema/lean-account-schema.json
+  - type: JSONSchema
+    url: json-schema/lean-transaction-schema.json
+  - type: JSONLD
+    url: json-ld/lean-tech-context.jsonld
+  - type: Documentation
+    url: https://docs.leantech.me/reference/insights
+  - type: Documentation
+    url: https://docs.leantech.me/reference/banks
+  - type: Documentation
+    url: https://docs.leantech.me/reference/verifications
+  - type: Documentation
+    url: https://docs.leantech.me/reference/payments
+  - type: JSONSchema
+    url: json-schema/lean-payment-intent-schema.json
+  - type: Documentation
+    url: https://docs.leantech.me/reference/payment-sources
+  - type: Documentation
+    url: https://docs.leantech.me/reference/payouts
+  - type: JSONSchema
+    url: json-schema/lean-payout-schema.json
+  - type: Documentation
+    url: https://docs.leantech.me/reference/refunds
+- aid: lean-tech:lean-tech-refreshes-api
+  name: Lean Technologies Refreshes API
+  description: The Refreshes API from Lean Technologies — 2 operation(s) for refreshes.
+  humanURL: https://docs.leantech.me/docs/authentication
+  tags:
+  - Refreshes
+  properties:
+  - type: OpenAPI
+    url: openapi/lean-tech-refreshes-api-openapi.yml
+  - type: Documentation
+    url: https://docs.leantech.me/docs/authentication
+  - type: Documentation
+    url: https://docs.leantech.me/reference/customers
+  - type: JSONSchema
+    url: json-schema/lean-customer-schema.json
+  - type: Documentation
+    url: https://docs.leantech.me/reference/entities
+  - type: Documentation
+    url: https://docs.leantech.me/reference/data-api
+  - type: JSONSchema
+    url: json-schema/lean-account-schema.json
+  - type: JSONSchema
+    url: json-schema/lean-transaction-schema.json
+  - type: JSONLD
+    url: json-ld/lean-tech-context.jsonld
+  - type: Documentation
+    url: https://docs.leantech.me/reference/insights
+  - type: Documentation
+    url: https://docs.leantech.me/reference/banks
+  - type: Documentation
+    url: https://docs.leantech.me/reference/verifications
+  - type: Documentation
+    url: https://docs.leantech.me/reference/payments
+  - type: JSONSchema
+    url: json-schema/lean-payment-intent-schema.json
+  - type: Documentation
+    url: https://docs.leantech.me/reference/payment-sources
+  - type: Documentation
+    url: https://docs.leantech.me/reference/payouts
+  - type: JSONSchema
+    url: json-schema/lean-payout-schema.json
+  - type: Documentation
+    url: https://docs.leantech.me/reference/refunds
+- aid: lean-tech:lean-tech-refunds-api
+  name: Lean Technologies Refunds API
+  description: The Refunds API from Lean Technologies — 2 operation(s) for refunds.
+  humanURL: https://docs.leantech.me/docs/authentication
+  tags:
+  - Refunds
+  properties:
+  - type: OpenAPI
+    url: openapi/lean-tech-refunds-api-openapi.yml
+  - type: Documentation
+    url: https://docs.leantech.me/docs/authentication
+  - type: Documentation
+    url: https://docs.leantech.me/reference/customers
+  - type: JSONSchema
+    url: json-schema/lean-customer-schema.json
+  - type: Documentation
+    url: https://docs.leantech.me/reference/entities
+  - type: Documentation
+    url: https://docs.leantech.me/reference/data-api
+  - type: JSONSchema
+    url: json-schema/lean-account-schema.json
+  - type: JSONSchema
+    url: json-schema/lean-transaction-schema.json
+  - type: JSONLD
+    url: json-ld/lean-tech-context.jsonld
+  - type: Documentation
+    url: https://docs.leantech.me/reference/insights
+  - type: Documentation
+    url: https://docs.leantech.me/reference/banks
+  - type: Documentation
+    url: https://docs.leantech.me/reference/verifications
+  - type: Documentation
+    url: https://docs.leantech.me/reference/payments
+  - type: JSONSchema
+    url: json-schema/lean-payment-intent-schema.json
+  - type: Documentation
+    url: https://docs.leantech.me/reference/payment-sources
+  - type: Documentation
+    url: https://docs.leantech.me/reference/payouts
+  - type: JSONSchema
+    url: json-schema/lean-payout-schema.json
+  - type: Documentation
+    url: https://docs.leantech.me/reference/refunds
+- aid: lean-tech:lean-tech-transactions-api
+  name: Lean Technologies Transactions API
+  description: The Transactions API from Lean Technologies — 1 operation(s) for transactions.
+  humanURL: https://docs.leantech.me/docs/authentication
+  tags:
+  - Transactions
+  properties:
+  - type: OpenAPI
+    url: openapi/lean-tech-transactions-api-openapi.yml
+  - type: Documentation
+    url: https://docs.leantech.me/docs/authentication
+  - type: Documentation
+    url: https://docs.leantech.me/reference/customers
+  - type: JSONSchema
+    url: json-schema/lean-customer-schema.json
+  - type: Documentation
+    url: https://docs.leantech.me/reference/entities
+  - type: Documentation
+    url: https://docs.leantech.me/reference/data-api
+  - type: JSONSchema
+    url: json-schema/lean-account-schema.json
+  - type: JSONSchema
+    url: json-schema/lean-transaction-schema.json
+  - type: JSONLD
+    url: json-ld/lean-tech-context.jsonld
+  - type: Documentation
+    url: https://docs.leantech.me/reference/insights
+  - type: Documentation
+    url: https://docs.leantech.me/reference/banks
+  - type: Documentation
+    url: https://docs.leantech.me/reference/verifications
+  - type: Documentation
+    url: https://docs.leantech.me/reference/payments
+  - type: JSONSchema
+    url: json-schema/lean-payment-intent-schema.json
+  - type: Documentation
+    url: https://docs.leantech.me/reference/payment-sources
+  - type: Documentation
+    url: https://docs.leantech.me/reference/payouts
+  - type: JSONSchema
+    url: json-schema/lean-payout-schema.json
+  - type: Documentation
+    url: https://docs.leantech.me/reference/refunds
 name: Lean Technologies
 tags:
   - Open Banking
@@ -208,9 +836,24 @@ tags:
   - Identity
   - Fintech
 kind: contract
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: freemium
+  onboarding: self-serve
+  trial: false
+  try_now: true
+  public: false
+  label: Freemium · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/lean-tech.png
 access: 3rd-Party
 common:
+  - type: PostmanWorkspace
+    url: https://www.postman.com/kinlaneapi/lean-technologies/overview
   - type: AgenticAccess
     url: agentic-access/lean-tech-agentic-access.yml
   - type: TrustCenter

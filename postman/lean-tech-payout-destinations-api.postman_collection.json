@@ -1,0 +1,284 @@
+{
+  "info": {
+    "_postman_id": "ae5544fa-53cc-4c28-9a79-0f91b6dd0098",
+    "name": "Lean Authentication Account on File Payout Destinations API",
+    "description": "OAuth 2.0 client-credentials token issuance for Lean APIs. Generates two classes of JWT access token: (1) scope=api for server-to-server backend calls, and (2) scope=customer.<customer_id> for the LinkSDK to act on behalf of an end-user. All tokens must be generated from a secure backend using credentials issued in the Lean Application Dashboard.\n\n\nContact Support:\n Name: Lean Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:03:32.000Z",
+    "updatedAt": "2026-07-28T02:03:32.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-ae5544fa-53cc-4c28-9a79-0f91b6dd0098"
+  },
+  "item": [
+    {
+      "name": "payouts",
+      "item": [
+        {
+          "name": "v1",
+          "item": [
+            {
+              "name": "payment",
+              "item": [
+                {
+                  "name": "destinations",
+                  "item": [
+                    {
+                      "name": "{destination_id}",
+                      "item": [
+                        {
+                          "name": "Lean Get Payout Destination",
+                          "id": "600decda-0115-469d-b3ec-49fb8ea1435f",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "GET",
+                            "header": [],
+                            "url": {
+                              "raw": "{{baseUrl}}/payouts/v1/payment/destinations/:destination_id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "payouts",
+                                "v1",
+                                "payment",
+                                "destinations",
+                                ":destination_id"
+                              ],
+                              "variable": [
+                                {
+                                  "id": "fdd943fe-5ff9-4512-85d3-eb3c96be0d7b",
+                                  "key": "destination_id",
+                                  "value": "<uuid>",
+                                  "description": "(Required) "
+                                }
+                              ]
+                            }
+                          },
+                          "response": [
+                            {
+                              "id": "e28af515-5853-4d67-b7d9-277d0670d43f",
+                              "name": "Destination",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [],
+                                "url": {
+                                  "raw": "{{baseUrl}}/payouts/v1/payment/destinations/:destination_id",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "payouts",
+                                    "v1",
+                                    "payment",
+                                    "destinations",
+                                    ":destination_id"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "destination_id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-07-28T02:03:32.000Z",
+                              "updatedAt": "2026-07-28T02:03:32.000Z",
+                              "uid": "35240-e28af515-5853-4d67-b7d9-277d0670d43f"
+                            }
+                          ],
+                          "createdAt": "2026-07-28T02:03:32.000Z",
+                          "updatedAt": "2026-07-28T02:03:32.000Z",
+                          "uid": "35240-600decda-0115-469d-b3ec-49fb8ea1435f"
+                        }
+                      ],
+                      "id": "ab36cc8f-9bad-4a3a-993d-b8d83330d773",
+                      "createdAt": "2026-07-28T02:03:32.000Z",
+                      "updatedAt": "2026-07-28T02:03:32.000Z",
+                      "uid": "35240-ab36cc8f-9bad-4a3a-993d-b8d83330d773"
+                    },
+                    {
+                      "name": "Lean Create Payout Destination",
+                      "id": "6d0311ba-c020-4cb4-9e98-ad77bba47cc3",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"beneficiary_name\": \"<string>\",\n  \"iban\": \"<string>\",\n  \"account_number\": \"<string>\",\n  \"bank_code\": \"<string>\",\n  \"country\": \"<string>\",\n  \"currency\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/payouts/v1/payment/destinations",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "payouts",
+                            "v1",
+                            "payment",
+                            "destinations"
+                          ]
+                        }
+                      },
+                      "response": [
+                        {
+                          "id": "30f4270e-4950-41d2-bd0d-4b78b2863245",
+                          "name": "Destination created",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"beneficiary_name\": \"<string>\",\n  \"iban\": \"<string>\",\n  \"account_number\": \"<string>\",\n  \"bank_code\": \"<string>\",\n  \"country\": \"<string>\",\n  \"currency\": \"<string>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/payouts/v1/payment/destinations",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "payouts",
+                                "v1",
+                                "payment",
+                                "destinations"
+                              ]
+                            }
+                          },
+                          "status": "Created",
+                          "code": 201,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T02:03:32.000Z",
+                          "updatedAt": "2026-07-28T02:03:32.000Z",
+                          "uid": "35240-30f4270e-4950-41d2-bd0d-4b78b2863245"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T02:03:32.000Z",
+                      "updatedAt": "2026-07-28T02:03:32.000Z",
+                      "uid": "35240-6d0311ba-c020-4cb4-9e98-ad77bba47cc3"
+                    },
+                    {
+                      "name": "Lean List Payout Destinations",
+                      "id": "aeacba14-9c03-48a5-88c2-52f13201afde",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/payouts/v1/payment/destinations",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "payouts",
+                            "v1",
+                            "payment",
+                            "destinations"
+                          ]
+                        }
+                      },
+                      "response": [
+                        {
+                          "id": "c5d7994e-3abd-4778-abb7-edbd14baae04",
+                          "name": "Destinations",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [],
+                            "url": {
+                              "raw": "{{baseUrl}}/payouts/v1/payment/destinations",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "payouts",
+                                "v1",
+                                "payment",
+                                "destinations"
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T02:03:32.000Z",
+                          "updatedAt": "2026-07-28T02:03:32.000Z",
+                          "uid": "35240-c5d7994e-3abd-4778-abb7-edbd14baae04"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T02:03:32.000Z",
+                      "updatedAt": "2026-07-28T02:03:32.000Z",
+                      "uid": "35240-aeacba14-9c03-48a5-88c2-52f13201afde"
+                    }
+                  ],
+                  "id": "fdcd830b-e854-4b05-9f03-06097aa7ea38",
+                  "createdAt": "2026-07-28T02:03:32.000Z",
+                  "updatedAt": "2026-07-28T02:03:32.000Z",
+                  "uid": "35240-fdcd830b-e854-4b05-9f03-06097aa7ea38"
+                }
+              ],
+              "id": "62034bbe-2848-4bb7-a96c-a86975b0d234",
+              "createdAt": "2026-07-28T02:03:32.000Z",
+              "updatedAt": "2026-07-28T02:03:32.000Z",
+              "uid": "35240-62034bbe-2848-4bb7-a96c-a86975b0d234"
+            }
+          ],
+          "id": "18a4a3df-05c7-4cc3-b900-be62897b5d4a",
+          "createdAt": "2026-07-28T02:03:32.000Z",
+          "updatedAt": "2026-07-28T02:03:32.000Z",
+          "uid": "35240-18a4a3df-05c7-4cc3-b900-be62897b5d4a"
+        }
+      ],
+      "id": "194b9b26-9998-4b9d-9dc3-4499f5113874",
+      "createdAt": "2026-07-28T02:03:32.000Z",
+      "updatedAt": "2026-07-28T02:03:32.000Z",
+      "uid": "35240-194b9b26-9998-4b9d-9dc3-4499f5113874"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://auth.leantech.me"
+    }
+  ]
+}

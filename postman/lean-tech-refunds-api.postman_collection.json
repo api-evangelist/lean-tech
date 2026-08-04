@@ -1,0 +1,310 @@
+{
+  "info": {
+    "_postman_id": "03ab06f6-afc7-4cde-bff0-1cfae1e29633",
+    "name": "Lean Authentication Account on File Refunds API",
+    "description": "OAuth 2.0 client-credentials token issuance for Lean APIs. Generates two classes of JWT access token: (1) scope=api for server-to-server backend calls, and (2) scope=customer.<customer_id> for the LinkSDK to act on behalf of an end-user. All tokens must be generated from a secure backend using credentials issued in the Lean Application Dashboard.\n\n\nContact Support:\n Name: Lean Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:03:35.000Z",
+    "updatedAt": "2026-07-28T02:03:35.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-03ab06f6-afc7-4cde-bff0-1cfae1e29633"
+  },
+  "item": [
+    {
+      "name": "payouts",
+      "item": [
+        {
+          "name": "refunds",
+          "item": [
+            {
+              "name": "reasons",
+              "item": [
+                {
+                  "name": "Lean Get Refund Reasons",
+                  "id": "635676c1-747d-4239-bdd6-6702fb1c2d4b",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/payouts/refunds/reasons",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "payouts",
+                        "refunds",
+                        "reasons"
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "id": "be18a7cb-02a5-413c-9c06-6d8f5ad3d8ed",
+                      "name": "Refund reasons",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/payouts/refunds/reasons",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "payouts",
+                            "refunds",
+                            "reasons"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "[\n  {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\"\n  },\n  {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\"\n  }\n]",
+                      "createdAt": "2026-07-28T02:03:35.000Z",
+                      "updatedAt": "2026-07-28T02:03:35.000Z",
+                      "uid": "35240-be18a7cb-02a5-413c-9c06-6d8f5ad3d8ed"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:03:35.000Z",
+                  "updatedAt": "2026-07-28T02:03:35.000Z",
+                  "uid": "35240-635676c1-747d-4239-bdd6-6702fb1c2d4b"
+                }
+              ],
+              "id": "8eb7f07d-0fac-4576-a335-6eff1489290a",
+              "createdAt": "2026-07-28T02:03:35.000Z",
+              "updatedAt": "2026-07-28T02:03:35.000Z",
+              "uid": "35240-8eb7f07d-0fac-4576-a335-6eff1489290a"
+            },
+            {
+              "name": "Lean List Refunds",
+              "id": "6bd9916c-4795-42df-a13f-e69916a49e9d",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/payouts/refunds",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "payouts",
+                    "refunds"
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "id": "aca682b5-07c4-42b0-a087-5faa6cca5d3c",
+                  "name": "Refunds",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/payouts/refunds",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "payouts",
+                        "refunds"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T02:03:35.000Z",
+                  "updatedAt": "2026-07-28T02:03:35.000Z",
+                  "uid": "35240-aca682b5-07c4-42b0-a087-5faa6cca5d3c"
+                }
+              ],
+              "createdAt": "2026-07-28T02:03:35.000Z",
+              "updatedAt": "2026-07-28T02:03:35.000Z",
+              "uid": "35240-6bd9916c-4795-42df-a13f-e69916a49e9d"
+            },
+            {
+              "name": "Lean Create Refund",
+              "id": "bb93c250-bf89-45b5-a4e8-cbe7045e1e66",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"payment_id\": \"<uuid>\",\n  \"amount\": \"<number>\",\n  \"reason_code\": \"<string>\",\n  \"currency\": \"<string>\",\n  \"description\": \"<string>\",\n  \"idempotency_key\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/payouts/refunds",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "payouts",
+                    "refunds"
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "id": "6f775c81-fc6a-4209-8977-d0635e20d2ae",
+                  "name": "Refund created",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"payment_id\": \"<uuid>\",\n  \"amount\": \"<number>\",\n  \"reason_code\": \"<string>\",\n  \"currency\": \"<string>\",\n  \"description\": \"<string>\",\n  \"idempotency_key\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/payouts/refunds",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "payouts",
+                        "refunds"
+                      ]
+                    }
+                  },
+                  "status": "Created",
+                  "code": 201,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T02:03:35.000Z",
+                  "updatedAt": "2026-07-28T02:03:35.000Z",
+                  "uid": "35240-6f775c81-fc6a-4209-8977-d0635e20d2ae"
+                }
+              ],
+              "createdAt": "2026-07-28T02:03:35.000Z",
+              "updatedAt": "2026-07-28T02:03:35.000Z",
+              "uid": "35240-bb93c250-bf89-45b5-a4e8-cbe7045e1e66"
+            },
+            {
+              "name": "Lean Process Refunds",
+              "id": "72b17791-7140-40a2-accc-2a1bab2452c1",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "PUT",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/payouts/refunds",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "payouts",
+                    "refunds"
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "id": "5141a05a-56e4-4d14-9b08-a1f329d4b08f",
+                  "name": "Refunds processed",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/payouts/refunds",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "payouts",
+                        "refunds"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T02:03:35.000Z",
+                  "updatedAt": "2026-07-28T02:03:35.000Z",
+                  "uid": "35240-5141a05a-56e4-4d14-9b08-a1f329d4b08f"
+                }
+              ],
+              "createdAt": "2026-07-28T02:03:35.000Z",
+              "updatedAt": "2026-07-28T02:03:35.000Z",
+              "uid": "35240-72b17791-7140-40a2-accc-2a1bab2452c1"
+            }
+          ],
+          "id": "2604d780-01e5-4d0c-91bd-1f974e063fc7",
+          "createdAt": "2026-07-28T02:03:35.000Z",
+          "updatedAt": "2026-07-28T02:03:35.000Z",
+          "uid": "35240-2604d780-01e5-4d0c-91bd-1f974e063fc7"
+        }
+      ],
+      "id": "ac0081b0-a25e-4283-a672-59337d76c001",
+      "createdAt": "2026-07-28T02:03:35.000Z",
+      "updatedAt": "2026-07-28T02:03:35.000Z",
+      "uid": "35240-ac0081b0-a25e-4283-a672-59337d76c001"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://auth.leantech.me"
+    }
+  ]
+}

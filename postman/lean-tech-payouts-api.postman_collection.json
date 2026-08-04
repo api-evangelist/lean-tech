@@ -1,0 +1,469 @@
+{
+  "info": {
+    "_postman_id": "0bc73b28-9135-486e-bb72-343926cd09c4",
+    "name": "Lean Authentication Account on File Payouts API",
+    "description": "OAuth 2.0 client-credentials token issuance for Lean APIs. Generates two classes of JWT access token: (1) scope=api for server-to-server backend calls, and (2) scope=customer.<customer_id> for the LinkSDK to act on behalf of an end-user. All tokens must be generated from a secure backend using credentials issued in the Lean Application Dashboard.\n\n\nContact Support:\n Name: Lean Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:03:33.000Z",
+    "updatedAt": "2026-07-28T02:03:33.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-0bc73b28-9135-486e-bb72-343926cd09c4"
+  },
+  "item": [
+    {
+      "name": "payouts",
+      "item": [
+        {
+          "name": "v1",
+          "item": [
+            {
+              "name": "payment",
+              "item": [
+                {
+                  "name": "Lean Create Payout Payment",
+                  "id": "7ed90089-79b1-45ed-9cd8-5828f9f53f29",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"amount\": \"<number>\",\n  \"currency\": \"<string>\",\n  \"destination_id\": \"<uuid>\",\n  \"description\": \"<string>\",\n  \"reference\": \"<string>\",\n  \"idempotency_key\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/payouts/v1/payment",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "payouts",
+                        "v1",
+                        "payment"
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "id": "3945b365-f4e3-4090-8a06-5829943cb197",
+                      "name": "Payout created",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"amount\": \"<number>\",\n  \"currency\": \"<string>\",\n  \"destination_id\": \"<uuid>\",\n  \"description\": \"<string>\",\n  \"reference\": \"<string>\",\n  \"idempotency_key\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/payouts/v1/payment",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "payouts",
+                            "v1",
+                            "payment"
+                          ]
+                        }
+                      },
+                      "status": "Created",
+                      "code": 201,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"id\": \"<uuid>\",\n  \"status\": \"SUBMITTED\",\n  \"amount\": \"<number>\",\n  \"currency\": \"<string>\",\n  \"destination_id\": \"<uuid>\",\n  \"created_at\": \"<dateTime>\"\n}",
+                      "createdAt": "2026-07-28T02:03:33.000Z",
+                      "updatedAt": "2026-07-28T02:03:33.000Z",
+                      "uid": "35240-3945b365-f4e3-4090-8a06-5829943cb197"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:03:33.000Z",
+                  "updatedAt": "2026-07-28T02:03:33.000Z",
+                  "uid": "35240-7ed90089-79b1-45ed-9cd8-5828f9f53f29"
+                }
+              ],
+              "id": "38c53b1c-35c8-4022-b9ea-f89628ee0879",
+              "createdAt": "2026-07-28T02:03:33.000Z",
+              "updatedAt": "2026-07-28T02:03:33.000Z",
+              "uid": "35240-38c53b1c-35c8-4022-b9ea-f89628ee0879"
+            },
+            {
+              "name": "payments",
+              "item": [
+                {
+                  "name": "{payment_id}",
+                  "item": [
+                    {
+                      "name": "history",
+                      "item": [
+                        {
+                          "name": "Lean Get Payout Payment History",
+                          "id": "e4bad5c4-abad-44bb-8a11-e68acc97c6f0",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "GET",
+                            "header": [],
+                            "url": {
+                              "raw": "{{baseUrl}}/payouts/v1/payments/:payment_id/history",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "payouts",
+                                "v1",
+                                "payments",
+                                ":payment_id",
+                                "history"
+                              ],
+                              "variable": [
+                                {
+                                  "id": "bda564b5-3009-41fd-a647-bdfbeed99a43",
+                                  "key": "payment_id",
+                                  "value": "<uuid>",
+                                  "description": "(Required) "
+                                }
+                              ]
+                            }
+                          },
+                          "response": [
+                            {
+                              "id": "5a2fd7f3-28d3-457c-a4bb-0022db307aef",
+                              "name": "History",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [],
+                                "url": {
+                                  "raw": "{{baseUrl}}/payouts/v1/payments/:payment_id/history",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "payouts",
+                                    "v1",
+                                    "payments",
+                                    ":payment_id",
+                                    "history"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "payment_id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-07-28T02:03:33.000Z",
+                              "updatedAt": "2026-07-28T02:03:33.000Z",
+                              "uid": "35240-5a2fd7f3-28d3-457c-a4bb-0022db307aef"
+                            }
+                          ],
+                          "createdAt": "2026-07-28T02:03:33.000Z",
+                          "updatedAt": "2026-07-28T02:03:33.000Z",
+                          "uid": "35240-e4bad5c4-abad-44bb-8a11-e68acc97c6f0"
+                        }
+                      ],
+                      "id": "08b64fc4-e111-4205-9e16-f45ff53601cb",
+                      "createdAt": "2026-07-28T02:03:33.000Z",
+                      "updatedAt": "2026-07-28T02:03:33.000Z",
+                      "uid": "35240-08b64fc4-e111-4205-9e16-f45ff53601cb"
+                    }
+                  ],
+                  "id": "06727b73-2863-4cda-ba11-e8ee3c369d24",
+                  "createdAt": "2026-07-28T02:03:33.000Z",
+                  "updatedAt": "2026-07-28T02:03:33.000Z",
+                  "uid": "35240-06727b73-2863-4cda-ba11-e8ee3c369d24"
+                },
+                {
+                  "name": "Lean List Payouts",
+                  "id": "d7e50f5a-c73a-47c1-8c2f-66eb6f0e7869",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/payouts/v1/payments",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "payouts",
+                        "v1",
+                        "payments"
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "id": "3f795c08-ebd8-4ce1-9f36-7732ede9077d",
+                      "name": "Payouts",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/payouts/v1/payments",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "payouts",
+                            "v1",
+                            "payments"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T02:03:33.000Z",
+                      "updatedAt": "2026-07-28T02:03:33.000Z",
+                      "uid": "35240-3f795c08-ebd8-4ce1-9f36-7732ede9077d"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:03:33.000Z",
+                  "updatedAt": "2026-07-28T02:03:33.000Z",
+                  "uid": "35240-d7e50f5a-c73a-47c1-8c2f-66eb6f0e7869"
+                }
+              ],
+              "id": "bdc63615-ee1f-4405-b187-55e24505a4c1",
+              "createdAt": "2026-07-28T02:03:33.000Z",
+              "updatedAt": "2026-07-28T02:03:33.000Z",
+              "uid": "35240-bdc63615-ee1f-4405-b187-55e24505a4c1"
+            },
+            {
+              "name": "{payment_id}",
+              "item": [
+                {
+                  "name": "Lean Get Payout",
+                  "id": "30194386-5335-4a03-baad-1c38fbd92ef0",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/payouts/v1/:payment_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "payouts",
+                        "v1",
+                        ":payment_id"
+                      ],
+                      "variable": [
+                        {
+                          "id": "4faa1190-bd04-4c26-816d-210680cdea57",
+                          "key": "payment_id",
+                          "value": "<uuid>",
+                          "description": "(Required) "
+                        }
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "id": "6e991558-7750-4693-a9bb-b62dc864a5b0",
+                      "name": "Payout",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/payouts/v1/:payment_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "payouts",
+                            "v1",
+                            ":payment_id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "payment_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T02:03:33.000Z",
+                      "updatedAt": "2026-07-28T02:03:33.000Z",
+                      "uid": "35240-6e991558-7750-4693-a9bb-b62dc864a5b0"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:03:33.000Z",
+                  "updatedAt": "2026-07-28T02:03:33.000Z",
+                  "uid": "35240-30194386-5335-4a03-baad-1c38fbd92ef0"
+                }
+              ],
+              "id": "436cfe30-eadf-4df7-b26f-7fd813b3c2c5",
+              "createdAt": "2026-07-28T02:03:33.000Z",
+              "updatedAt": "2026-07-28T02:03:33.000Z",
+              "uid": "35240-436cfe30-eadf-4df7-b26f-7fd813b3c2c5"
+            },
+            {
+              "name": "intents",
+              "item": [
+                {
+                  "name": "{payment_intent_id}",
+                  "item": [
+                    {
+                      "name": "Lean Get Payout Intent",
+                      "id": "2fbc4504-8b85-4037-834d-b8760920fda2",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/payouts/v1/intents/:payment_intent_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "payouts",
+                            "v1",
+                            "intents",
+                            ":payment_intent_id"
+                          ],
+                          "variable": [
+                            {
+                              "id": "b2568a65-0ed2-4e2a-929a-00b972bf37ce",
+                              "key": "payment_intent_id",
+                              "value": "<uuid>",
+                              "description": "(Required) "
+                            }
+                          ]
+                        }
+                      },
+                      "response": [
+                        {
+                          "id": "88f55a72-a918-403a-b9b0-503e37154041",
+                          "name": "Payout intent",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [],
+                            "url": {
+                              "raw": "{{baseUrl}}/payouts/v1/intents/:payment_intent_id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "payouts",
+                                "v1",
+                                "intents",
+                                ":payment_intent_id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "payment_intent_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T02:03:33.000Z",
+                          "updatedAt": "2026-07-28T02:03:33.000Z",
+                          "uid": "35240-88f55a72-a918-403a-b9b0-503e37154041"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T02:03:33.000Z",
+                      "updatedAt": "2026-07-28T02:03:33.000Z",
+                      "uid": "35240-2fbc4504-8b85-4037-834d-b8760920fda2"
+                    }
+                  ],
+                  "id": "e28c1b53-e2d0-4062-8441-0780fbf166d1",
+                  "createdAt": "2026-07-28T02:03:33.000Z",
+                  "updatedAt": "2026-07-28T02:03:33.000Z",
+                  "uid": "35240-e28c1b53-e2d0-4062-8441-0780fbf166d1"
+                }
+              ],
+              "id": "723e1a0d-6a2c-4f73-a7c5-54d4aabb034c",
+              "createdAt": "2026-07-28T02:03:33.000Z",
+              "updatedAt": "2026-07-28T02:03:33.000Z",
+              "uid": "35240-723e1a0d-6a2c-4f73-a7c5-54d4aabb034c"
+            }
+          ],
+          "id": "532cba23-7206-44f6-a153-d4596993adcd",
+          "createdAt": "2026-07-28T02:03:33.000Z",
+          "updatedAt": "2026-07-28T02:03:33.000Z",
+          "uid": "35240-532cba23-7206-44f6-a153-d4596993adcd"
+        }
+      ],
+      "id": "78c7a939-f1c0-421f-8b24-ab6ce72d639c",
+      "createdAt": "2026-07-28T02:03:33.000Z",
+      "updatedAt": "2026-07-28T02:03:33.000Z",
+      "uid": "35240-78c7a939-f1c0-421f-8b24-ab6ce72d639c"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://auth.leantech.me"
+    }
+  ]
+}

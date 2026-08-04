@@ -1,0 +1,90 @@
+openapi: 3.1.0
+info:
+  title: Lean Refunds API
+  description: >
+    Issue full or partial refunds against prior Pay by Bank payments. List
+    refunds, create a refund, process queued refunds, and retrieve the
+    canonical list of refund reason codes.
+  version: '1.0'
+  contact:
+    name: Lean Support
+    url: https://help.leantech.me
+servers:
+  - url: https://api2.leantech.me
+    description: Production
+security:
+  - BearerAuth: []
+tags:
+  - name: Refunds
+paths:
+  /payouts/refunds:
+    get:
+      summary: Lean List Refunds
+      operationId: listRefunds
+      tags: [Refunds]
+      responses:
+        '200':
+          description: Refunds
+    post:
+      summary: Lean Create Refund
+      operationId: createRefund
+      tags: [Refunds]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RefundRequest'
+      responses:
+        '201':
+          description: Refund created
+    put:
+      summary: Lean Process Refunds
+      operationId: processRefunds
+      tags: [Refunds]
+      responses:
+        '200':
+          description: Refunds processed
+  /payouts/refunds/reasons:
+    get:
+      summary: Lean Get Refund Reasons
+      operationId: getRefundReasons
+      tags: [Refunds]
+      responses:
+        '200':
+          description: Refund reasons
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    code:
+                      type: string
+                    description:
+                      type: string
+components:
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+  schemas:
+    RefundRequest:
+      type: object
+      required: [payment_id, amount, reason_code]
+      properties:
+        payment_id:
+          type: string
+          format: uuid
+        amount:
+          type: number
+        currency:
+          type: string
+        reason_code:
+          type: string
+        description:
+          type: string
+        idempotency_key:
+          type: string

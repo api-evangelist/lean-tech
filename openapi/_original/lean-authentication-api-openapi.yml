@@ -1,0 +1,89 @@
+openapi: 3.1.0
+info:
+  title: Lean Authentication API
+  description: >
+    OAuth 2.0 client-credentials token issuance for Lean APIs. Generates two
+    classes of JWT access token: (1) scope=api for server-to-server backend
+    calls, and (2) scope=customer.<customer_id> for the LinkSDK to act on
+    behalf of an end-user. All tokens must be generated from a secure backend
+    using credentials issued in the Lean Application Dashboard.
+  version: '1.0'
+  contact:
+    name: Lean Support
+    url: https://help.leantech.me
+  license:
+    name: Lean Terms of Service
+    url: https://www.leantech.me
+servers:
+  - url: https://auth.leantech.me
+    description: Production
+  - url: https://auth.sandbox.ae.leantech.me
+    description: Sandbox - UAE
+  - url: https://auth.sandbox.sa.leantech.me
+    description: Sandbox - KSA
+tags:
+  - name: Authentication
+    description: OAuth 2.0 client-credentials token issuance
+paths:
+  /oauth2/token:
+    post:
+      summary: Lean Generate Access Token
+      description: >
+        Exchange client_id and client_secret for a JWT access token. Use
+        scope=api for backend API calls or scope=customer.<customer_id> for
+        the LinkSDK.
+      operationId: generateAccessToken
+      tags:
+        - Authentication
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/TokenRequest'
+      responses:
+        '200':
+          description: Token issued successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TokenResponse'
+        '400':
+          description: Invalid request
+        '401':
+          description: Invalid credentials
+components:
+  schemas:
+    TokenRequest:
+      type: object
+      required:
+        - client_id
+        - client_secret
+        - grant_type
+        - scope
+      properties:
+        client_id:
+          type: string
+          description: Application ID from the Lean Application Dashboard.
+        client_secret:
+          type: string
+          description: Client secret from the Lean Application Dashboard.
+        grant_type:
+          type: string
+          enum: [client_credentials]
+        scope:
+          type: string
+          description: 'api for backend access, or customer.<customer_id> for SDK access.'
+          examples: [api, customer.a1b2c3d4-e5f6-7890-abcd-ef0123456789]
+    TokenResponse:
+      type: object
+      properties:
+        access_token:
+          type: string
+          description: Signed JWT access token.
+        token_type:
+          type: string
+          example: bearer
+        expires_in:
+          type: integer
+          description: Lifetime of the access token in seconds.

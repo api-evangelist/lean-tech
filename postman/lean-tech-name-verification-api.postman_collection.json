@@ -1,0 +1,134 @@
+{
+  "info": {
+    "_postman_id": "9431cb01-65df-4bef-a556-38ee7403a7bc",
+    "name": "Lean Authentication Account on File Name Verification API",
+    "description": "OAuth 2.0 client-credentials token issuance for Lean APIs. Generates two classes of JWT access token: (1) scope=api for server-to-server backend calls, and (2) scope=customer.<customer_id> for the LinkSDK to act on behalf of an end-user. All tokens must be generated from a secure backend using credentials issued in the Lean Application Dashboard.\n\n\nContact Support:\n Name: Lean Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:03:29.000Z",
+    "updatedAt": "2026-07-28T02:03:29.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-9431cb01-65df-4bef-a556-38ee7403a7bc"
+  },
+  "item": [
+    {
+      "name": "insights",
+      "item": [
+        {
+          "name": "v1",
+          "item": [
+            {
+              "name": "name-verification",
+              "item": [
+                {
+                  "name": "Lean Verify Name",
+                  "id": "992ab782-f7b6-4acb-ae21-317861ee02a2",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"account\": {\n    \"iban\": \"<string>\",\n    \"account_number\": \"<string>\",\n    \"country\": \"<string>\"\n  }\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/insights/v1/name-verification",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "insights",
+                        "v1",
+                        "name-verification"
+                      ]
+                    },
+                    "description": "Compare a supplied account-holder name against the canonical name held by the receiving bank to perform Confirmation of Payee.\n"
+                  },
+                  "response": [
+                    {
+                      "id": "e7f98853-ff03-48e9-a666-a2c9b272d735",
+                      "name": "Name verification result",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"name\": \"<string>\",\n  \"account\": {\n    \"iban\": \"<string>\",\n    \"account_number\": \"<string>\",\n    \"country\": \"<string>\"\n  }\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/insights/v1/name-verification",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "insights",
+                            "v1",
+                            "name-verification"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T02:03:30.000Z",
+                      "updatedAt": "2026-07-28T02:03:30.000Z",
+                      "uid": "35240-e7f98853-ff03-48e9-a666-a2c9b272d735"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:03:30.000Z",
+                  "updatedAt": "2026-07-28T02:03:30.000Z",
+                  "uid": "35240-992ab782-f7b6-4acb-ae21-317861ee02a2"
+                }
+              ],
+              "id": "01529c96-917a-402d-a827-be9ca9780a64",
+              "createdAt": "2026-07-28T02:03:30.000Z",
+              "updatedAt": "2026-07-28T02:03:30.000Z",
+              "uid": "35240-01529c96-917a-402d-a827-be9ca9780a64"
+            }
+          ],
+          "id": "0db16726-83d6-4167-8d3c-44ee7f75a7d2",
+          "createdAt": "2026-07-28T02:03:30.000Z",
+          "updatedAt": "2026-07-28T02:03:30.000Z",
+          "uid": "35240-0db16726-83d6-4167-8d3c-44ee7f75a7d2"
+        }
+      ],
+      "id": "fe7d1e5a-554e-49f6-a9dc-c45dd720d292",
+      "createdAt": "2026-07-28T02:03:30.000Z",
+      "updatedAt": "2026-07-28T02:03:30.000Z",
+      "uid": "35240-fe7d1e5a-554e-49f6-a9dc-c45dd720d292"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://auth.leantech.me"
+    }
+  ]
+}

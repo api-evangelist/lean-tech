@@ -1,0 +1,308 @@
+{
+  "info": {
+    "_postman_id": "f242b4ff-7a02-4b37-bf15-3156d4442f58",
+    "name": "Lean Authentication Account on File Insights API",
+    "description": "OAuth 2.0 client-credentials token issuance for Lean APIs. Generates two classes of JWT access token: (1) scope=api for server-to-server backend calls, and (2) scope=customer.<customer_id> for the LinkSDK to act on behalf of an end-user. All tokens must be generated from a secure backend using credentials issued in the Lean Application Dashboard.\n\n\nContact Support:\n Name: Lean Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:03:28.000Z",
+    "updatedAt": "2026-07-28T02:03:28.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-f242b4ff-7a02-4b37-bf15-3156d4442f58"
+  },
+  "item": [
+    {
+      "name": "insights",
+      "item": [
+        {
+          "name": "v2",
+          "item": [
+            {
+              "name": "income",
+              "item": [
+                {
+                  "name": "Lean Compute Income",
+                  "id": "bafddf52-2f9a-41b4-80c5-cf6333fa1b5d",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "description": "(Required) ",
+                        "key": "entity_id",
+                        "value": "<uuid>"
+                      },
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"start_date\": \"<date>\",\n  \"end_date\": \"<date>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/insights/v2/income",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "insights",
+                        "v2",
+                        "income"
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "id": "3dfa9a11-25dc-4e13-8325-b3643c0d56b5",
+                      "name": "Income analysis",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "description": "(Required) ",
+                            "key": "entity_id",
+                            "value": "<uuid>"
+                          },
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"start_date\": \"<date>\",\n  \"end_date\": \"<date>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/insights/v2/income",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "insights",
+                            "v2",
+                            "income"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T02:03:29.000Z",
+                      "updatedAt": "2026-07-28T02:03:29.000Z",
+                      "uid": "35240-3dfa9a11-25dc-4e13-8325-b3643c0d56b5"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:03:29.000Z",
+                  "updatedAt": "2026-07-28T02:03:29.000Z",
+                  "uid": "35240-bafddf52-2f9a-41b4-80c5-cf6333fa1b5d"
+                }
+              ],
+              "id": "9b50ea07-c6b9-4165-85a6-754814f572d1",
+              "createdAt": "2026-07-28T02:03:29.000Z",
+              "updatedAt": "2026-07-28T02:03:29.000Z",
+              "uid": "35240-9b50ea07-c6b9-4165-85a6-754814f572d1"
+            },
+            {
+              "name": "expenses",
+              "item": [
+                {
+                  "name": "Lean Get Expenses",
+                  "id": "81e2f10c-bdb4-4511-a6b3-6d26b9e2dafd",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "(Required) ",
+                        "key": "entity_id",
+                        "value": "<uuid>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/insights/v2/expenses",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "insights",
+                        "v2",
+                        "expenses"
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "id": "cb3d1cb4-d049-4309-b177-89b0789b36a5",
+                      "name": "Expenses analysis",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "(Required) ",
+                            "key": "entity_id",
+                            "value": "<uuid>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/insights/v2/expenses",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "insights",
+                            "v2",
+                            "expenses"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T02:03:29.000Z",
+                      "updatedAt": "2026-07-28T02:03:29.000Z",
+                      "uid": "35240-cb3d1cb4-d049-4309-b177-89b0789b36a5"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:03:29.000Z",
+                  "updatedAt": "2026-07-28T02:03:29.000Z",
+                  "uid": "35240-81e2f10c-bdb4-4511-a6b3-6d26b9e2dafd"
+                }
+              ],
+              "id": "d9bce6d1-8536-4804-be11-f64c2c38e74d",
+              "createdAt": "2026-07-28T02:03:29.000Z",
+              "updatedAt": "2026-07-28T02:03:29.000Z",
+              "uid": "35240-d9bce6d1-8536-4804-be11-f64c2c38e74d"
+            },
+            {
+              "name": "assets",
+              "item": [
+                {
+                  "name": "cashflows",
+                  "item": [
+                    {
+                      "name": "Lean Get Cashflows",
+                      "id": "fdea3d37-5f8a-4e3c-82d8-62582ab4a2f6",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "(Required) ",
+                            "key": "entity_id",
+                            "value": "<uuid>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/insights/v2/assets/cashflows",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "insights",
+                            "v2",
+                            "assets",
+                            "cashflows"
+                          ]
+                        }
+                      },
+                      "response": [
+                        {
+                          "id": "bf375397-ec7a-4d7e-b8c4-1a456b045ec6",
+                          "name": "Cashflows analysis",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "description": "(Required) ",
+                                "key": "entity_id",
+                                "value": "<uuid>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/insights/v2/assets/cashflows",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "insights",
+                                "v2",
+                                "assets",
+                                "cashflows"
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T02:03:29.000Z",
+                          "updatedAt": "2026-07-28T02:03:29.000Z",
+                          "uid": "35240-bf375397-ec7a-4d7e-b8c4-1a456b045ec6"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T02:03:29.000Z",
+                      "updatedAt": "2026-07-28T02:03:29.000Z",
+                      "uid": "35240-fdea3d37-5f8a-4e3c-82d8-62582ab4a2f6"
+                    }
+                  ],
+                  "id": "dd364f9e-6ea9-4773-bee5-76cd827a56eb",
+                  "createdAt": "2026-07-28T02:03:29.000Z",
+                  "updatedAt": "2026-07-28T02:03:29.000Z",
+                  "uid": "35240-dd364f9e-6ea9-4773-bee5-76cd827a56eb"
+                }
+              ],
+              "id": "55ba3c63-5109-409a-965c-3b7b16412c89",
+              "createdAt": "2026-07-28T02:03:29.000Z",
+              "updatedAt": "2026-07-28T02:03:29.000Z",
+              "uid": "35240-55ba3c63-5109-409a-965c-3b7b16412c89"
+            }
+          ],
+          "id": "f086f789-f79a-4711-b43d-6b556d8c97d6",
+          "createdAt": "2026-07-28T02:03:29.000Z",
+          "updatedAt": "2026-07-28T02:03:29.000Z",
+          "uid": "35240-f086f789-f79a-4711-b43d-6b556d8c97d6"
+        }
+      ],
+      "id": "f9dfe2bf-3349-4e22-9a5d-a6cf72d96a70",
+      "createdAt": "2026-07-28T02:03:29.000Z",
+      "updatedAt": "2026-07-28T02:03:29.000Z",
+      "uid": "35240-f9dfe2bf-3349-4e22-9a5d-a6cf72d96a70"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://auth.leantech.me"
+    }
+  ]
+}

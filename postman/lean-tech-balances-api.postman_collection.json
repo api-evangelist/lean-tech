@@ -1,0 +1,150 @@
+{
+  "info": {
+    "_postman_id": "2a7c654c-af9f-4a93-9976-0c8b937fc44f",
+    "name": "Lean Authentication Account on File Balances API",
+    "description": "OAuth 2.0 client-credentials token issuance for Lean APIs. Generates two classes of JWT access token: (1) scope=api for server-to-server backend calls, and (2) scope=customer.<customer_id> for the LinkSDK to act on behalf of an end-user. All tokens must be generated from a secure backend using credentials issued in the Lean Application Dashboard.\n\n\nContact Support:\n Name: Lean Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:03:23.000Z",
+    "updatedAt": "2026-07-28T02:03:23.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-2a7c654c-af9f-4a93-9976-0c8b937fc44f"
+  },
+  "item": [
+    {
+      "name": "data",
+      "item": [
+        {
+          "name": "v2",
+          "item": [
+            {
+              "name": "accounts",
+              "item": [
+                {
+                  "name": "{account_id}",
+                  "item": [
+                    {
+                      "name": "balances",
+                      "item": [
+                        {
+                          "name": "Lean Get Balances",
+                          "id": "6b0c4c25-d700-4325-938d-09b85b3e10fe",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "description": "(Required) Lean entity identifier returned after a successful LinkSDK consent.",
+                                "key": "entity_id",
+                                "value": "<uuid>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/data/v2/accounts/:account_id/balances",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "data",
+                                "v2",
+                                "accounts",
+                                ":account_id",
+                                "balances"
+                              ],
+                              "variable": [
+                                {
+                                  "id": "d7bd59ac-fc6d-4910-ba49-53b25490a470",
+                                  "key": "account_id",
+                                  "value": "<string>",
+                                  "description": "(Required) "
+                                }
+                              ]
+                            }
+                          },
+                          "response": [
+                            {
+                              "id": "34371a54-3f76-4453-99bb-9a83238508e6",
+                              "name": "Balances",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "description": "(Required) Lean entity identifier returned after a successful LinkSDK consent.",
+                                    "key": "entity_id",
+                                    "value": "<uuid>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/data/v2/accounts/:account_id/balances",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "data",
+                                    "v2",
+                                    "accounts",
+                                    ":account_id",
+                                    "balances"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "account_id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-07-28T02:03:23.000Z",
+                              "updatedAt": "2026-07-28T02:03:23.000Z",
+                              "uid": "35240-34371a54-3f76-4453-99bb-9a83238508e6"
+                            }
+                          ],
+                          "createdAt": "2026-07-28T02:03:23.000Z",
+                          "updatedAt": "2026-07-28T02:03:23.000Z",
+                          "uid": "35240-6b0c4c25-d700-4325-938d-09b85b3e10fe"
+                        }
+                      ],
+                      "id": "dacd052e-fffb-4139-a554-d82848dbdbae",
+                      "createdAt": "2026-07-28T02:03:23.000Z",
+                      "updatedAt": "2026-07-28T02:03:23.000Z",
+                      "uid": "35240-dacd052e-fffb-4139-a554-d82848dbdbae"
+                    }
+                  ],
+                  "id": "e8da894b-7017-4822-92f5-3de3b3a670d2",
+                  "createdAt": "2026-07-28T02:03:23.000Z",
+                  "updatedAt": "2026-07-28T02:03:23.000Z",
+                  "uid": "35240-e8da894b-7017-4822-92f5-3de3b3a670d2"
+                }
+              ],
+              "id": "f6ec297e-da72-4b6c-9fff-fb78215a25f8",
+              "createdAt": "2026-07-28T02:03:23.000Z",
+              "updatedAt": "2026-07-28T02:03:23.000Z",
+              "uid": "35240-f6ec297e-da72-4b6c-9fff-fb78215a25f8"
+            }
+          ],
+          "id": "1a5f2316-c8f1-4959-8ce6-d36c574117db",
+          "createdAt": "2026-07-28T02:03:23.000Z",
+          "updatedAt": "2026-07-28T02:03:23.000Z",
+          "uid": "35240-1a5f2316-c8f1-4959-8ce6-d36c574117db"
+        }
+      ],
+      "id": "05119cd9-ecfd-405c-900d-4086351522ee",
+      "createdAt": "2026-07-28T02:03:23.000Z",
+      "updatedAt": "2026-07-28T02:03:23.000Z",
+      "uid": "35240-05119cd9-ecfd-405c-900d-4086351522ee"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://auth.leantech.me"
+    }
+  ]
+}

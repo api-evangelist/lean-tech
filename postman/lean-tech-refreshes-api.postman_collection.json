@@ -1,0 +1,275 @@
+{
+  "info": {
+    "_postman_id": "3ad3a465-a14a-406d-b053-995176505960",
+    "name": "Lean Authentication Account on File Refreshes API",
+    "description": "OAuth 2.0 client-credentials token issuance for Lean APIs. Generates two classes of JWT access token: (1) scope=api for server-to-server backend calls, and (2) scope=customer.<customer_id> for the LinkSDK to act on behalf of an end-user. All tokens must be generated from a secure backend using credentials issued in the Lean Application Dashboard.\n\n\nContact Support:\n Name: Lean Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:03:34.000Z",
+    "updatedAt": "2026-07-28T02:03:34.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-3ad3a465-a14a-406d-b053-995176505960"
+  },
+  "item": [
+    {
+      "name": "data",
+      "item": [
+        {
+          "name": "v2",
+          "item": [
+            {
+              "name": "refreshes",
+              "item": [
+                {
+                  "name": "{refresh_id}",
+                  "item": [
+                    {
+                      "name": "Lean Get Data Refresh Status",
+                      "id": "a24f7e33-b10e-444e-8fd8-da63627f64ee",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "(Required) Lean entity identifier returned after a successful LinkSDK consent.",
+                            "key": "entity_id",
+                            "value": "<uuid>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/data/v2/refreshes/:refresh_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "data",
+                            "v2",
+                            "refreshes",
+                            ":refresh_id"
+                          ],
+                          "variable": [
+                            {
+                              "id": "d0843f56-adb6-46d0-9347-3f21cb6fd4f2",
+                              "key": "refresh_id",
+                              "value": "<uuid>",
+                              "description": "(Required) "
+                            }
+                          ]
+                        }
+                      },
+                      "response": [
+                        {
+                          "id": "a5c05ca4-5e6e-4afd-be5d-05aa46c2b82d",
+                          "name": "Refresh status",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "description": "(Required) Lean entity identifier returned after a successful LinkSDK consent.",
+                                "key": "entity_id",
+                                "value": "<uuid>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/data/v2/refreshes/:refresh_id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "data",
+                                "v2",
+                                "refreshes",
+                                ":refresh_id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "refresh_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T02:03:35.000Z",
+                          "updatedAt": "2026-07-28T02:03:35.000Z",
+                          "uid": "35240-a5c05ca4-5e6e-4afd-be5d-05aa46c2b82d"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T02:03:35.000Z",
+                      "updatedAt": "2026-07-28T02:03:35.000Z",
+                      "uid": "35240-a24f7e33-b10e-444e-8fd8-da63627f64ee"
+                    }
+                  ],
+                  "id": "c85ac521-6978-4506-bea3-8cd125464892",
+                  "createdAt": "2026-07-28T02:03:35.000Z",
+                  "updatedAt": "2026-07-28T02:03:35.000Z",
+                  "uid": "35240-c85ac521-6978-4506-bea3-8cd125464892"
+                },
+                {
+                  "name": "Lean Trigger Manual Data Refresh",
+                  "id": "75678e9b-ee13-4058-9ee8-5a278804895a",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "description": "(Required) Lean entity identifier returned after a successful LinkSDK consent.",
+                        "key": "entity_id",
+                        "value": "<uuid>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/data/v2/refreshes",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "data",
+                        "v2",
+                        "refreshes"
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "id": "87ed4d31-fb70-4f62-b3c6-b6c8733652dc",
+                      "name": "Refresh triggered",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "description": "(Required) Lean entity identifier returned after a successful LinkSDK consent.",
+                            "key": "entity_id",
+                            "value": "<uuid>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/data/v2/refreshes",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "data",
+                            "v2",
+                            "refreshes"
+                          ]
+                        }
+                      },
+                      "status": "Accepted",
+                      "code": 202,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T02:03:35.000Z",
+                      "updatedAt": "2026-07-28T02:03:35.000Z",
+                      "uid": "35240-87ed4d31-fb70-4f62-b3c6-b6c8733652dc"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:03:35.000Z",
+                  "updatedAt": "2026-07-28T02:03:35.000Z",
+                  "uid": "35240-75678e9b-ee13-4058-9ee8-5a278804895a"
+                },
+                {
+                  "name": "Lean Get Data Refreshes",
+                  "id": "b67b2705-7530-4baf-979e-f397b32be51f",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "(Required) Lean entity identifier returned after a successful LinkSDK consent.",
+                        "key": "entity_id",
+                        "value": "<uuid>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/data/v2/refreshes",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "data",
+                        "v2",
+                        "refreshes"
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "id": "968db41b-e4bc-487d-b55e-89174d8a5a0b",
+                      "name": "Refreshes",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "(Required) Lean entity identifier returned after a successful LinkSDK consent.",
+                            "key": "entity_id",
+                            "value": "<uuid>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/data/v2/refreshes",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "data",
+                            "v2",
+                            "refreshes"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T02:03:35.000Z",
+                      "updatedAt": "2026-07-28T02:03:35.000Z",
+                      "uid": "35240-968db41b-e4bc-487d-b55e-89174d8a5a0b"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:03:35.000Z",
+                  "updatedAt": "2026-07-28T02:03:35.000Z",
+                  "uid": "35240-b67b2705-7530-4baf-979e-f397b32be51f"
+                }
+              ],
+              "id": "7b36dcf9-8406-4453-a17f-2176d22fe756",
+              "createdAt": "2026-07-28T02:03:35.000Z",
+              "updatedAt": "2026-07-28T02:03:35.000Z",
+              "uid": "35240-7b36dcf9-8406-4453-a17f-2176d22fe756"
+            }
+          ],
+          "id": "3a6a3c83-9e14-45b7-8125-2892d06d90b0",
+          "createdAt": "2026-07-28T02:03:35.000Z",
+          "updatedAt": "2026-07-28T02:03:35.000Z",
+          "uid": "35240-3a6a3c83-9e14-45b7-8125-2892d06d90b0"
+        }
+      ],
+      "id": "c4de93ae-5c25-40ea-8983-b83d14c8c0be",
+      "createdAt": "2026-07-28T02:03:35.000Z",
+      "updatedAt": "2026-07-28T02:03:35.000Z",
+      "uid": "35240-c4de93ae-5c25-40ea-8983-b83d14c8c0be"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://auth.leantech.me"
+    }
+  ]
+}

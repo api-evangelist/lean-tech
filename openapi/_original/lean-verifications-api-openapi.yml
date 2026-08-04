@@ -1,0 +1,112 @@
+openapi: 3.1.0
+info:
+  title: Lean Verifications API
+  description: >
+    Account Verification confirms ownership and validity of a bank account
+    by IBAN or local account number across 27+ countries in the MENA region,
+    Europe, the Americas, Asia, and Africa. Name Verification compares a
+    supplied name against the registered payee record. Used for fraud
+    reduction, payout pre-checks, and Confirmation of Payee.
+  version: '1.0'
+  contact:
+    name: Lean Support
+    url: https://help.leantech.me
+servers:
+  - url: https://api2.leantech.me
+    description: Production
+security:
+  - BearerAuth: []
+tags:
+  - name: Account Verification
+  - name: Name Verification
+paths:
+  /verifications/v1/accounts:
+    post:
+      summary: Lean Verify Account
+      description: >
+        Verify a bank account in one of 27+ supported countries. The request
+        payload differs per country to accommodate local identifier formats
+        (IBAN, sort-code/account-number, CLABE, etc.). Supported country
+        codes include AE, SA, AR, BD, BE, BR, CN, FR, ID, IN, IT, KR, MX,
+        NG, NL, NP, PK, PL, UG, GB, US, VN, MY, UY, PE, TR, and ZA.
+      operationId: verifyAccount
+      tags: [Account Verification]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AccountVerificationRequest'
+      responses:
+        '200':
+          description: Verification result
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AccountVerificationResponse'
+  /insights/v1/name-verification:
+    post:
+      summary: Lean Verify Name
+      description: >
+        Compare a supplied account-holder name against the canonical name
+        held by the receiving bank to perform Confirmation of Payee.
+      operationId: verifyName
+      tags: [Name Verification]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [name, account]
+              properties:
+                name:
+                  type: string
+                account:
+                  type: object
+                  properties:
+                    iban:
+                      type: string
+                    account_number:
+                      type: string
+                    country:
+                      type: string
+      responses:
+        '200':
+          description: Name verification result
+components:
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+  schemas:
+    AccountVerificationRequest:
+      type: object
+      required: [country]
+      properties:
+        country:
+          type: string
+          description: ISO 3166-1 alpha-2 country code.
+        iban:
+          type: string
+        account_number:
+          type: string
+        bank_code:
+          type: string
+        branch_code:
+          type: string
+        beneficiary_name:
+          type: string
+    AccountVerificationResponse:
+      type: object
+      properties:
+        verified:
+          type: boolean
+        match_strength:
+          type: string
+          enum: [FULL, PARTIAL, NONE]
+        bank_name:
+          type: string
+        account_holder:
+          type: string

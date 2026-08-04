@@ -1,0 +1,513 @@
+{
+  "info": {
+    "_postman_id": "382cfe31-e05a-4ea5-9e7b-5eb8f1e4536a",
+    "name": "Lean Authentication Account on File Accounts API",
+    "description": "OAuth 2.0 client-credentials token issuance for Lean APIs. Generates two classes of JWT access token: (1) scope=api for server-to-server backend calls, and (2) scope=customer.<customer_id> for the LinkSDK to act on behalf of an end-user. All tokens must be generated from a secure backend using credentials issued in the Lean Application Dashboard.\n\n\nContact Support:\n Name: Lean Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:03:21.000Z",
+    "updatedAt": "2026-07-28T02:03:21.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-382cfe31-e05a-4ea5-9e7b-5eb8f1e4536a"
+  },
+  "item": [
+    {
+      "name": "data",
+      "item": [
+        {
+          "name": "v2",
+          "item": [
+            {
+              "name": "accounts",
+              "item": [
+                {
+                  "name": "{account_id}",
+                  "item": [
+                    {
+                      "name": "beneficiaries",
+                      "item": [
+                        {
+                          "name": "Lean Get Beneficiaries",
+                          "id": "249bee22-07d8-463d-9684-220cd4eb803e",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "description": "(Required) Lean entity identifier returned after a successful LinkSDK consent.",
+                                "key": "entity_id",
+                                "value": "<uuid>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/data/v2/accounts/:account_id/beneficiaries",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "data",
+                                "v2",
+                                "accounts",
+                                ":account_id",
+                                "beneficiaries"
+                              ],
+                              "variable": [
+                                {
+                                  "id": "8c093f55-d4c3-402f-8555-49cba074bc5e",
+                                  "key": "account_id",
+                                  "value": "<string>",
+                                  "description": "(Required) "
+                                }
+                              ]
+                            }
+                          },
+                          "response": [
+                            {
+                              "id": "5aaacf8c-152e-4f1f-93b0-665dc8fc8b5b",
+                              "name": "Beneficiaries",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "description": "(Required) Lean entity identifier returned after a successful LinkSDK consent.",
+                                    "key": "entity_id",
+                                    "value": "<uuid>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/data/v2/accounts/:account_id/beneficiaries",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "data",
+                                    "v2",
+                                    "accounts",
+                                    ":account_id",
+                                    "beneficiaries"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "account_id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-07-28T02:03:21.000Z",
+                              "updatedAt": "2026-07-28T02:03:21.000Z",
+                              "uid": "35240-5aaacf8c-152e-4f1f-93b0-665dc8fc8b5b"
+                            }
+                          ],
+                          "createdAt": "2026-07-28T02:03:21.000Z",
+                          "updatedAt": "2026-07-28T02:03:21.000Z",
+                          "uid": "35240-249bee22-07d8-463d-9684-220cd4eb803e"
+                        }
+                      ],
+                      "id": "0593e31d-5175-4df6-8cf3-270957e57d9a",
+                      "createdAt": "2026-07-28T02:03:21.000Z",
+                      "updatedAt": "2026-07-28T02:03:21.000Z",
+                      "uid": "35240-0593e31d-5175-4df6-8cf3-270957e57d9a"
+                    },
+                    {
+                      "name": "direct-debits",
+                      "item": [
+                        {
+                          "name": "Lean Get Direct Debits",
+                          "id": "ace5057b-ec59-4347-9fd9-c126bb7eb13b",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "description": "(Required) Lean entity identifier returned after a successful LinkSDK consent.",
+                                "key": "entity_id",
+                                "value": "<uuid>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/data/v2/accounts/:account_id/direct-debits",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "data",
+                                "v2",
+                                "accounts",
+                                ":account_id",
+                                "direct-debits"
+                              ],
+                              "variable": [
+                                {
+                                  "id": "b7af0c76-03b0-4974-af83-c015bc5ded6a",
+                                  "key": "account_id",
+                                  "value": "<string>",
+                                  "description": "(Required) "
+                                }
+                              ]
+                            }
+                          },
+                          "response": [
+                            {
+                              "id": "dd6d6f6e-482f-4769-a338-f5316b6b0d00",
+                              "name": "Direct debits",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "description": "(Required) Lean entity identifier returned after a successful LinkSDK consent.",
+                                    "key": "entity_id",
+                                    "value": "<uuid>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/data/v2/accounts/:account_id/direct-debits",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "data",
+                                    "v2",
+                                    "accounts",
+                                    ":account_id",
+                                    "direct-debits"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "account_id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-07-28T02:03:21.000Z",
+                              "updatedAt": "2026-07-28T02:03:21.000Z",
+                              "uid": "35240-dd6d6f6e-482f-4769-a338-f5316b6b0d00"
+                            }
+                          ],
+                          "createdAt": "2026-07-28T02:03:21.000Z",
+                          "updatedAt": "2026-07-28T02:03:21.000Z",
+                          "uid": "35240-ace5057b-ec59-4347-9fd9-c126bb7eb13b"
+                        }
+                      ],
+                      "id": "62954e03-b4b6-467a-a3de-8097265e2c6a",
+                      "createdAt": "2026-07-28T02:03:21.000Z",
+                      "updatedAt": "2026-07-28T02:03:21.000Z",
+                      "uid": "35240-62954e03-b4b6-467a-a3de-8097265e2c6a"
+                    },
+                    {
+                      "name": "scheduled-payments",
+                      "item": [
+                        {
+                          "name": "Lean Get Scheduled Payments",
+                          "id": "be495403-a48c-4f80-8470-90ebe54a4fb7",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "description": "(Required) Lean entity identifier returned after a successful LinkSDK consent.",
+                                "key": "entity_id",
+                                "value": "<uuid>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/data/v2/accounts/:account_id/scheduled-payments",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "data",
+                                "v2",
+                                "accounts",
+                                ":account_id",
+                                "scheduled-payments"
+                              ],
+                              "variable": [
+                                {
+                                  "id": "d09d71db-2d1a-4bc6-a0d5-3cc3f9ffac9e",
+                                  "key": "account_id",
+                                  "value": "<string>",
+                                  "description": "(Required) "
+                                }
+                              ]
+                            }
+                          },
+                          "response": [
+                            {
+                              "id": "d7ffb22b-16ff-44c1-b62f-b83675b673d9",
+                              "name": "Scheduled payments",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "description": "(Required) Lean entity identifier returned after a successful LinkSDK consent.",
+                                    "key": "entity_id",
+                                    "value": "<uuid>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/data/v2/accounts/:account_id/scheduled-payments",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "data",
+                                    "v2",
+                                    "accounts",
+                                    ":account_id",
+                                    "scheduled-payments"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "account_id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-07-28T02:03:21.000Z",
+                              "updatedAt": "2026-07-28T02:03:21.000Z",
+                              "uid": "35240-d7ffb22b-16ff-44c1-b62f-b83675b673d9"
+                            }
+                          ],
+                          "createdAt": "2026-07-28T02:03:21.000Z",
+                          "updatedAt": "2026-07-28T02:03:21.000Z",
+                          "uid": "35240-be495403-a48c-4f80-8470-90ebe54a4fb7"
+                        }
+                      ],
+                      "id": "7b36a728-e9bf-475e-8f23-b6edd95622f8",
+                      "createdAt": "2026-07-28T02:03:21.000Z",
+                      "updatedAt": "2026-07-28T02:03:21.000Z",
+                      "uid": "35240-7b36a728-e9bf-475e-8f23-b6edd95622f8"
+                    },
+                    {
+                      "name": "standing-orders",
+                      "item": [
+                        {
+                          "name": "Lean Get Standing Orders",
+                          "id": "a40d41ee-1fba-4a74-aa85-d1ce232c8daa",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "description": "(Required) Lean entity identifier returned after a successful LinkSDK consent.",
+                                "key": "entity_id",
+                                "value": "<uuid>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/data/v2/accounts/:account_id/standing-orders",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "data",
+                                "v2",
+                                "accounts",
+                                ":account_id",
+                                "standing-orders"
+                              ],
+                              "variable": [
+                                {
+                                  "id": "beaac4cb-b64c-4d55-a567-3d4b7381f47d",
+                                  "key": "account_id",
+                                  "value": "<string>",
+                                  "description": "(Required) "
+                                }
+                              ]
+                            }
+                          },
+                          "response": [
+                            {
+                              "id": "3cb1ddaf-333e-47dd-b78e-abf578bf6d77",
+                              "name": "Standing orders",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "description": "(Required) Lean entity identifier returned after a successful LinkSDK consent.",
+                                    "key": "entity_id",
+                                    "value": "<uuid>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/data/v2/accounts/:account_id/standing-orders",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "data",
+                                    "v2",
+                                    "accounts",
+                                    ":account_id",
+                                    "standing-orders"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "account_id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-07-28T02:03:21.000Z",
+                              "updatedAt": "2026-07-28T02:03:21.000Z",
+                              "uid": "35240-3cb1ddaf-333e-47dd-b78e-abf578bf6d77"
+                            }
+                          ],
+                          "createdAt": "2026-07-28T02:03:21.000Z",
+                          "updatedAt": "2026-07-28T02:03:21.000Z",
+                          "uid": "35240-a40d41ee-1fba-4a74-aa85-d1ce232c8daa"
+                        }
+                      ],
+                      "id": "f57e0467-c6e3-48c3-ad7c-b269f1c52985",
+                      "createdAt": "2026-07-28T02:03:21.000Z",
+                      "updatedAt": "2026-07-28T02:03:21.000Z",
+                      "uid": "35240-f57e0467-c6e3-48c3-ad7c-b269f1c52985"
+                    }
+                  ],
+                  "id": "e4a79f16-8108-4482-866e-9fd2eb4f8013",
+                  "createdAt": "2026-07-28T02:03:21.000Z",
+                  "updatedAt": "2026-07-28T02:03:21.000Z",
+                  "uid": "35240-e4a79f16-8108-4482-866e-9fd2eb4f8013"
+                },
+                {
+                  "name": "Lean Get Accounts",
+                  "id": "a9620617-e707-4116-8bd4-fdf229a074c8",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "(Required) Lean entity identifier returned after a successful LinkSDK consent.",
+                        "key": "entity_id",
+                        "value": "<uuid>"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/data/v2/accounts",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "data",
+                        "v2",
+                        "accounts"
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "id": "96a8cfb3-0b6b-4e3f-91da-dba9f84af5df",
+                      "name": "Accounts list",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "(Required) Lean entity identifier returned after a successful LinkSDK consent.",
+                            "key": "entity_id",
+                            "value": "<uuid>"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/data/v2/accounts",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "data",
+                            "v2",
+                            "accounts"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "[\n  {\n    \"account_id\": \"<string>\",\n    \"name\": \"<string>\",\n    \"type\": \"SAVINGS\",\n    \"currency\": \"<string>\",\n    \"iban\": \"<string>\",\n    \"account_number\": \"<string>\",\n    \"bic\": \"<string>\"\n  },\n  {\n    \"account_id\": \"<string>\",\n    \"name\": \"<string>\",\n    \"type\": \"CREDIT_CARD\",\n    \"currency\": \"<string>\",\n    \"iban\": \"<string>\",\n    \"account_number\": \"<string>\",\n    \"bic\": \"<string>\"\n  }\n]",
+                      "createdAt": "2026-07-28T02:03:21.000Z",
+                      "updatedAt": "2026-07-28T02:03:21.000Z",
+                      "uid": "35240-96a8cfb3-0b6b-4e3f-91da-dba9f84af5df"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:03:21.000Z",
+                  "updatedAt": "2026-07-28T02:03:21.000Z",
+                  "uid": "35240-a9620617-e707-4116-8bd4-fdf229a074c8"
+                }
+              ],
+              "id": "ef3cb172-2d22-4089-be2a-cc5747c80f33",
+              "createdAt": "2026-07-28T02:03:21.000Z",
+              "updatedAt": "2026-07-28T02:03:21.000Z",
+              "uid": "35240-ef3cb172-2d22-4089-be2a-cc5747c80f33"
+            }
+          ],
+          "id": "8fbd6e21-e5c6-4e70-87fe-7fd995400443",
+          "createdAt": "2026-07-28T02:03:21.000Z",
+          "updatedAt": "2026-07-28T02:03:21.000Z",
+          "uid": "35240-8fbd6e21-e5c6-4e70-87fe-7fd995400443"
+        }
+      ],
+      "id": "4eaf34f4-18a9-4918-96de-3923d4a86e9c",
+      "createdAt": "2026-07-28T02:03:21.000Z",
+      "updatedAt": "2026-07-28T02:03:21.000Z",
+      "uid": "35240-4eaf34f4-18a9-4918-96de-3923d4a86e9c"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://auth.leantech.me"
+    }
+  ]
+}

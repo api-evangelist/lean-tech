@@ -1,0 +1,129 @@
+{
+  "info": {
+    "_postman_id": "fa7ee08a-0851-44a3-b3ae-267a5ebd14b4",
+    "name": "Lean Authentication Account on File Banks API",
+    "description": "OAuth 2.0 client-credentials token issuance for Lean APIs. Generates two classes of JWT access token: (1) scope=api for server-to-server backend calls, and (2) scope=customer.<customer_id> for the LinkSDK to act on behalf of an end-user. All tokens must be generated from a secure backend using credentials issued in the Lean Application Dashboard.\n\n\nContact Support:\n Name: Lean Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:03:24.000Z",
+    "updatedAt": "2026-07-28T02:03:24.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-fa7ee08a-0851-44a3-b3ae-267a5ebd14b4"
+  },
+  "item": [
+    {
+      "name": "banks",
+      "item": [
+        {
+          "name": "v1",
+          "item": [
+            {
+              "name": "Lean List Banks",
+              "id": "f271f82a-a274-4553-aa7e-2675b76f6319",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/banks/v1/?country=SA&capability=payouts",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "banks",
+                    "v1",
+                    ""
+                  ],
+                  "query": [
+                    {
+                      "key": "country",
+                      "value": "SA"
+                    },
+                    {
+                      "key": "capability",
+                      "value": "payouts"
+                    }
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "id": "118e049a-4a5d-4c4d-9bd1-0833899761c9",
+                  "name": "List of supported banks",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/banks/v1/?country=SA&capability=payouts",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "banks",
+                        "v1",
+                        ""
+                      ],
+                      "query": [
+                        {
+                          "key": "country",
+                          "value": "SA"
+                        },
+                        {
+                          "key": "capability",
+                          "value": "payouts"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "[\n  {\n    \"identifier\": \"<string>\",\n    \"name\": \"<string>\",\n    \"country\": \"<string>\",\n    \"logo\": \"<uri>\",\n    \"supported_account_types\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"capabilities\": [\n      \"aof\",\n      \"data\"\n    ]\n  },\n  {\n    \"identifier\": \"<string>\",\n    \"name\": \"<string>\",\n    \"country\": \"<string>\",\n    \"logo\": \"<uri>\",\n    \"supported_account_types\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"capabilities\": [\n      \"aof\",\n      \"aof\"\n    ]\n  }\n]",
+                  "createdAt": "2026-07-28T02:03:24.000Z",
+                  "updatedAt": "2026-07-28T02:03:24.000Z",
+                  "uid": "35240-118e049a-4a5d-4c4d-9bd1-0833899761c9"
+                }
+              ],
+              "createdAt": "2026-07-28T02:03:24.000Z",
+              "updatedAt": "2026-07-28T02:03:24.000Z",
+              "uid": "35240-f271f82a-a274-4553-aa7e-2675b76f6319"
+            }
+          ],
+          "id": "bd2c856f-1f2a-478b-9e01-8fdecdead3c5",
+          "createdAt": "2026-07-28T02:03:24.000Z",
+          "updatedAt": "2026-07-28T02:03:24.000Z",
+          "uid": "35240-bd2c856f-1f2a-478b-9e01-8fdecdead3c5"
+        }
+      ],
+      "id": "47ad7254-57b3-4578-90ad-ee5690f89bb4",
+      "createdAt": "2026-07-28T02:03:24.000Z",
+      "updatedAt": "2026-07-28T02:03:24.000Z",
+      "uid": "35240-47ad7254-57b3-4578-90ad-ee5690f89bb4"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://auth.leantech.me"
+    }
+  ]
+}

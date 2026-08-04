@@ -1,0 +1,123 @@
+openapi: 3.1.0
+info:
+  title: Lean Entities API
+  description: >
+    Entities represent a customer's authenticated connection to a single
+    bank, returned after a successful LinkSDK consent. Each entity carries
+    the permissions granted (accounts, transactions, identity, balance) and
+    is the handle used in Data API calls.
+  version: '1.0'
+  contact:
+    name: Lean Support
+    url: https://help.leantech.me
+servers:
+  - url: https://api2.leantech.me
+    description: Production
+security:
+  - BearerAuth: []
+tags:
+  - name: Entities
+paths:
+  /customers/v1/{customer_id}/entities:
+    get:
+      summary: Lean Get Entities For Customer
+      operationId: getEntitiesForCustomer
+      tags: [Entities]
+      parameters:
+        - $ref: '#/components/parameters/CustomerId'
+      responses:
+        '200':
+          description: Entities for customer
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Entity'
+  /customers/v1/{customer_id}/entities/{entity_id}:
+    get:
+      summary: Lean Get Entity By Id
+      operationId: getEntityById
+      tags: [Entities]
+      parameters:
+        - $ref: '#/components/parameters/CustomerId'
+        - name: entity_id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: Entity
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Entity'
+  /customers/v1/entities:
+    get:
+      summary: Lean Retrieve All Entities For Date Range
+      operationId: retrieveEntitiesForDateRange
+      tags: [Entities]
+      parameters:
+        - name: start_date
+          in: query
+          schema:
+            type: string
+            format: date
+        - name: end_date
+          in: query
+          schema:
+            type: string
+            format: date
+      responses:
+        '200':
+          description: Entities
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Entity'
+components:
+  parameters:
+    CustomerId:
+      name: customer_id
+      in: path
+      required: true
+      schema:
+        type: string
+        format: uuid
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+  schemas:
+    Entity:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        customer_id:
+          type: string
+          format: uuid
+        bank_identifier:
+          type: string
+        permissions:
+          type: array
+          items:
+            type: string
+            enum:
+              - accounts
+              - balance
+              - transactions
+              - identity
+              - direct_debits
+              - standing_orders
+              - scheduled_payments
+              - beneficiaries
+        created_at:
+          type: string
+          format: date-time

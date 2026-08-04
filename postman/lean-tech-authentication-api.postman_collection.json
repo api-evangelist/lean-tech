@@ -1,0 +1,282 @@
+{
+  "info": {
+    "_postman_id": "67bbdfe3-39da-49a0-bd59-44e16380190b",
+    "name": "Lean Account on File Authentication API",
+    "description": "OAuth 2.0 client-credentials token issuance for Lean APIs. Generates two classes of JWT access token: (1) scope=api for server-to-server backend calls, and (2) scope=customer.<customer_id> for the LinkSDK to act on behalf of an end-user. All tokens must be generated from a secure backend using credentials issued in the Lean Application Dashboard.\n\n\nContact Support:\n Name: Lean Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:03:22.000Z",
+    "updatedAt": "2026-07-28T02:03:22.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-67bbdfe3-39da-49a0-bd59-44e16380190b"
+  },
+  "item": [
+    {
+      "name": "oauth2",
+      "item": [
+        {
+          "name": "token",
+          "item": [
+            {
+              "name": "Lean Generate Access Token",
+              "id": "e1fa2e48-cec1-4d3e-8bca-433d81e3ec04",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/x-www-form-urlencoded"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "description": "(Required) Application ID from the Lean Application Dashboard.",
+                      "key": "client_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) Client secret from the Lean Application Dashboard.",
+                      "key": "client_secret",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) ",
+                      "key": "grant_type",
+                      "value": "client_credentials"
+                    },
+                    {
+                      "description": "(Required) api for backend access, or customer.<customer_id> for SDK access.",
+                      "key": "scope",
+                      "value": "<string>"
+                    }
+                  ]
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/oauth2/token",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "oauth2",
+                    "token"
+                  ]
+                },
+                "description": "Exchange client_id and client_secret for a JWT access token. Use scope=api for backend API calls or scope=customer.<customer_id> for the LinkSDK.\n"
+              },
+              "response": [
+                {
+                  "id": "f6f7b5de-64ac-4084-bb61-e0013d4da477",
+                  "name": "Token issued successfully",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/x-www-form-urlencoded"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "urlencoded",
+                      "urlencoded": [
+                        {
+                          "description": "(Required) Application ID from the Lean Application Dashboard.",
+                          "key": "client_id",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "(Required) Client secret from the Lean Application Dashboard.",
+                          "key": "client_secret",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "(Required) ",
+                          "key": "grant_type",
+                          "value": "client_credentials"
+                        },
+                        {
+                          "description": "(Required) api for backend access, or customer.<customer_id> for SDK access.",
+                          "key": "scope",
+                          "value": "<string>"
+                        }
+                      ]
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/oauth2/token",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "oauth2",
+                        "token"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"access_token\": \"<string>\",\n  \"token_type\": \"<string>\",\n  \"expires_in\": \"<integer>\"\n}",
+                  "createdAt": "2026-07-28T02:03:22.000Z",
+                  "updatedAt": "2026-07-28T02:03:22.000Z",
+                  "uid": "35240-f6f7b5de-64ac-4084-bb61-e0013d4da477"
+                },
+                {
+                  "id": "d27c8bff-6b53-4f65-8952-de5193215a51",
+                  "name": "Invalid request",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/x-www-form-urlencoded"
+                      }
+                    ],
+                    "body": {
+                      "mode": "urlencoded",
+                      "urlencoded": [
+                        {
+                          "description": "(Required) Application ID from the Lean Application Dashboard.",
+                          "key": "client_id",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "(Required) Client secret from the Lean Application Dashboard.",
+                          "key": "client_secret",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "(Required) ",
+                          "key": "grant_type",
+                          "value": "client_credentials"
+                        },
+                        {
+                          "description": "(Required) api for backend access, or customer.<customer_id> for SDK access.",
+                          "key": "scope",
+                          "value": "<string>"
+                        }
+                      ]
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/oauth2/token",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "oauth2",
+                        "token"
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T02:03:22.000Z",
+                  "updatedAt": "2026-07-28T02:03:22.000Z",
+                  "uid": "35240-d27c8bff-6b53-4f65-8952-de5193215a51"
+                },
+                {
+                  "id": "3b4a8383-9a00-4295-8fde-1c73198067ea",
+                  "name": "Invalid credentials",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/x-www-form-urlencoded"
+                      }
+                    ],
+                    "body": {
+                      "mode": "urlencoded",
+                      "urlencoded": [
+                        {
+                          "description": "(Required) Application ID from the Lean Application Dashboard.",
+                          "key": "client_id",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "(Required) Client secret from the Lean Application Dashboard.",
+                          "key": "client_secret",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "(Required) ",
+                          "key": "grant_type",
+                          "value": "client_credentials"
+                        },
+                        {
+                          "description": "(Required) api for backend access, or customer.<customer_id> for SDK access.",
+                          "key": "scope",
+                          "value": "<string>"
+                        }
+                      ]
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/oauth2/token",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "oauth2",
+                        "token"
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T02:03:22.000Z",
+                  "updatedAt": "2026-07-28T02:03:22.000Z",
+                  "uid": "35240-3b4a8383-9a00-4295-8fde-1c73198067ea"
+                }
+              ],
+              "createdAt": "2026-07-28T02:03:22.000Z",
+              "updatedAt": "2026-07-28T02:03:22.000Z",
+              "uid": "35240-e1fa2e48-cec1-4d3e-8bca-433d81e3ec04"
+            }
+          ],
+          "id": "8cfecb9f-cfa2-478d-b1c2-041963f04a1b",
+          "createdAt": "2026-07-28T02:03:22.000Z",
+          "updatedAt": "2026-07-28T02:03:22.000Z",
+          "uid": "35240-8cfecb9f-cfa2-478d-b1c2-041963f04a1b"
+        }
+      ],
+      "id": "81c84e84-03c3-453b-8bef-21e414a866a3",
+      "createdAt": "2026-07-28T02:03:22.000Z",
+      "updatedAt": "2026-07-28T02:03:22.000Z",
+      "uid": "35240-81c84e84-03c3-453b-8bef-21e414a866a3"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://auth.leantech.me"
+    }
+  ]
+}

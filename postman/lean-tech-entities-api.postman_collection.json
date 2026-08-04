@@ -1,0 +1,348 @@
+{
+  "info": {
+    "_postman_id": "ab47f8bf-098c-4559-8d41-9a647bc6f720",
+    "name": "Lean Authentication Account on File Entities API",
+    "description": "OAuth 2.0 client-credentials token issuance for Lean APIs. Generates two classes of JWT access token: (1) scope=api for server-to-server backend calls, and (2) scope=customer.<customer_id> for the LinkSDK to act on behalf of an end-user. All tokens must be generated from a secure backend using credentials issued in the Lean Application Dashboard.\n\n\nContact Support:\n Name: Lean Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:03:26.000Z",
+    "updatedAt": "2026-07-28T02:03:27.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-ab47f8bf-098c-4559-8d41-9a647bc6f720"
+  },
+  "item": [
+    {
+      "name": "customers",
+      "item": [
+        {
+          "name": "v1",
+          "item": [
+            {
+              "name": "{customer_id}",
+              "item": [
+                {
+                  "name": "entities",
+                  "item": [
+                    {
+                      "name": "{entity_id}",
+                      "item": [
+                        {
+                          "name": "Lean Get Entity By Id",
+                          "id": "36dcfac8-15a2-44b5-8439-512d2bba3f40",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/customers/v1/:customer_id/entities/:entity_id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "customers",
+                                "v1",
+                                ":customer_id",
+                                "entities",
+                                ":entity_id"
+                              ],
+                              "variable": [
+                                {
+                                  "id": "d0f9ac37-fe76-4891-83f2-46cd9d599b48",
+                                  "key": "customer_id",
+                                  "value": "<uuid>",
+                                  "description": "(Required) "
+                                },
+                                {
+                                  "id": "65405277-ac73-4272-bf9b-1529cec76e82",
+                                  "key": "entity_id",
+                                  "value": "<uuid>",
+                                  "description": "(Required) "
+                                }
+                              ]
+                            }
+                          },
+                          "response": [
+                            {
+                              "id": "e1232218-cb35-4c2d-aee4-afd6c147b8e3",
+                              "name": "Entity",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/customers/v1/:customer_id/entities/:entity_id",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "customers",
+                                    "v1",
+                                    ":customer_id",
+                                    "entities",
+                                    ":entity_id"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "customer_id"
+                                    },
+                                    {
+                                      "key": "entity_id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"id\": \"<uuid>\",\n  \"customer_id\": \"<uuid>\",\n  \"bank_identifier\": \"<string>\",\n  \"permissions\": [\n    \"direct_debits\",\n    \"direct_debits\"\n  ],\n  \"created_at\": \"<dateTime>\"\n}",
+                              "createdAt": "2026-07-28T02:03:27.000Z",
+                              "updatedAt": "2026-07-28T02:03:27.000Z",
+                              "uid": "35240-e1232218-cb35-4c2d-aee4-afd6c147b8e3"
+                            }
+                          ],
+                          "createdAt": "2026-07-28T02:03:27.000Z",
+                          "updatedAt": "2026-07-28T02:03:27.000Z",
+                          "uid": "35240-36dcfac8-15a2-44b5-8439-512d2bba3f40"
+                        }
+                      ],
+                      "id": "3f698d0f-aba8-45ad-903c-b29a0c95c5e6",
+                      "createdAt": "2026-07-28T02:03:27.000Z",
+                      "updatedAt": "2026-07-28T02:03:27.000Z",
+                      "uid": "35240-3f698d0f-aba8-45ad-903c-b29a0c95c5e6"
+                    },
+                    {
+                      "name": "Lean Get Entities For Customer",
+                      "id": "922769cb-4c41-475b-995e-2f2e48dbc9aa",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/customers/v1/:customer_id/entities",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "customers",
+                            "v1",
+                            ":customer_id",
+                            "entities"
+                          ],
+                          "variable": [
+                            {
+                              "id": "89a80dfa-b703-4327-a7c3-7a08191026cd",
+                              "key": "customer_id",
+                              "value": "<uuid>",
+                              "description": "(Required) "
+                            }
+                          ]
+                        }
+                      },
+                      "response": [
+                        {
+                          "id": "874506c1-5618-4980-a0a0-39c153dd2f22",
+                          "name": "Entities for customer",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/customers/v1/:customer_id/entities",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "customers",
+                                "v1",
+                                ":customer_id",
+                                "entities"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "customer_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "[\n  {\n    \"id\": \"<uuid>\",\n    \"customer_id\": \"<uuid>\",\n    \"bank_identifier\": \"<string>\",\n    \"permissions\": [\n      \"scheduled_payments\",\n      \"identity\"\n    ],\n    \"created_at\": \"<dateTime>\"\n  },\n  {\n    \"id\": \"<uuid>\",\n    \"customer_id\": \"<uuid>\",\n    \"bank_identifier\": \"<string>\",\n    \"permissions\": [\n      \"scheduled_payments\",\n      \"accounts\"\n    ],\n    \"created_at\": \"<dateTime>\"\n  }\n]",
+                          "createdAt": "2026-07-28T02:03:27.000Z",
+                          "updatedAt": "2026-07-28T02:03:27.000Z",
+                          "uid": "35240-874506c1-5618-4980-a0a0-39c153dd2f22"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T02:03:27.000Z",
+                      "updatedAt": "2026-07-28T02:03:27.000Z",
+                      "uid": "35240-922769cb-4c41-475b-995e-2f2e48dbc9aa"
+                    }
+                  ],
+                  "id": "f9c4804e-887f-451e-b616-da6edf2a4bc0",
+                  "createdAt": "2026-07-28T02:03:27.000Z",
+                  "updatedAt": "2026-07-28T02:03:27.000Z",
+                  "uid": "35240-f9c4804e-887f-451e-b616-da6edf2a4bc0"
+                }
+              ],
+              "id": "4aeb6bb6-b0e5-44f2-8f93-58cf1d8466eb",
+              "createdAt": "2026-07-28T02:03:27.000Z",
+              "updatedAt": "2026-07-28T02:03:27.000Z",
+              "uid": "35240-4aeb6bb6-b0e5-44f2-8f93-58cf1d8466eb"
+            },
+            {
+              "name": "entities",
+              "item": [
+                {
+                  "name": "Lean Retrieve All Entities For Date Range",
+                  "id": "ee8f160d-1529-4ac8-a28e-154df63c4e6d",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/customers/v1/entities?start_date=<date>&end_date=<date>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "customers",
+                        "v1",
+                        "entities"
+                      ],
+                      "query": [
+                        {
+                          "key": "start_date",
+                          "value": "<date>"
+                        },
+                        {
+                          "key": "end_date",
+                          "value": "<date>"
+                        }
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "id": "2a7892c2-cdf8-4e54-87ca-1ff6ffa04e70",
+                      "name": "Entities",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/customers/v1/entities?start_date=<date>&end_date=<date>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "customers",
+                            "v1",
+                            "entities"
+                          ],
+                          "query": [
+                            {
+                              "key": "start_date",
+                              "value": "<date>"
+                            },
+                            {
+                              "key": "end_date",
+                              "value": "<date>"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "[\n  {\n    \"id\": \"<uuid>\",\n    \"customer_id\": \"<uuid>\",\n    \"bank_identifier\": \"<string>\",\n    \"permissions\": [\n      \"scheduled_payments\",\n      \"identity\"\n    ],\n    \"created_at\": \"<dateTime>\"\n  },\n  {\n    \"id\": \"<uuid>\",\n    \"customer_id\": \"<uuid>\",\n    \"bank_identifier\": \"<string>\",\n    \"permissions\": [\n      \"scheduled_payments\",\n      \"accounts\"\n    ],\n    \"created_at\": \"<dateTime>\"\n  }\n]",
+                      "createdAt": "2026-07-28T02:03:27.000Z",
+                      "updatedAt": "2026-07-28T02:03:27.000Z",
+                      "uid": "35240-2a7892c2-cdf8-4e54-87ca-1ff6ffa04e70"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:03:27.000Z",
+                  "updatedAt": "2026-07-28T02:03:27.000Z",
+                  "uid": "35240-ee8f160d-1529-4ac8-a28e-154df63c4e6d"
+                }
+              ],
+              "id": "e8668217-73aa-49f5-b708-8b9815edc594",
+              "createdAt": "2026-07-28T02:03:27.000Z",
+              "updatedAt": "2026-07-28T02:03:27.000Z",
+              "uid": "35240-e8668217-73aa-49f5-b708-8b9815edc594"
+            }
+          ],
+          "id": "286fb36d-3b97-44f4-be9e-c60068244c7a",
+          "createdAt": "2026-07-28T02:03:27.000Z",
+          "updatedAt": "2026-07-28T02:03:27.000Z",
+          "uid": "35240-286fb36d-3b97-44f4-be9e-c60068244c7a"
+        }
+      ],
+      "id": "6dc6295a-2018-4919-a698-9fff13fe4ea9",
+      "createdAt": "2026-07-28T02:03:27.000Z",
+      "updatedAt": "2026-07-28T02:03:27.000Z",
+      "uid": "35240-6dc6295a-2018-4919-a698-9fff13fe4ea9"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://auth.leantech.me"
+    }
+  ]
+}

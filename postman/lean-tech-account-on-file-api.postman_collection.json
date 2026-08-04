@@ -1,0 +1,122 @@
+{
+  "info": {
+    "_postman_id": "315d53f2-9a88-459b-b603-b9bd1fa02257",
+    "name": "Lean Authentication Account on File API",
+    "description": "OAuth 2.0 client-credentials token issuance for Lean APIs. Generates two classes of JWT access token: (1) scope=api for server-to-server backend calls, and (2) scope=customer.<customer_id> for the LinkSDK to act on behalf of an end-user. All tokens must be generated from a secure backend using credentials issued in the Lean Application Dashboard.\n\n\nContact Support:\n Name: Lean Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:02:51.000Z",
+    "updatedAt": "2026-07-28T02:02:51.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-315d53f2-9a88-459b-b603-b9bd1fa02257"
+  },
+  "item": [
+    {
+      "name": "payments",
+      "item": [
+        {
+          "name": "account-on-file",
+          "item": [
+            {
+              "name": "Lean Initiate Aof Payment",
+              "id": "ae332e42-a7a8-45a3-b2f8-61448143bfe7",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"consent_id\": \"<uuid>\",\n  \"amount\": \"<number>\",\n  \"currency\": \"<string>\",\n  \"description\": \"<string>\",\n  \"reference\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/payments/account-on-file",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "payments",
+                    "account-on-file"
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "id": "45d0dbe3-7bbe-4867-b462-ec20467ac816",
+                  "name": "AOF payment initiated",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"consent_id\": \"<uuid>\",\n  \"amount\": \"<number>\",\n  \"currency\": \"<string>\",\n  \"description\": \"<string>\",\n  \"reference\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/payments/account-on-file",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "payments",
+                        "account-on-file"
+                      ]
+                    }
+                  },
+                  "status": "Created",
+                  "code": 201,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T02:02:52.000Z",
+                  "updatedAt": "2026-07-28T02:02:52.000Z",
+                  "uid": "35240-45d0dbe3-7bbe-4867-b462-ec20467ac816"
+                }
+              ],
+              "createdAt": "2026-07-28T02:02:52.000Z",
+              "updatedAt": "2026-07-28T02:02:52.000Z",
+              "uid": "35240-ae332e42-a7a8-45a3-b2f8-61448143bfe7"
+            }
+          ],
+          "id": "ba4c95b0-1d44-4e3e-b3a8-872902f5aafb",
+          "createdAt": "2026-07-28T02:02:52.000Z",
+          "updatedAt": "2026-07-28T02:02:52.000Z",
+          "uid": "35240-ba4c95b0-1d44-4e3e-b3a8-872902f5aafb"
+        }
+      ],
+      "id": "0d642339-880e-4e8d-a565-a48bb9c10e3d",
+      "createdAt": "2026-07-28T02:02:52.000Z",
+      "updatedAt": "2026-07-28T02:02:52.000Z",
+      "uid": "35240-0d642339-880e-4e8d-a565-a48bb9c10e3d"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://auth.leantech.me"
+    }
+  ]
+}

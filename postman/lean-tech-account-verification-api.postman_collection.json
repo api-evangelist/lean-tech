@@ -1,0 +1,147 @@
+{
+  "info": {
+    "_postman_id": "1e6c4991-52e9-4e1b-9433-3b5416e1b1aa",
+    "name": "Lean Authentication Account on File Account Verification API",
+    "description": "OAuth 2.0 client-credentials token issuance for Lean APIs. Generates two classes of JWT access token: (1) scope=api for server-to-server backend calls, and (2) scope=customer.<customer_id> for the LinkSDK to act on behalf of an end-user. All tokens must be generated from a secure backend using credentials issued in the Lean Application Dashboard.\n\n\nContact Support:\n Name: Lean Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:03:17.000Z",
+    "updatedAt": "2026-07-28T02:03:18.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-1e6c4991-52e9-4e1b-9433-3b5416e1b1aa"
+  },
+  "item": [
+    {
+      "name": "verifications",
+      "item": [
+        {
+          "name": "v1",
+          "item": [
+            {
+              "name": "accounts",
+              "item": [
+                {
+                  "name": "Lean Verify Account",
+                  "id": "97559daa-b68c-4b69-9175-e365d69762d1",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"country\": \"<string>\",\n  \"iban\": \"<string>\",\n  \"account_number\": \"<string>\",\n  \"bank_code\": \"<string>\",\n  \"branch_code\": \"<string>\",\n  \"beneficiary_name\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/verifications/v1/accounts",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "verifications",
+                        "v1",
+                        "accounts"
+                      ]
+                    },
+                    "description": "Verify a bank account in one of 27+ supported countries. The request payload differs per country to accommodate local identifier formats (IBAN, sort-code/account-number, CLABE, etc.). Supported country codes include AE, SA, AR, BD, BE, BR, CN, FR, ID, IN, IT, KR, MX, NG, NL, NP, PK, PL, UG, GB, US, VN, MY, UY, PE, TR, and ZA.\n"
+                  },
+                  "response": [
+                    {
+                      "id": "272a32b7-3d1b-4dfb-9700-a8458314c077",
+                      "name": "Verification result",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"country\": \"<string>\",\n  \"iban\": \"<string>\",\n  \"account_number\": \"<string>\",\n  \"bank_code\": \"<string>\",\n  \"branch_code\": \"<string>\",\n  \"beneficiary_name\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/verifications/v1/accounts",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "verifications",
+                            "v1",
+                            "accounts"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"verified\": \"<boolean>\",\n  \"match_strength\": \"FULL\",\n  \"bank_name\": \"<string>\",\n  \"account_holder\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T02:03:18.000Z",
+                      "updatedAt": "2026-07-28T02:03:18.000Z",
+                      "uid": "35240-272a32b7-3d1b-4dfb-9700-a8458314c077"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:03:18.000Z",
+                  "updatedAt": "2026-07-28T02:03:18.000Z",
+                  "uid": "35240-97559daa-b68c-4b69-9175-e365d69762d1"
+                }
+              ],
+              "id": "c02357a6-fe4f-4dc9-a757-34008640618f",
+              "createdAt": "2026-07-28T02:03:18.000Z",
+              "updatedAt": "2026-07-28T02:03:18.000Z",
+              "uid": "35240-c02357a6-fe4f-4dc9-a757-34008640618f"
+            }
+          ],
+          "id": "425d5436-37dc-420e-8b8f-df23eabf4218",
+          "createdAt": "2026-07-28T02:03:18.000Z",
+          "updatedAt": "2026-07-28T02:03:18.000Z",
+          "uid": "35240-425d5436-37dc-420e-8b8f-df23eabf4218"
+        }
+      ],
+      "id": "72774ccd-349a-4ccf-818f-9181e7274c92",
+      "createdAt": "2026-07-28T02:03:18.000Z",
+      "updatedAt": "2026-07-28T02:03:18.000Z",
+      "uid": "35240-72774ccd-349a-4ccf-818f-9181e7274c92"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://auth.leantech.me"
+    }
+  ]
+}

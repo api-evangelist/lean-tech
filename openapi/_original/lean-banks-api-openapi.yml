@@ -1,0 +1,72 @@
+openapi: 3.1.0
+info:
+  title: Lean Banks API
+  description: >
+    List the banks Lean currently supports in each region for Data, Payments,
+    and Payouts. Returns bank identifiers, display names, logos, country
+    codes, and which product capabilities each bank supports.
+  version: '1.0'
+  contact:
+    name: Lean Support
+    url: https://help.leantech.me
+servers:
+  - url: https://api2.leantech.me
+    description: Production
+security:
+  - BearerAuth: []
+tags:
+  - name: Banks
+paths:
+  /banks/v1/:
+    get:
+      summary: Lean List Banks
+      operationId: listBanks
+      tags: [Banks]
+      parameters:
+        - name: country
+          in: query
+          schema:
+            type: string
+            enum: [AE, SA]
+        - name: capability
+          in: query
+          schema:
+            type: string
+            enum: [data, payments, payouts]
+      responses:
+        '200':
+          description: List of supported banks
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Bank'
+components:
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+  schemas:
+    Bank:
+      type: object
+      properties:
+        identifier:
+          type: string
+        name:
+          type: string
+        country:
+          type: string
+        logo:
+          type: string
+          format: uri
+        supported_account_types:
+          type: array
+          items:
+            type: string
+        capabilities:
+          type: array
+          items:
+            type: string
+            enum: [data, payments, payouts, aof]

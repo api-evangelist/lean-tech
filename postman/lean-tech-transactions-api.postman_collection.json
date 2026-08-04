@@ -1,0 +1,183 @@
+{
+  "info": {
+    "_postman_id": "100a617c-510b-40f5-b28c-bb2540510ff8",
+    "name": "Lean Authentication Account on File Transactions API",
+    "description": "OAuth 2.0 client-credentials token issuance for Lean APIs. Generates two classes of JWT access token: (1) scope=api for server-to-server backend calls, and (2) scope=customer.<customer_id> for the LinkSDK to act on behalf of an end-user. All tokens must be generated from a secure backend using credentials issued in the Lean Application Dashboard.\n\n\nContact Support:\n Name: Lean Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:03:37.000Z",
+    "updatedAt": "2026-07-28T02:03:37.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-100a617c-510b-40f5-b28c-bb2540510ff8"
+  },
+  "item": [
+    {
+      "name": "data",
+      "item": [
+        {
+          "name": "v2",
+          "item": [
+            {
+              "name": "accounts",
+              "item": [
+                {
+                  "name": "{account_id}",
+                  "item": [
+                    {
+                      "name": "transactions",
+                      "item": [
+                        {
+                          "name": "Lean Get Transactions",
+                          "id": "9caa23dc-96be-4eb4-881f-171c951b7dca",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "description": "(Required) Lean entity identifier returned after a successful LinkSDK consent.",
+                                "key": "entity_id",
+                                "value": "<uuid>"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/data/v2/accounts/:account_id/transactions?start_date=<date>&end_date=<date>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "data",
+                                "v2",
+                                "accounts",
+                                ":account_id",
+                                "transactions"
+                              ],
+                              "query": [
+                                {
+                                  "key": "start_date",
+                                  "value": "<date>"
+                                },
+                                {
+                                  "key": "end_date",
+                                  "value": "<date>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "id": "44cd134f-7413-4655-bb0a-d2d03cf912ec",
+                                  "key": "account_id",
+                                  "value": "<string>",
+                                  "description": "(Required) "
+                                }
+                              ]
+                            }
+                          },
+                          "response": [
+                            {
+                              "id": "6edc7aab-b15f-4e75-bf37-146ad15cbcac",
+                              "name": "Transactions",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "description": "(Required) Lean entity identifier returned after a successful LinkSDK consent.",
+                                    "key": "entity_id",
+                                    "value": "<uuid>"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/data/v2/accounts/:account_id/transactions?start_date=<date>&end_date=<date>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "data",
+                                    "v2",
+                                    "accounts",
+                                    ":account_id",
+                                    "transactions"
+                                  ],
+                                  "query": [
+                                    {
+                                      "key": "start_date",
+                                      "value": "<date>"
+                                    },
+                                    {
+                                      "key": "end_date",
+                                      "value": "<date>"
+                                    }
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "account_id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "[\n  {\n    \"id\": \"<string>\",\n    \"amount\": {\n      \"amount\": \"<number>\",\n      \"currency\": \"<string>\"\n    },\n    \"timestamp\": \"<dateTime>\",\n    \"description\": \"<string>\",\n    \"credit_debit_indicator\": \"CREDIT\",\n    \"booking_status\": \"PENDING\"\n  },\n  {\n    \"id\": \"<string>\",\n    \"amount\": {\n      \"amount\": \"<number>\",\n      \"currency\": \"<string>\"\n    },\n    \"timestamp\": \"<dateTime>\",\n    \"description\": \"<string>\",\n    \"credit_debit_indicator\": \"CREDIT\",\n    \"booking_status\": \"BOOKED\"\n  }\n]",
+                              "createdAt": "2026-07-28T02:03:38.000Z",
+                              "updatedAt": "2026-07-28T02:03:38.000Z",
+                              "uid": "35240-6edc7aab-b15f-4e75-bf37-146ad15cbcac"
+                            }
+                          ],
+                          "createdAt": "2026-07-28T02:03:38.000Z",
+                          "updatedAt": "2026-07-28T02:03:38.000Z",
+                          "uid": "35240-9caa23dc-96be-4eb4-881f-171c951b7dca"
+                        }
+                      ],
+                      "id": "0d4e1af2-06c6-4899-be21-e3a8594454e2",
+                      "createdAt": "2026-07-28T02:03:38.000Z",
+                      "updatedAt": "2026-07-28T02:03:38.000Z",
+                      "uid": "35240-0d4e1af2-06c6-4899-be21-e3a8594454e2"
+                    }
+                  ],
+                  "id": "e1f1cdf5-39a1-4843-9350-888520b62e26",
+                  "createdAt": "2026-07-28T02:03:38.000Z",
+                  "updatedAt": "2026-07-28T02:03:38.000Z",
+                  "uid": "35240-e1f1cdf5-39a1-4843-9350-888520b62e26"
+                }
+              ],
+              "id": "77bf1b20-b29c-45f8-9149-c08f9bf9b2aa",
+              "createdAt": "2026-07-28T02:03:38.000Z",
+              "updatedAt": "2026-07-28T02:03:38.000Z",
+              "uid": "35240-77bf1b20-b29c-45f8-9149-c08f9bf9b2aa"
+            }
+          ],
+          "id": "ad246d91-7d72-40e4-bde1-8632ad0360c7",
+          "createdAt": "2026-07-28T02:03:38.000Z",
+          "updatedAt": "2026-07-28T02:03:38.000Z",
+          "uid": "35240-ad246d91-7d72-40e4-bde1-8632ad0360c7"
+        }
+      ],
+      "id": "1d0b01c5-ebd4-4d85-a696-693db51d55d4",
+      "createdAt": "2026-07-28T02:03:38.000Z",
+      "updatedAt": "2026-07-28T02:03:38.000Z",
+      "uid": "35240-1d0b01c5-ebd4-4d85-a696-693db51d55d4"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://auth.leantech.me"
+    }
+  ]
+}

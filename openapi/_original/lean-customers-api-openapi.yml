@@ -1,0 +1,121 @@
+openapi: 3.1.0
+info:
+  title: Lean Customers API
+  description: >
+    Manage end-user customer records that Lean uses to anchor data and payment
+    consents. A customer is created with an app_user_id that maps Lean's
+    customer identifier to the developer's own user identifier.
+  version: '1.0'
+  contact:
+    name: Lean Support
+    url: https://help.leantech.me
+servers:
+  - url: https://api2.leantech.me
+    description: Production
+  - url: https://sandbox.ae.leantech.me
+    description: Sandbox - UAE
+  - url: https://sandbox.sa.leantech.me
+    description: Sandbox - KSA
+security:
+  - BearerAuth: []
+tags:
+  - name: Customers
+paths:
+  /customers/v1:
+    post:
+      summary: Lean Create Customer
+      operationId: createCustomer
+      tags: [Customers]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CustomerRequest'
+      responses:
+        '201':
+          description: Customer created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Customer'
+    get:
+      summary: Lean List Customers
+      operationId: listCustomers
+      tags: [Customers]
+      responses:
+        '200':
+          description: List of customers
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Customer'
+  /customers/v1/{customer_id}:
+    get:
+      summary: Lean Get Customer By Id
+      operationId: getCustomerById
+      tags: [Customers]
+      parameters:
+        - $ref: '#/components/parameters/CustomerId'
+      responses:
+        '200':
+          description: Customer
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Customer'
+  /customers/v1/app-user-id/{app_user_id}:
+    get:
+      summary: Lean Get Customer By App User Id
+      operationId: getCustomerByAppUserId
+      tags: [Customers]
+      parameters:
+        - name: app_user_id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Customer
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Customer'
+components:
+  parameters:
+    CustomerId:
+      name: customer_id
+      in: path
+      required: true
+      schema:
+        type: string
+        format: uuid
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+  schemas:
+    CustomerRequest:
+      type: object
+      required: [app_user_id]
+      properties:
+        app_user_id:
+          type: string
+          description: The developer's identifier for the end-user.
+    Customer:
+      type: object
+      properties:
+        customer_id:
+          type: string
+          format: uuid
+        app_user_id:
+          type: string
+        app_id:
+          type: string
+        created_at:
+          type: string
+          format: date-time

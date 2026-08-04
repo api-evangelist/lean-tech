@@ -1,0 +1,187 @@
+openapi: 3.1.0
+info:
+  title: Lean Payouts API
+  description: >
+    Initiate outbound bank-to-bank payouts from corporate accounts to
+    consumer or business beneficiaries. Manage payout destinations
+    (beneficiary records), create payout payments, list payouts, retrieve
+    payout intents, and pull per-payment history.
+  version: '1.0'
+  contact:
+    name: Lean Support
+    url: https://help.leantech.me
+servers:
+  - url: https://api2.leantech.me
+    description: Production
+security:
+  - BearerAuth: []
+tags:
+  - name: Payouts
+  - name: Payout Destinations
+paths:
+  /payouts/v1/payment:
+    post:
+      summary: Lean Create Payout Payment
+      operationId: createPayoutPayment
+      tags: [Payouts]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PayoutRequest'
+      responses:
+        '201':
+          description: Payout created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Payout'
+  /payouts/v1/payments:
+    get:
+      summary: Lean List Payouts
+      operationId: listPayouts
+      tags: [Payouts]
+      responses:
+        '200':
+          description: Payouts
+  /payouts/v1/payments/{payment_id}/history:
+    get:
+      summary: Lean Get Payout Payment History
+      operationId: getPayoutPaymentHistory
+      tags: [Payouts]
+      parameters:
+        - name: payment_id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: History
+  /payouts/v1/{payment_id}:
+    get:
+      summary: Lean Get Payout
+      operationId: getPayout
+      tags: [Payouts]
+      parameters:
+        - name: payment_id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: Payout
+  /payouts/v1/intents/{payment_intent_id}:
+    get:
+      summary: Lean Get Payout Intent
+      operationId: getPayoutIntent
+      tags: [Payouts]
+      parameters:
+        - name: payment_intent_id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: Payout intent
+  /payouts/v1/payment/destinations:
+    post:
+      summary: Lean Create Payout Destination
+      operationId: createPayoutDestination
+      tags: [Payout Destinations]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PayoutDestinationRequest'
+      responses:
+        '201':
+          description: Destination created
+    get:
+      summary: Lean List Payout Destinations
+      operationId: listPayoutDestinations
+      tags: [Payout Destinations]
+      responses:
+        '200':
+          description: Destinations
+  /payouts/v1/payment/destinations/{destination_id}:
+    get:
+      summary: Lean Get Payout Destination
+      operationId: getPayoutDestination
+      tags: [Payout Destinations]
+      parameters:
+        - name: destination_id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: Destination
+components:
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+  schemas:
+    PayoutRequest:
+      type: object
+      required: [amount, currency, destination_id]
+      properties:
+        amount:
+          type: number
+        currency:
+          type: string
+        destination_id:
+          type: string
+          format: uuid
+        description:
+          type: string
+        reference:
+          type: string
+        idempotency_key:
+          type: string
+    PayoutDestinationRequest:
+      type: object
+      required: [beneficiary_name]
+      properties:
+        beneficiary_name:
+          type: string
+        iban:
+          type: string
+        account_number:
+          type: string
+        bank_code:
+          type: string
+        country:
+          type: string
+        currency:
+          type: string
+    Payout:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        status:
+          type: string
+          enum: [PENDING, SUBMITTED, COMPLETED, FAILED, REJECTED]
+        amount:
+          type: number
+        currency:
+          type: string
+        destination_id:
+          type: string
+          format: uuid
+        created_at:
+          type: string
+          format: date-time

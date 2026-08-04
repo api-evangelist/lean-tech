@@ -1,0 +1,429 @@
+{
+  "info": {
+    "_postman_id": "d27c7972-4d22-42a3-861e-96e49765e61e",
+    "name": "Lean Authentication Account on File Consents API",
+    "description": "OAuth 2.0 client-credentials token issuance for Lean APIs. Generates two classes of JWT access token: (1) scope=api for server-to-server backend calls, and (2) scope=customer.<customer_id> for the LinkSDK to act on behalf of an end-user. All tokens must be generated from a secure backend using credentials issued in the Lean Application Dashboard.\n\n\nContact Support:\n Name: Lean Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:03:25.000Z",
+    "updatedAt": "2026-07-28T02:03:25.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-d27c7972-4d22-42a3-861e-96e49765e61e"
+  },
+  "item": [
+    {
+      "name": "consents",
+      "item": [
+        {
+          "name": "account-on-file",
+          "item": [
+            {
+              "name": "Lean Create Aof Consent",
+              "id": "dbd34ad3-b63f-4186-828c-f7b33855736a",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"customer_id\": \"<uuid>\",\n  \"bank_identifier\": \"<string>\",\n  \"max_amount\": \"<number>\",\n  \"currency\": \"<string>\",\n  \"expires_at\": \"<dateTime>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/consents/account-on-file",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "consents",
+                    "account-on-file"
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "id": "64f6a19b-1e63-42eb-bee4-7e6d0829863a",
+                  "name": "Consent created",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"customer_id\": \"<uuid>\",\n  \"bank_identifier\": \"<string>\",\n  \"max_amount\": \"<number>\",\n  \"currency\": \"<string>\",\n  \"expires_at\": \"<dateTime>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/consents/account-on-file",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "consents",
+                        "account-on-file"
+                      ]
+                    }
+                  },
+                  "status": "Created",
+                  "code": 201,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T02:03:25.000Z",
+                  "updatedAt": "2026-07-28T02:03:25.000Z",
+                  "uid": "35240-64f6a19b-1e63-42eb-bee4-7e6d0829863a"
+                }
+              ],
+              "createdAt": "2026-07-28T02:03:25.000Z",
+              "updatedAt": "2026-07-28T02:03:25.000Z",
+              "uid": "35240-dbd34ad3-b63f-4186-828c-f7b33855736a"
+            }
+          ],
+          "id": "7fadc577-a23a-4463-9ea9-4210b3511b5f",
+          "createdAt": "2026-07-28T02:03:25.000Z",
+          "updatedAt": "2026-07-28T02:03:25.000Z",
+          "uid": "35240-7fadc577-a23a-4463-9ea9-4210b3511b5f"
+        },
+        {
+          "name": "v1",
+          "item": [
+            {
+              "name": "Lean List Customer Consents",
+              "id": "d842f21f-1dc5-4737-8fb3-26e18b9a6f93",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/consents/v1?customer_id=<uuid>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "consents",
+                    "v1"
+                  ],
+                  "query": [
+                    {
+                      "key": "customer_id",
+                      "value": "<uuid>"
+                    }
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "id": "cf5cca8e-67cd-4ca5-8f68-571900efc5ea",
+                  "name": "Consents",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/consents/v1?customer_id=<uuid>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "consents",
+                        "v1"
+                      ],
+                      "query": [
+                        {
+                          "key": "customer_id",
+                          "value": "<uuid>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T02:03:25.000Z",
+                  "updatedAt": "2026-07-28T02:03:25.000Z",
+                  "uid": "35240-cf5cca8e-67cd-4ca5-8f68-571900efc5ea"
+                }
+              ],
+              "createdAt": "2026-07-28T02:03:25.000Z",
+              "updatedAt": "2026-07-28T02:03:25.000Z",
+              "uid": "35240-d842f21f-1dc5-4737-8fb3-26e18b9a6f93"
+            }
+          ],
+          "id": "7e154c68-177b-45db-b3e4-08f351880379",
+          "createdAt": "2026-07-28T02:03:25.000Z",
+          "updatedAt": "2026-07-28T02:03:25.000Z",
+          "uid": "35240-7e154c68-177b-45db-b3e4-08f351880379"
+        },
+        {
+          "name": "{consent_id}",
+          "item": [
+            {
+              "name": "balance",
+              "item": [
+                {
+                  "name": "Lean Fetch Consent Balance",
+                  "id": "0ecde529-9b18-4343-b951-4fb8ab10e54a",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/consents/:consent_id/balance",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "consents",
+                        ":consent_id",
+                        "balance"
+                      ],
+                      "variable": [
+                        {
+                          "id": "6526d7c4-f4c6-4879-9bf3-6de04adffb69",
+                          "key": "consent_id",
+                          "value": "<uuid>",
+                          "description": "(Required) "
+                        }
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "id": "a7ae99d4-deaf-40d5-b0e2-7ede65c3e7f6",
+                      "name": "Consent balance",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/consents/:consent_id/balance",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "consents",
+                            ":consent_id",
+                            "balance"
+                          ],
+                          "variable": [
+                            {
+                              "key": "consent_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T02:03:25.000Z",
+                      "updatedAt": "2026-07-28T02:03:25.000Z",
+                      "uid": "35240-a7ae99d4-deaf-40d5-b0e2-7ede65c3e7f6"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:03:25.000Z",
+                  "updatedAt": "2026-07-28T02:03:25.000Z",
+                  "uid": "35240-0ecde529-9b18-4343-b951-4fb8ab10e54a"
+                }
+              ],
+              "id": "75163ea6-a53a-413a-a4fd-56ef34879eea",
+              "createdAt": "2026-07-28T02:03:25.000Z",
+              "updatedAt": "2026-07-28T02:03:25.000Z",
+              "uid": "35240-75163ea6-a53a-413a-a4fd-56ef34879eea"
+            },
+            {
+              "name": "history",
+              "item": [
+                {
+                  "name": "Lean Get Consent History",
+                  "id": "a4e6c57d-bc00-4ce4-af91-41ffc7086ab4",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/consents/:consent_id/history",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "consents",
+                        ":consent_id",
+                        "history"
+                      ],
+                      "variable": [
+                        {
+                          "id": "b0e66434-e02a-4d0c-9e09-763c86ff0afe",
+                          "key": "consent_id",
+                          "value": "<uuid>",
+                          "description": "(Required) "
+                        }
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "id": "3430ceab-5e2e-4f09-9c98-7e4a21f43b3c",
+                      "name": "Consent history",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/consents/:consent_id/history",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "consents",
+                            ":consent_id",
+                            "history"
+                          ],
+                          "variable": [
+                            {
+                              "key": "consent_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T02:03:25.000Z",
+                      "updatedAt": "2026-07-28T02:03:25.000Z",
+                      "uid": "35240-3430ceab-5e2e-4f09-9c98-7e4a21f43b3c"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:03:25.000Z",
+                  "updatedAt": "2026-07-28T02:03:25.000Z",
+                  "uid": "35240-a4e6c57d-bc00-4ce4-af91-41ffc7086ab4"
+                }
+              ],
+              "id": "fcf8989b-60a6-4302-8e8c-c1a4f59acf8a",
+              "createdAt": "2026-07-28T02:03:25.000Z",
+              "updatedAt": "2026-07-28T02:03:25.000Z",
+              "uid": "35240-fcf8989b-60a6-4302-8e8c-c1a4f59acf8a"
+            },
+            {
+              "name": "Lean Get Consent Details",
+              "id": "b095292f-cdf2-4038-a118-f2f96dff5dfc",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/consents/:consent_id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "consents",
+                    ":consent_id"
+                  ],
+                  "variable": [
+                    {
+                      "id": "46c3cd58-b4af-4fe6-bf0f-d40ddc435713",
+                      "key": "consent_id",
+                      "value": "<uuid>",
+                      "description": "(Required) "
+                    }
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "id": "b48988d0-ee1d-4351-b8c1-eb5ff5bd3878",
+                  "name": "Consent",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/consents/:consent_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "consents",
+                        ":consent_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "consent_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T02:03:25.000Z",
+                  "updatedAt": "2026-07-28T02:03:25.000Z",
+                  "uid": "35240-b48988d0-ee1d-4351-b8c1-eb5ff5bd3878"
+                }
+              ],
+              "createdAt": "2026-07-28T02:03:25.000Z",
+              "updatedAt": "2026-07-28T02:03:25.000Z",
+              "uid": "35240-b095292f-cdf2-4038-a118-f2f96dff5dfc"
+            }
+          ],
+          "id": "4031bb5d-b9f3-459b-84a2-6468b8c068e2",
+          "createdAt": "2026-07-28T02:03:25.000Z",
+          "updatedAt": "2026-07-28T02:03:25.000Z",
+          "uid": "35240-4031bb5d-b9f3-459b-84a2-6468b8c068e2"
+        }
+      ],
+      "id": "15f81952-ecce-4b97-b6fd-19c263cc0eb7",
+      "createdAt": "2026-07-28T02:03:25.000Z",
+      "updatedAt": "2026-07-28T02:03:25.000Z",
+      "uid": "35240-15f81952-ecce-4b97-b6fd-19c263cc0eb7"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://auth.leantech.me"
+    }
+  ]
+}

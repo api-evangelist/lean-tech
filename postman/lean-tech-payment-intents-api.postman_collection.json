@@ -1,0 +1,360 @@
+{
+  "info": {
+    "_postman_id": "9c6abf34-14c5-4b3e-b060-56cfa48245a0",
+    "name": "Lean Authentication Account on File Payment Intents API",
+    "description": "OAuth 2.0 client-credentials token issuance for Lean APIs. Generates two classes of JWT access token: (1) scope=api for server-to-server backend calls, and (2) scope=customer.<customer_id> for the LinkSDK to act on behalf of an end-user. All tokens must be generated from a secure backend using credentials issued in the Lean Application Dashboard.\n\n\nContact Support:\n Name: Lean Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:03:30.000Z",
+    "updatedAt": "2026-07-28T02:03:30.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-9c6abf34-14c5-4b3e-b060-56cfa48245a0"
+  },
+  "item": [
+    {
+      "name": "payments",
+      "item": [
+        {
+          "name": "v1",
+          "item": [
+            {
+              "name": "intents",
+              "item": [
+                {
+                  "name": "{intent_id}",
+                  "item": [
+                    {
+                      "name": "Lean Get Payment By Intent Id",
+                      "id": "14c3c1db-aa91-4094-92ba-2d2b2b0c467a",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/payments/v1/intents/:intent_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "payments",
+                            "v1",
+                            "intents",
+                            ":intent_id"
+                          ],
+                          "variable": [
+                            {
+                              "id": "384d6458-d52c-4b90-adfd-559f2c77b980",
+                              "key": "intent_id",
+                              "value": "<uuid>",
+                              "description": "(Required) "
+                            }
+                          ]
+                        }
+                      },
+                      "response": [
+                        {
+                          "id": "df83d92d-32c9-427f-9b16-9dc991071a86",
+                          "name": "Payment intent",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [],
+                            "url": {
+                              "raw": "{{baseUrl}}/payments/v1/intents/:intent_id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "payments",
+                                "v1",
+                                "intents",
+                                ":intent_id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "intent_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T02:03:31.000Z",
+                          "updatedAt": "2026-07-28T02:03:31.000Z",
+                          "uid": "35240-df83d92d-32c9-427f-9b16-9dc991071a86"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T02:03:30.000Z",
+                      "updatedAt": "2026-07-28T02:03:30.000Z",
+                      "uid": "35240-14c3c1db-aa91-4094-92ba-2d2b2b0c467a"
+                    }
+                  ],
+                  "id": "50c78738-122d-4c34-908f-8ccecc21b83a",
+                  "createdAt": "2026-07-28T02:03:30.000Z",
+                  "updatedAt": "2026-07-28T02:03:30.000Z",
+                  "uid": "35240-50c78738-122d-4c34-908f-8ccecc21b83a"
+                },
+                {
+                  "name": "Lean Create Payment Intent",
+                  "id": "9b304cc8-fae8-4e9e-9260-5e44a3b3d0ca",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"amount\": \"<number>\",\n  \"currency\": \"AED\",\n  \"beneficiary\": {\n    \"name\": \"<string>\",\n    \"iban\": \"<string>\",\n    \"account_number\": \"<string>\"\n  },\n  \"description\": \"<string>\",\n  \"reference\": \"<string>\",\n  \"customer_id\": \"<uuid>\",\n  \"creditor_reference\": \"<string>\",\n  \"idempotency_key\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/payments/v1/intents",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "payments",
+                        "v1",
+                        "intents"
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "id": "18533e7b-77d4-4331-aae1-1214b649c06c",
+                      "name": "Payment intent created",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"amount\": \"<number>\",\n  \"currency\": \"AED\",\n  \"beneficiary\": {\n    \"name\": \"<string>\",\n    \"iban\": \"<string>\",\n    \"account_number\": \"<string>\"\n  },\n  \"description\": \"<string>\",\n  \"reference\": \"<string>\",\n  \"customer_id\": \"<uuid>\",\n  \"creditor_reference\": \"<string>\",\n  \"idempotency_key\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/payments/v1/intents",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "payments",
+                            "v1",
+                            "intents"
+                          ]
+                        }
+                      },
+                      "status": "Created",
+                      "code": 201,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"intent_id\": \"<uuid>\",\n  \"status\": \"CANCELLED\",\n  \"amount\": \"<number>\",\n  \"currency\": \"<string>\",\n  \"created_at\": \"<dateTime>\",\n  \"link_url\": \"<uri>\"\n}",
+                      "createdAt": "2026-07-28T02:03:31.000Z",
+                      "updatedAt": "2026-07-28T02:03:31.000Z",
+                      "uid": "35240-18533e7b-77d4-4331-aae1-1214b649c06c"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:03:30.000Z",
+                  "updatedAt": "2026-07-28T02:03:30.000Z",
+                  "uid": "35240-9b304cc8-fae8-4e9e-9260-5e44a3b3d0ca"
+                },
+                {
+                  "name": "Lean List Payment Intents",
+                  "id": "cb638c36-29e1-4283-918c-a3472f298370",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/payments/v1/intents",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "payments",
+                        "v1",
+                        "intents"
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "id": "b4d4ead8-aa0c-4c35-839f-3e203faa9b2d",
+                      "name": "Payment intents",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/payments/v1/intents",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "payments",
+                            "v1",
+                            "intents"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T02:03:31.000Z",
+                      "updatedAt": "2026-07-28T02:03:31.000Z",
+                      "uid": "35240-b4d4ead8-aa0c-4c35-839f-3e203faa9b2d"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:03:30.000Z",
+                  "updatedAt": "2026-07-28T02:03:30.000Z",
+                  "uid": "35240-cb638c36-29e1-4283-918c-a3472f298370"
+                }
+              ],
+              "id": "04225ea1-1d00-41e1-addb-67d1cfc0ea3e",
+              "createdAt": "2026-07-28T02:03:30.000Z",
+              "updatedAt": "2026-07-28T02:03:30.000Z",
+              "uid": "35240-04225ea1-1d00-41e1-addb-67d1cfc0ea3e"
+            },
+            {
+              "name": "{payment_id}",
+              "item": [
+                {
+                  "name": "Lean Get Payment By Payment Id",
+                  "id": "26ca7190-8065-4cda-aedc-bef3eb6f79ef",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/payments/v1/:payment_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "payments",
+                        "v1",
+                        ":payment_id"
+                      ],
+                      "variable": [
+                        {
+                          "id": "4fe0d1c5-fb2d-4b85-bf2e-be8db4f9cd86",
+                          "key": "payment_id",
+                          "value": "<uuid>",
+                          "description": "(Required) "
+                        }
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "id": "3130cf89-bf44-4403-8fac-ff6c200e3d17",
+                      "name": "Payment",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/payments/v1/:payment_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "payments",
+                            "v1",
+                            ":payment_id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "payment_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T02:03:31.000Z",
+                      "updatedAt": "2026-07-28T02:03:31.000Z",
+                      "uid": "35240-3130cf89-bf44-4403-8fac-ff6c200e3d17"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:03:30.000Z",
+                  "updatedAt": "2026-07-28T02:03:30.000Z",
+                  "uid": "35240-26ca7190-8065-4cda-aedc-bef3eb6f79ef"
+                }
+              ],
+              "id": "73ac94d7-6c6a-4be7-8c52-4898aff01365",
+              "createdAt": "2026-07-28T02:03:30.000Z",
+              "updatedAt": "2026-07-28T02:03:30.000Z",
+              "uid": "35240-73ac94d7-6c6a-4be7-8c52-4898aff01365"
+            }
+          ],
+          "id": "d8506796-69fc-44df-a57c-3e7fa8b2f90b",
+          "createdAt": "2026-07-28T02:03:30.000Z",
+          "updatedAt": "2026-07-28T02:03:30.000Z",
+          "uid": "35240-d8506796-69fc-44df-a57c-3e7fa8b2f90b"
+        }
+      ],
+      "id": "a5568ae5-d549-45f0-a622-b16074290057",
+      "createdAt": "2026-07-28T02:03:30.000Z",
+      "updatedAt": "2026-07-28T02:03:30.000Z",
+      "uid": "35240-a5568ae5-d549-45f0-a622-b16074290057"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://auth.leantech.me"
+    }
+  ]
+}

@@ -1,0 +1,227 @@
+{
+  "info": {
+    "_postman_id": "cd88b8a5-77c1-4d8e-9bb5-c6168ff24871",
+    "name": "Lean Authentication Account on File Identity API",
+    "description": "OAuth 2.0 client-credentials token issuance for Lean APIs. Generates two classes of JWT access token: (1) scope=api for server-to-server backend calls, and (2) scope=customer.<customer_id> for the LinkSDK to act on behalf of an end-user. All tokens must be generated from a secure backend using credentials issued in the Lean Application Dashboard.\n\n\nContact Support:\n Name: Lean Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:03:27.000Z",
+    "updatedAt": "2026-07-28T02:03:27.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-cd88b8a5-77c1-4d8e-9bb5-c6168ff24871"
+  },
+  "item": [
+    {
+      "name": "data",
+      "item": [
+        {
+          "name": "v2",
+          "item": [
+            {
+              "name": "accounts",
+              "item": [
+                {
+                  "name": "{account_id}",
+                  "item": [
+                    {
+                      "name": "identities",
+                      "item": [
+                        {
+                          "name": "Lean Get Account Identities",
+                          "id": "fbf65294-ae56-4e9d-bdab-ae0d1cc23d57",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "description": "(Required) Lean entity identifier returned after a successful LinkSDK consent.",
+                                "key": "entity_id",
+                                "value": "<uuid>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/data/v2/accounts/:account_id/identities",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "data",
+                                "v2",
+                                "accounts",
+                                ":account_id",
+                                "identities"
+                              ],
+                              "variable": [
+                                {
+                                  "id": "fdda98ee-3241-45b4-a257-c0dfa5cfc457",
+                                  "key": "account_id",
+                                  "value": "<string>",
+                                  "description": "(Required) "
+                                }
+                              ]
+                            }
+                          },
+                          "response": [
+                            {
+                              "id": "9b5c406a-e92b-4cb9-a488-7d22c642f554",
+                              "name": "Account identities",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "description": "(Required) Lean entity identifier returned after a successful LinkSDK consent.",
+                                    "key": "entity_id",
+                                    "value": "<uuid>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/data/v2/accounts/:account_id/identities",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "data",
+                                    "v2",
+                                    "accounts",
+                                    ":account_id",
+                                    "identities"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "account_id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-07-28T02:03:28.000Z",
+                              "updatedAt": "2026-07-28T02:03:28.000Z",
+                              "uid": "35240-9b5c406a-e92b-4cb9-a488-7d22c642f554"
+                            }
+                          ],
+                          "createdAt": "2026-07-28T02:03:28.000Z",
+                          "updatedAt": "2026-07-28T02:03:28.000Z",
+                          "uid": "35240-fbf65294-ae56-4e9d-bdab-ae0d1cc23d57"
+                        }
+                      ],
+                      "id": "68981c09-91cb-40cb-b32e-57db2cc042f4",
+                      "createdAt": "2026-07-28T02:03:28.000Z",
+                      "updatedAt": "2026-07-28T02:03:28.000Z",
+                      "uid": "35240-68981c09-91cb-40cb-b32e-57db2cc042f4"
+                    }
+                  ],
+                  "id": "59bdb35a-67a0-4b46-9a2d-e5ec3b3d0f55",
+                  "createdAt": "2026-07-28T02:03:28.000Z",
+                  "updatedAt": "2026-07-28T02:03:28.000Z",
+                  "uid": "35240-59bdb35a-67a0-4b46-9a2d-e5ec3b3d0f55"
+                }
+              ],
+              "id": "2800d215-a9ac-4beb-91c8-0c096ccd5da2",
+              "createdAt": "2026-07-28T02:03:28.000Z",
+              "updatedAt": "2026-07-28T02:03:28.000Z",
+              "uid": "35240-2800d215-a9ac-4beb-91c8-0c096ccd5da2"
+            },
+            {
+              "name": "identity",
+              "item": [
+                {
+                  "name": "Lean Get Identity",
+                  "id": "739cffc6-0566-42c2-88a4-e7a1170ac0d5",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "(Required) Lean entity identifier returned after a successful LinkSDK consent.",
+                        "key": "entity_id",
+                        "value": "<uuid>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/data/v2/identity",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "data",
+                        "v2",
+                        "identity"
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "id": "716caa7e-35a6-4de0-b0e9-24999e1270c5",
+                      "name": "Identity",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "(Required) Lean entity identifier returned after a successful LinkSDK consent.",
+                            "key": "entity_id",
+                            "value": "<uuid>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/data/v2/identity",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "data",
+                            "v2",
+                            "identity"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T02:03:28.000Z",
+                      "updatedAt": "2026-07-28T02:03:28.000Z",
+                      "uid": "35240-716caa7e-35a6-4de0-b0e9-24999e1270c5"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:03:28.000Z",
+                  "updatedAt": "2026-07-28T02:03:28.000Z",
+                  "uid": "35240-739cffc6-0566-42c2-88a4-e7a1170ac0d5"
+                }
+              ],
+              "id": "441103b7-3a81-4041-bf53-273714423113",
+              "createdAt": "2026-07-28T02:03:28.000Z",
+              "updatedAt": "2026-07-28T02:03:28.000Z",
+              "uid": "35240-441103b7-3a81-4041-bf53-273714423113"
+            }
+          ],
+          "id": "e3de0c12-fc64-4c87-981e-93e672f35637",
+          "createdAt": "2026-07-28T02:03:28.000Z",
+          "updatedAt": "2026-07-28T02:03:28.000Z",
+          "uid": "35240-e3de0c12-fc64-4c87-981e-93e672f35637"
+        }
+      ],
+      "id": "4327edbc-2b5c-4286-8e77-6c5b75545a44",
+      "createdAt": "2026-07-28T02:03:28.000Z",
+      "updatedAt": "2026-07-28T02:03:28.000Z",
+      "uid": "35240-4327edbc-2b5c-4286-8e77-6c5b75545a44"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://auth.leantech.me"
+    }
+  ]
+}

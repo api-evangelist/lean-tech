@@ -922,7 +922,7 @@ maintainers:
     email: info@apievangelist.com
 created: '2026-05-25'
 modified: '2026-05-25'
-specificationVersion: '0.20'
+specificationVersion: '0.23'
 description: >-
   Lean Technologies is a Middle East Open Banking and Open Finance infrastructure provider founded in 2019 and
   headquartered in the UAE. Lean offers regulated Account Information (AIS), Payment Initiation (PIS), payouts, refunds,

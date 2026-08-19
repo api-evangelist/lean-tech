@@ -1,0 +1,123 @@
+{
+  "item": [
+    {
+      "id": "a58d4c1c-64b6-4bd6-afff-fedd6274d8de",
+      "name": "Banks",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "daf7a20a-21a3-4990-8d0c-7d5ff91e21e2",
+          "name": "Lean List Banks",
+          "request": {
+            "name": "Lean List Banks",
+            "description": {},
+            "url": {
+              "path": [
+                "banks",
+                "v1",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "country",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "capability",
+                  "value": "<string>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "7acb6b68-78fb-49ba-9dde-43fca34b01fc",
+              "name": "List of supported banks",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "banks",
+                    "v1",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "country",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "capability",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"identifier\": \"string\",\n    \"name\": \"string\",\n    \"country\": \"string\",\n    \"logo\": \"http://kncBBHpjCIlx.svhsyxN82fgoA9CM51ivC.E+OyeGV3grRy+dZ\",\n    \"supported_account_types\": [\n      \"string\",\n      \"string\"\n    ],\n    \"capabilities\": [\n      \"payments\",\n      \"aof\"\n    ]\n  },\n  {\n    \"identifier\": \"string\",\n    \"name\": \"string\",\n    \"country\": \"string\",\n    \"logo\": \"https://bZrUHgSAMlYiBqyyTaaecS.pulTvdiftcvMz.Q-0bvVToEpsD+ImCe1lMiD.BrLkwg\",\n    \"supported_account_types\": [\n      \"string\",\n      \"string\"\n    ],\n    \"capabilities\": [\n      \"payouts\",\n      \"payments\"\n    ]\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://auth.leantech.me",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "920511bd-3004-4064-aab2-6281b1bd3ff4",
+    "name": "Lean Authentication Account on File Banks API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "OAuth 2.0 client-credentials token issuance for Lean APIs. Generates two classes of JWT access token: (1) scope=api for server-to-server backend calls, and (2) scope=customer.<customer_id> for the LinkSDK to act on behalf of an end-user. All tokens must be generated from a secure backend using credentials issued in the Lean Application Dashboard.\n\n\nContact Support:\n Name: Lean Support",
+      "type": "text/plain"
+    }
+  }
+}

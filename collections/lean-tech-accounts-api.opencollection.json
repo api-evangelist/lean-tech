@@ -1,0 +1,131 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Lean Authentication Account on File Accounts API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Accounts",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Lean Get Accounts",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://auth.leantech.me/data/v2/accounts",
+            "headers": [
+              {
+                "name": "entity_id",
+                "value": ""
+              }
+            ]
+          },
+          "docs": "Lean Get Accounts"
+        },
+        {
+          "info": {
+            "name": "Lean Get Beneficiaries",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://auth.leantech.me/data/v2/accounts/:account_id/beneficiaries",
+            "headers": [
+              {
+                "name": "entity_id",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "account_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Lean Get Beneficiaries"
+        },
+        {
+          "info": {
+            "name": "Lean Get Direct Debits",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://auth.leantech.me/data/v2/accounts/:account_id/direct-debits",
+            "headers": [
+              {
+                "name": "entity_id",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "account_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Lean Get Direct Debits"
+        },
+        {
+          "info": {
+            "name": "Lean Get Scheduled Payments",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://auth.leantech.me/data/v2/accounts/:account_id/scheduled-payments",
+            "headers": [
+              {
+                "name": "entity_id",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "account_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Lean Get Scheduled Payments"
+        },
+        {
+          "info": {
+            "name": "Lean Get Standing Orders",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://auth.leantech.me/data/v2/accounts/:account_id/standing-orders",
+            "headers": [
+              {
+                "name": "entity_id",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "account_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Lean Get Standing Orders"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

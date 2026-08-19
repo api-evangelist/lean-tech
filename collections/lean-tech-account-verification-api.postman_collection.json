@@ -1,0 +1,127 @@
+{
+  "item": [
+    {
+      "id": "bd91d85c-b553-4b9a-a86a-c03f22c7fbe7",
+      "name": "Account Verification",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "2ef865f1-a8e7-456c-ba71-020ef69d3342",
+          "name": "Lean Verify Account",
+          "request": {
+            "name": "Lean Verify Account",
+            "description": {
+              "content": "Verify a bank account in one of 27+ supported countries. The request payload differs per country to accommodate local identifier formats (IBAN, sort-code/account-number, CLABE, etc.). Supported country codes include AE, SA, AR, BD, BE, BR, CN, FR, ID, IN, IT, KR, MX, NG, NL, NP, PK, PL, UG, GB, US, VN, MY, UY, PE, TR, and ZA.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "verifications",
+                "v1",
+                "accounts"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"country\": \"<string>\",\n  \"iban\": \"<string>\",\n  \"account_number\": \"<string>\",\n  \"bank_code\": \"<string>\",\n  \"branch_code\": \"<string>\",\n  \"beneficiary_name\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "85bd3177-402a-4c88-a770-058afcdf80eb",
+              "name": "Verification result",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "verifications",
+                    "v1",
+                    "accounts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"country\": \"<string>\",\n  \"iban\": \"<string>\",\n  \"account_number\": \"<string>\",\n  \"bank_code\": \"<string>\",\n  \"branch_code\": \"<string>\",\n  \"beneficiary_name\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"verified\": false,\n  \"match_strength\": \"FULL\",\n  \"bank_name\": \"string\",\n  \"account_holder\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://auth.leantech.me",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "2639d1ef-805b-4cbe-969d-0a4d2d0d4643",
+    "name": "Lean Authentication Account on File Account Verification API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "OAuth 2.0 client-credentials token issuance for Lean APIs. Generates two classes of JWT access token: (1) scope=api for server-to-server backend calls, and (2) scope=customer.<customer_id> for the LinkSDK to act on behalf of an end-user. All tokens must be generated from a secure backend using credentials issued in the Lean Application Dashboard.\n\n\nContact Support:\n Name: Lean Support",
+      "type": "text/plain"
+    }
+  }
+}

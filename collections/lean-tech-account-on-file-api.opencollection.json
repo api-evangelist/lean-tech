@@ -1,0 +1,33 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Lean Authentication Account on File API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Account on File",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Lean Initiate Aof Payment",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://auth.leantech.me/payments/account-on-file",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Lean Initiate Aof Payment"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,414 @@
+{
+  "item": [
+    {
+      "id": "7d63b4b8-8b76-4878-ad4d-c6172cfd7011",
+      "name": "Payouts",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "a0d2c3e0-e041-444c-a983-120d23a1c1bf",
+          "name": "Lean Create Payout Payment",
+          "request": {
+            "name": "Lean Create Payout Payment",
+            "description": {},
+            "url": {
+              "path": [
+                "payouts",
+                "v1",
+                "payment"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"amount\": \"<number>\",\n  \"currency\": \"<string>\",\n  \"destination_id\": \"<uuid>\",\n  \"description\": \"<string>\",\n  \"reference\": \"<string>\",\n  \"idempotency_key\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "4e9b93b1-1367-4514-97ae-3a5f1dcba8e9",
+              "name": "Payout created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "payouts",
+                    "v1",
+                    "payment"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"amount\": \"<number>\",\n  \"currency\": \"<string>\",\n  \"destination_id\": \"<uuid>\",\n  \"description\": \"<string>\",\n  \"reference\": \"<string>\",\n  \"idempotency_key\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"9acec56b-a216-9e4e-7a57-f79f23884c3f\",\n  \"status\": \"COMPLETED\",\n  \"amount\": 3605.31667602772,\n  \"currency\": \"string\",\n  \"destination_id\": \"27663d52-c4ee-64a1-42a4-7b7c67365e41\",\n  \"created_at\": \"1959-01-14T15:43:24.573Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "fc35811b-ec5f-4294-88d5-3aa8252c9e12",
+          "name": "Lean List Payouts",
+          "request": {
+            "name": "Lean List Payouts",
+            "description": {},
+            "url": {
+              "path": [
+                "payouts",
+                "v1",
+                "payments"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a877f922-d38d-4eb3-98da-5e0befd38457",
+              "name": "Payouts",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "payouts",
+                    "v1",
+                    "payments"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "cdad37d6-d5be-42da-95d3-52e99cf2b415",
+          "name": "Lean Get Payout Payment History",
+          "request": {
+            "name": "Lean Get Payout Payment History",
+            "description": {},
+            "url": {
+              "path": [
+                "payouts",
+                "v1",
+                "payments",
+                ":payment_id",
+                "history"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "payment_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "1077cc44-4df4-4c0d-9c9c-222dd15dcb02",
+              "name": "History",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "payouts",
+                    "v1",
+                    "payments",
+                    ":payment_id",
+                    "history"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "payment_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "aa82ddef-f060-4cbf-a837-fe5ea4a09161",
+          "name": "Lean Get Payout",
+          "request": {
+            "name": "Lean Get Payout",
+            "description": {},
+            "url": {
+              "path": [
+                "payouts",
+                "v1",
+                ":payment_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "payment_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "3236df0d-0b6f-43d4-86d9-52414c66c013",
+              "name": "Payout",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "payouts",
+                    "v1",
+                    ":payment_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "payment_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "adcb37ae-3381-4c7f-841d-5aee5cfa4b3f",
+          "name": "Lean Get Payout Intent",
+          "request": {
+            "name": "Lean Get Payout Intent",
+            "description": {},
+            "url": {
+              "path": [
+                "payouts",
+                "v1",
+                "intents",
+                ":payment_intent_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "payment_intent_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "0f2b4568-d8c4-4d84-a60d-6944b17f91bc",
+              "name": "Payout intent",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "payouts",
+                    "v1",
+                    "intents",
+                    ":payment_intent_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "payment_intent_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://auth.leantech.me",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "4a822e23-cf17-48f9-8dbe-5a5b141effc1",
+    "name": "Lean Authentication Account on File Payouts API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "OAuth 2.0 client-credentials token issuance for Lean APIs. Generates two classes of JWT access token: (1) scope=api for server-to-server backend calls, and (2) scope=customer.<customer_id> for the LinkSDK to act on behalf of an end-user. All tokens must be generated from a secure backend using credentials issued in the Lean Application Dashboard.\n\n\nContact Support:\n Name: Lean Support",
+      "type": "text/plain"
+    }
+  }
+}

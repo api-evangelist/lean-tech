@@ -1,0 +1,80 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Lean Authentication Account on File Payment Intents API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Payment Intents",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Lean List Payment Intents",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://auth.leantech.me/payments/v1/intents"
+          },
+          "docs": "Lean List Payment Intents"
+        },
+        {
+          "info": {
+            "name": "Lean Create Payment Intent",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://auth.leantech.me/payments/v1/intents",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Lean Create Payment Intent"
+        },
+        {
+          "info": {
+            "name": "Lean Get Payment By Intent Id",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://auth.leantech.me/payments/v1/intents/:intent_id",
+            "params": [
+              {
+                "name": "intent_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Lean Get Payment By Intent Id"
+        },
+        {
+          "info": {
+            "name": "Lean Get Payment By Payment Id",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://auth.leantech.me/payments/v1/:payment_id",
+            "params": [
+              {
+                "name": "payment_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Lean Get Payment By Payment Id"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

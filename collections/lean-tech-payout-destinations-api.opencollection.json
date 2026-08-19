@@ -1,0 +1,62 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Lean Authentication Account on File Payout Destinations API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Payout Destinations",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Lean List Payout Destinations",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://auth.leantech.me/payouts/v1/payment/destinations"
+          },
+          "docs": "Lean List Payout Destinations"
+        },
+        {
+          "info": {
+            "name": "Lean Create Payout Destination",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://auth.leantech.me/payouts/v1/payment/destinations",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Lean Create Payout Destination"
+        },
+        {
+          "info": {
+            "name": "Lean Get Payout Destination",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://auth.leantech.me/payouts/v1/payment/destinations/:destination_id",
+            "params": [
+              {
+                "name": "destination_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Lean Get Payout Destination"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

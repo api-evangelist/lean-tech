@@ -1,0 +1,317 @@
+{
+  "item": [
+    {
+      "id": "d1ce0889-c4c8-400b-a1a1-37c01cb88ec1",
+      "name": "Entities",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "7d7ba994-7dbf-4204-8b37-53a995de6900",
+          "name": "Lean Get Entities For Customer",
+          "request": {
+            "name": "Lean Get Entities For Customer",
+            "description": {},
+            "url": {
+              "path": [
+                "customers",
+                "v1",
+                ":customer_id",
+                "entities"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "customer_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "2ce4d858-3f0e-4204-b130-0fc84f7762f0",
+              "name": "Entities for customer",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    "v1",
+                    ":customer_id",
+                    "entities"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "customer_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": \"b57ed9b4-4808-61c7-de6d-0a48311f76c0\",\n    \"customer_id\": \"4f881c82-f1d5-c166-a155-ba9dc7cee384\",\n    \"bank_identifier\": \"string\",\n    \"permissions\": [\n      \"beneficiaries\",\n      \"standing_orders\"\n    ],\n    \"created_at\": \"1988-10-16T13:25:23.850Z\"\n  },\n  {\n    \"id\": \"044194ae-b5b4-a950-d121-ed53167529f0\",\n    \"customer_id\": \"d89b8812-e79c-27d9-dfcb-6a1cf0fdc040\",\n    \"bank_identifier\": \"string\",\n    \"permissions\": [\n      \"identity\",\n      \"beneficiaries\"\n    ],\n    \"created_at\": \"1984-12-20T23:09:31.579Z\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b208c471-6bde-44ef-9099-02986af35f4c",
+          "name": "Lean Get Entity By Id",
+          "request": {
+            "name": "Lean Get Entity By Id",
+            "description": {},
+            "url": {
+              "path": [
+                "customers",
+                "v1",
+                ":customer_id",
+                "entities",
+                ":entity_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "customer_id",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "entity_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "835fa6c0-1301-4e13-861d-b6aec0c6ea69",
+              "name": "Entity",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    "v1",
+                    ":customer_id",
+                    "entities",
+                    ":entity_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "customer_id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "entity_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"4758d81d-34f5-c1b2-d527-c55c7400c6ed\",\n  \"customer_id\": \"b31acc56-cd16-1d46-183b-bdc36d60a34d\",\n  \"bank_identifier\": \"string\",\n  \"permissions\": [\n    \"identity\",\n    \"standing_orders\"\n  ],\n  \"created_at\": \"1992-05-27T18:23:14.917Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "71b593d6-ae3c-4d6f-8532-b3cbcb63d777",
+          "name": "Lean Retrieve All Entities For Date Range",
+          "request": {
+            "name": "Lean Retrieve All Entities For Date Range",
+            "description": {},
+            "url": {
+              "path": [
+                "customers",
+                "v1",
+                "entities"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "start_date",
+                  "value": "<date>"
+                },
+                {
+                  "disabled": false,
+                  "key": "end_date",
+                  "value": "<date>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "1af55b81-1d94-4062-8bfb-435673ef87ba",
+              "name": "Entities",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    "v1",
+                    "entities"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "start_date",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "end_date",
+                      "value": "<date>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": \"b57ed9b4-4808-61c7-de6d-0a48311f76c0\",\n    \"customer_id\": \"4f881c82-f1d5-c166-a155-ba9dc7cee384\",\n    \"bank_identifier\": \"string\",\n    \"permissions\": [\n      \"beneficiaries\",\n      \"standing_orders\"\n    ],\n    \"created_at\": \"1988-10-16T13:25:23.850Z\"\n  },\n  {\n    \"id\": \"044194ae-b5b4-a950-d121-ed53167529f0\",\n    \"customer_id\": \"d89b8812-e79c-27d9-dfcb-6a1cf0fdc040\",\n    \"bank_identifier\": \"string\",\n    \"permissions\": [\n      \"identity\",\n      \"beneficiaries\"\n    ],\n    \"created_at\": \"1984-12-20T23:09:31.579Z\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://auth.leantech.me",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "eb9ee0c6-ad43-4370-a495-0cdf7c2bc8e6",
+    "name": "Lean Authentication Account on File Entities API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "OAuth 2.0 client-credentials token issuance for Lean APIs. Generates two classes of JWT access token: (1) scope=api for server-to-server backend calls, and (2) scope=customer.<customer_id> for the LinkSDK to act on behalf of an end-user. All tokens must be generated from a secure backend using credentials issued in the Lean Application Dashboard.\n\n\nContact Support:\n Name: Lean Support",
+      "type": "text/plain"
+    }
+  }
+}

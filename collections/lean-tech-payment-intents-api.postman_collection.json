@@ -1,0 +1,335 @@
+{
+  "item": [
+    {
+      "id": "e147eb20-b8e6-464f-a1f8-b749ebd50553",
+      "name": "Payment Intents",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "771ddb58-78ad-4235-9c74-d93e20adfb82",
+          "name": "Lean Create Payment Intent",
+          "request": {
+            "name": "Lean Create Payment Intent",
+            "description": {},
+            "url": {
+              "path": [
+                "payments",
+                "v1",
+                "intents"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"amount\": \"<number>\",\n  \"currency\": \"<string>\",\n  \"beneficiary\": {\n    \"name\": \"<string>\",\n    \"iban\": \"<string>\",\n    \"account_number\": \"<string>\"\n  },\n  \"description\": \"<string>\",\n  \"reference\": \"<string>\",\n  \"customer_id\": \"<uuid>\",\n  \"creditor_reference\": \"<string>\",\n  \"idempotency_key\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "dcf7da49-a355-4c9a-b18d-6a61c78095c9",
+              "name": "Payment intent created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "payments",
+                    "v1",
+                    "intents"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"amount\": \"<number>\",\n  \"currency\": \"<string>\",\n  \"beneficiary\": {\n    \"name\": \"<string>\",\n    \"iban\": \"<string>\",\n    \"account_number\": \"<string>\"\n  },\n  \"description\": \"<string>\",\n  \"reference\": \"<string>\",\n  \"customer_id\": \"<uuid>\",\n  \"creditor_reference\": \"<string>\",\n  \"idempotency_key\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"intent_id\": \"178a0ff3-b8b5-51bc-3bd4-345c275108f0\",\n  \"status\": \"AWAITING_AUTHORIZATION\",\n  \"amount\": 587.0775819316698,\n  \"currency\": \"string\",\n  \"created_at\": \"1994-05-28T07:23:41.750Z\",\n  \"link_url\": \"http://udSm.jlhvgeFZEEhmH-QWWUxTHZeovgChVBcSDTVgQxNj\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "42d9bfd9-81ff-48ec-90e3-60ddb64da312",
+          "name": "Lean List Payment Intents",
+          "request": {
+            "name": "Lean List Payment Intents",
+            "description": {},
+            "url": {
+              "path": [
+                "payments",
+                "v1",
+                "intents"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "13304887-362d-4cf3-9f53-3f0e54f5256e",
+              "name": "Payment intents",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "payments",
+                    "v1",
+                    "intents"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c6c799f9-0366-4693-87e8-6c06dda529c2",
+          "name": "Lean Get Payment By Intent Id",
+          "request": {
+            "name": "Lean Get Payment By Intent Id",
+            "description": {},
+            "url": {
+              "path": [
+                "payments",
+                "v1",
+                "intents",
+                ":intent_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "intent_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "04ed362a-1609-41f9-a0e0-9e81a3c4a870",
+              "name": "Payment intent",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "payments",
+                    "v1",
+                    "intents",
+                    ":intent_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "intent_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e691beee-7612-4952-a9c4-cf97a1653bd4",
+          "name": "Lean Get Payment By Payment Id",
+          "request": {
+            "name": "Lean Get Payment By Payment Id",
+            "description": {},
+            "url": {
+              "path": [
+                "payments",
+                "v1",
+                ":payment_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "payment_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "69dfe5bc-7109-452f-af13-7a9683f56b2f",
+              "name": "Payment",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "payments",
+                    "v1",
+                    ":payment_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "payment_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://auth.leantech.me",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "6dc56cbb-6459-4865-b7c4-a137d5323f7d",
+    "name": "Lean Authentication Account on File Payment Intents API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "OAuth 2.0 client-credentials token issuance for Lean APIs. Generates two classes of JWT access token: (1) scope=api for server-to-server backend calls, and (2) scope=customer.<customer_id> for the LinkSDK to act on behalf of an end-user. All tokens must be generated from a secure backend using credentials issued in the Lean Application Dashboard.\n\n\nContact Support:\n Name: Lean Support",
+      "type": "text/plain"
+    }
+  }
+}

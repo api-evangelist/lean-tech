@@ -1,0 +1,76 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Lean Authentication Account on File Refreshes API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Refreshes",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Lean Get Data Refreshes",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://auth.leantech.me/data/v2/refreshes",
+            "headers": [
+              {
+                "name": "entity_id",
+                "value": ""
+              }
+            ]
+          },
+          "docs": "Lean Get Data Refreshes"
+        },
+        {
+          "info": {
+            "name": "Lean Trigger Manual Data Refresh",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://auth.leantech.me/data/v2/refreshes",
+            "headers": [
+              {
+                "name": "entity_id",
+                "value": ""
+              }
+            ]
+          },
+          "docs": "Lean Trigger Manual Data Refresh"
+        },
+        {
+          "info": {
+            "name": "Lean Get Data Refresh Status",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://auth.leantech.me/data/v2/refreshes/:refresh_id",
+            "headers": [
+              {
+                "name": "entity_id",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "refresh_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Lean Get Data Refresh Status"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

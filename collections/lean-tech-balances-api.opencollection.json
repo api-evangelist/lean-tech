@@ -1,0 +1,42 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Lean Authentication Account on File Balances API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Balances",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Lean Get Balances",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://auth.leantech.me/data/v2/accounts/:account_id/balances",
+            "headers": [
+              {
+                "name": "entity_id",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "account_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Lean Get Balances"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

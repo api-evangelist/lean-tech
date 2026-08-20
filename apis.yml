@@ -93,6 +93,8 @@ apis:
   description: The Accounts API from Lean Technologies — 5 operation(s) for accounts.
   humanURL: https://docs.leantech.me/docs/authentication
   tags:
+  - Account
+  tags_raw:
   - Accounts
   properties:
   - type: OpenAPI
@@ -782,6 +784,8 @@ apis:
   description: The Transactions API from Lean Technologies — 1 operation(s) for transactions.
   humanURL: https://docs.leantech.me/docs/authentication
   tags:
+  - Transaction
+  tags_raw:
   - Transactions
   properties:
   - type: OpenAPI
@@ -822,6 +826,20 @@ apis:
     url: https://docs.leantech.me/reference/refunds
 name: Lean Technologies
 tags:
+  - Open Banking
+  - Open Finance
+  - MENA
+  - UAE
+  - Saudi Arabia
+  - Payments
+  - Pay by Bank
+  - A2A
+  - Account Information
+  - Payment Initiation
+  - Verification
+  - Identity
+  - Fintech
+tags_raw:
   - Open Banking
   - Open Finance
   - MENA

@@ -882,6 +882,9 @@ accessModel:
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/lean-tech.png
 access: 3rd-Party
 common:
+  - type: CapabilityMap
+    url: capabilities/lean-tech-capability-edges.yml
+    name: Lean Technologies Business Capability Map
   - type: PostmanWorkspace
     url: https://www.postman.com/kinlaneapi/lean-technologies/overview
   - type: AgenticAccess

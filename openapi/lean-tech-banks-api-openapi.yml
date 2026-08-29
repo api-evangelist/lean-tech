@@ -1,23 +1,18 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Lean Authentication Account on File Banks API
-  description: 'OAuth 2.0 client-credentials token issuance for Lean APIs. Generates two classes of JWT access token: (1) scope=api for server-to-server backend calls, and (2) scope=customer.<customer_id> for the LinkSDK to act on behalf of an end-user. All tokens must be generated from a secure backend using credentials issued in the Lean Application Dashboard.
+  title: Lean Banks API
+  description: 'List the banks Lean currently supports in each region for Data, Payments, and Payouts. Returns bank identifiers, display names, logos, country codes, and which product capabilities each bank supports.
 
     '
   version: '1.0'
   contact:
     name: Lean Support
     url: https://help.leantech.me
-  license:
-    name: Lean Terms of Service
-    url: https://www.leantech.me
 servers:
-- url: https://auth.leantech.me
+- url: https://api2.leantech.me
   description: Production
-- url: https://auth.sandbox.ae.leantech.me
-  description: Sandbox - UAE
-- url: https://auth.sandbox.sa.leantech.me
-  description: Sandbox - KSA
+security:
+- BearerAuth: []
 tags:
 - name: Banks
 paths:
@@ -79,3 +74,8 @@ components:
             - payments
             - payouts
             - aof
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT

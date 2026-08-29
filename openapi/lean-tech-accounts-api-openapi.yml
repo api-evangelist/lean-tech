@@ -1,23 +1,22 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Lean Authentication Account on File Accounts API
-  description: 'OAuth 2.0 client-credentials token issuance for Lean APIs. Generates two classes of JWT access token: (1) scope=api for server-to-server backend calls, and (2) scope=customer.<customer_id> for the LinkSDK to act on behalf of an end-user. All tokens must be generated from a secure backend using credentials issued in the Lean Application Dashboard.
+  title: Lean Data Accounts API
+  description: 'Raw bank-account data retrieval (v2). After a customer has granted an Account Information consent through the LinkSDK and Lean has provisioned an entity, the Data API exposes accounts, transactions, balances, beneficiaries, direct debits, standing orders, scheduled payments, and identity. Includes endpoints to trigger and inspect manual data refreshes.
 
     '
-  version: '1.0'
+  version: '2.0'
   contact:
     name: Lean Support
     url: https://help.leantech.me
-  license:
-    name: Lean Terms of Service
-    url: https://www.leantech.me
 servers:
-- url: https://auth.leantech.me
+- url: https://api2.leantech.me
   description: Production
-- url: https://auth.sandbox.ae.leantech.me
+- url: https://sandbox.ae.leantech.me
   description: Sandbox - UAE
-- url: https://auth.sandbox.sa.leantech.me
+- url: https://sandbox.sa.leantech.me
   description: Sandbox - KSA
+security:
+- BearerAuth: []
 tags:
 - name: Accounts
 paths:
@@ -88,6 +87,12 @@ paths:
           description: Standing orders
 components:
   parameters:
+    AccountId:
+      name: account_id
+      in: path
+      required: true
+      schema:
+        type: string
     EntityIdHeader:
       name: entity_id
       in: header
@@ -96,12 +101,6 @@ components:
         type: string
         format: uuid
       description: Lean entity identifier returned after a successful LinkSDK consent.
-    AccountId:
-      name: account_id
-      in: path
-      required: true
-      schema:
-        type: string
   schemas:
     Account:
       type: object
@@ -125,3 +124,8 @@ components:
           type: string
         bic:
           type: string
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
